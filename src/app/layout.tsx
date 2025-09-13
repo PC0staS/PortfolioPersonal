@@ -7,10 +7,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
-        className={`antialiased justify-center mx-auto bg-dark text-white overflow-x-hidden`}
-        style={{ boxSizing: "border-box" }}
+        className={`antialiased justify-center mx-auto text-white overflow-x-hidden bg-[#0e0e0e]`}
+        style={{ boxSizing: "border-box", fontFamily:"Poppins, sans-serif" }}
       >
         <ViewTransition>
           {children}

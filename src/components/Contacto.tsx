@@ -1,6 +1,6 @@
 export default function Contacto() {
     return (
-        <div className="mt-20 flex flex-col items-center justify-center min-h-[20vh] bg-[#1e1e1e]  rounded-xl shadow-lg p-8">
+        <div className="mt-20 flex flex-col items-center justify-center min-h-[20vh] bg-[#1e1e1e]  rounded-xl shadow-lg p-8" id="contacto">
             <h2 className="text-3xl font-bold bg-clip-text text-white">¡Hablemos!</h2>
             <p className="text-lg text-gray-400 mb-8">¿Te gustaría colaborar, tienes alguna pregunta o solo quieres saludar? ¡Estoy disponible!</p>
             <div className="flex flex-row items-center gap-6">

@@ -6,132 +6,43 @@ pubDate: 'Dec 15 2024'
 heroImage: 'Netwatch_xsb6da'
 githubRepo: 'https://github.com/Pc0staS/Netwatch'
 ---
-# NetWatch - Monitor de Red 🌐📊
+# NetWatch - Monitor de Red 🌐
 
-**NetWatch** es una elegante herramienta de monitoreo de red que desarrollé para supervisar el tráfico de interfaces de red en tiempo real, con tanto interfaz de consola como interfaz web moderna.
+Herramienta elegante para monitorear tráfico de red en tiempo real con doble interfaz: consola ASCII y web moderna.
 
-## ¿Qué hice?
+## En una frase
+Monitorea interfaces de red con gráficos en tiempo real, tanto en consola como web.
 
-Desarrollé una aplicación completa de monitoreo de red utilizando **Python**, **Flask**, **Socket.IO** y **Chart.js**. El proyecto incluye dos modos de funcionamiento: una interfaz de consola colorida con gráficos ASCII y una interfaz web profesional con gráficos interactivos.
+## Stack
+- **Backend:** Python, Flask, Socket.IO, psutil
+- **Frontend:** Chart.js, Bootstrap, WebSockets
+- **Deploy:** PyPI package
 
-### Características principales:
-- **Doble interfaz**: Consola con gráficos ASCII y web con visualización moderna
-- **Monitoreo en tiempo real**: Actualización automática de estadísticas cada segundo
-- **Diseño profesional**: Paleta de colores pastel y diseño responsivo
-- **API REST**: Endpoints para integración con otros sistemas
-- **Multiplataforma**: Compatible con Windows, Linux y macOS
+## Highlights
+- **Doble interfaz:** Consola ASCII colorida + web responsiva
+- **Tiempo real:** WebSockets, actualización cada segundo
+- **API REST:** Endpoints para integración
+- **Multiplataforma:** Windows, Linux, macOS
 
----
-
-## Tecnologías utilizadas
-
-### Backend:
-- **Python 3.7+**: Lógica principal de la aplicación
-- **psutil**: Obtención de estadísticas de red del sistema
-- **Flask & Flask-SocketIO**: Servidor web y comunicación en tiempo real
-- **WebSocket**: Para actualizaciones en tiempo real sin recargar la página
-
-### Frontend:
-- **HTML5 & CSS3**: Estructura y estilos modernos
-- **JavaScript (Vanilla)**: Lógica del cliente y manejo de datos en tiempo real
-- **Chart.js**: Gráficos interactivos y visualizaciones
-- **Bootstrap 5**: Componentes UI y diseño responsivo
-
----
-
-## Interfaz de consola
-
-La interfaz de consola incluye:
-- Selección interactiva de interfaces de red
-- Gráficos ASCII coloridos en tiempo real
-- Estadísticas de velocidad actual y tráfico acumulado
-- Colores diferenciados para envío (azul) y recepción (verde)
-
+## Uso
 ```bash
-# Ejecutar en modo consola
-netwatch
-
-# Monitorear interfaz específica
+# Consola
 netwatch -i eth0
 
-# Monitorear todas las interfaces
-netwatch --all
-```
-
----
-
-## Interfaz web profesional
-
-La interfaz web moderna incluye:
-- **Gráficos interactivos**: Visualización en tiempo real con Chart.js
-- **Diseño responsivo**: Adaptable a móviles, tablets y desktop
-- **Paleta pastel**: Colores suaves y elegantes
-- **Sin datos simulados**: Muestra estado desconectado cuando no hay datos reales
-- **Control intuitivo**: Selección fácil de interfaces y controles de monitoreo
-
-```bash
-# Ejecutar interfaz web (localhost)
-netwatch-web
-
-# Ejecutar con acceso de red
-netwatch-web --network
-
-# Puerto personalizado
+# Web
 netwatch-web --network --port 8080
-```
 
----
-
-## API REST
-
-El proyecto incluye endpoints REST para integración:
-
-- `GET /api/interfaces` - Lista interfaces disponibles
-- `GET /api/stats` - Estadísticas actuales de red
-- `POST /api/start_monitoring` - Iniciar monitoreo de interfaces
-- `POST /api/stop_monitoring` - Detener monitoreo
-
----
-
-## Instalación y uso
-
-### Instalación desde PyPI:
-```bash
+# Instalar
 pip install netwatch-monitor
 ```
 
-### Instalación desde código fuente:
-```bash
-git clone https://github.com/PC0staS/netwatch.git
-cd netwatch
-pip install -e .
-```
-
----
+## API
+- `GET /api/interfaces` - Lista interfaces
+- `GET /api/stats` - Estadísticas actuales
+- `POST /api/start_monitoring` - Iniciar monitoreo
 
 ## Casos de uso
+Debugging de red, monitoreo de ancho de banda, administración de sistemas, educativo.
 
-- **Debugging de red**: Monitorear actividad durante resolución de problemas
-- **Monitoreo de rendimiento**: Seguimiento del uso de ancho de banda
-- **Desarrollo**: Monitorear actividad de red durante desarrollo de aplicaciones
-- **Administración de sistemas**: Vista rápida del estado de interfaces de red
-- **Educativo**: Aprender sobre interfaces de red y patrones de tráfico
-- **Monitoreo remoto**: Usar interfaz web para supervisión remota
-
----
-
-## Lo que aprendí
-
-Este proyecto me permitió:
-- **Trabajo con APIs del sistema**: Usar psutil para obtener estadísticas de red
-- **Desarrollo full-stack**: Backend en Python y frontend moderno
-- **Comunicación en tiempo real**: WebSockets y actualizaciones live
-- **Visualización de datos**: Crear gráficos ASCII y web interactivos
-- **Diseño responsivo**: Interfaz que funciona en todos los dispositivos
-- **Packaging de Python**: Crear paquete distribuible en PyPI
-
-¡NetWatch demuestra mi capacidad para crear herramientas de sistema completas con interfaces tanto técnicas como amigables para el usuario!
-
----
-
-¡Espero que este proyecto te inspire tanto como a mí me inspiró desarrollarlo! 🚀
+## Código
+[Ver el repo en GitHub →](https://github.com/Pc0staS/Netwatch)

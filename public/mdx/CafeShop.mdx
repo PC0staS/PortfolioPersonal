@@ -9,86 +9,56 @@ githubRepo: 'https://github.com/PC0staS/CafeShop'
 
 # CafeShop ☕
 
-Sistema completo para la gestión de productos de café. Incluye backend con API REST segura, panel de administración con autenticación JWT y un frontend responsive con transiciones suaves.
+Sistema completo de e-commerce para café con API FastAPI, panel admin JWT y frontend Next.js responsive.
 
-## ¿Qué hice?
+## En una frase
+E-commerce completo: API FastAPI + Next.js con CRUD de productos, imágenes y autenticación JWT.
 
-- API **FastAPI** con modelos SQLAlchemy y validación **Pydantic**.
-- Autenticación y autorización con **JWT** (PyJWT).
-- **CRUD de productos** y gestión de múltiples imágenes por producto.
-- **Panel admin** moderno y protegido.
-- Frontend **Next.js 15 (React 19, TypeScript)** + **Tailwind CSS** con View Transitions.
-- Despliegue orquestado con **Docker Compose** (PostgreSQL + backend + frontend).
+## Stack
+- **Backend:** FastAPI, SQLAlchemy, Pydantic, JWT, PostgreSQL
+- **Frontend:** Next.js 15, React 19, TypeScript, Tailwind CSS
+- **Deploy:** Docker Compose
 
----
-
-## Características clave
-
-- CRUD completo (crear, leer, actualizar, eliminar).
-- Subida/gestión de imágenes por producto con previsualización.
-- Diseño responsive y accesible.
-- Seguridad: JWT, validación de datos, CORS, saneado de inputs.
-- Scripts de verificación de entorno y guía de instalación.
-
----
+## Highlights
+- **API robusta:** FastAPI con validación Pydantic y ORM SQLAlchemy
+- **Autenticación JWT:** Login, registro, refresh tokens
+- **CRUD completo:** Productos con múltiples imágenes y previsualización
+- **Panel admin:** Protegido con JWT, diseño moderno
+- **Frontend moderno:** Next.js 15 con View Transitions y Tailwind
+- **Deploy fácil:** Docker Compose con PostgreSQL
 
 ## Arquitectura
 
-- Backend (Python / FastAPI):
-  - Endpoints REST, esquemas Pydantic, ORM SQLAlchemy.
-  - BD: **PostgreSQL 16**.
-  - Docker: imágenes del backend y orquestación con `docker-compose`.
-- Frontend (Next.js 15 / React 19 / TS):
-  - App Router, componentes UI y páginas de productos/admin.
-  - Estilos con **Tailwind CSS** y View Transitions.
+### Backend (FastAPI)
+- Endpoints REST con esquemas Pydantic
+- PostgreSQL 16 con SQLAlchemy ORM
+- Seguridad: JWT, validación, CORS, saneado de inputs
 
-### Endpoints principales (resumen)
-- Públicos:
-  - `GET /products` — listar productos (paginado)
-  - `GET /products/{id}` — detalle de producto
-  - `GET /products/{id}/images` — imágenes del producto
-- Administración (JWT requerido):
-  - `POST /admin/auth/register`, `POST /admin/auth/login`, `POST /admin/auth/refresh`
-  - `POST /admin/products`, `PUT /admin/products/{id}`, `DELETE /admin/products/{id}`
-  - `POST /admin/products/full` — crear producto con imágenes
+### Frontend (Next.js 15)
+- App Router con React 19 y TypeScript
+- Tailwind CSS con View Transitions
+- Componentes UI y páginas productos/admin
 
----
+## API endpoints
+- Públicos: `GET /products`, `GET /products/{id}`, `GET /products/{id}/images`
+- Admin (JWT): `POST /admin/auth/login`, `POST /admin/products`, `PUT /admin/products/{id}`, `DELETE /admin/products/{id}`
 
-## Tecnologías
+## Instalación
+```bash
+# Backend
+cd backend/code && cp .env.example .env
+docker-compose up --build
 
-- Backend: FastAPI, SQLAlchemy, Pydantic, PyJWT, PostgreSQL, Docker.
-- Frontend: Next.js 15, React 19, TypeScript, Tailwind CSS, View Transitions.
+# Frontend
+cd frontend && npm install --legacy-peer-deps
+npm run dev
 
----
+# Acceso
+# Frontend: http://localhost:3000
+# Admin: http://localhost:3000/admin  
+# API: http://localhost:8000
+```
 
-## Instalación y ejecución
-
-- Opción Docker (recomendada):
-  ```bash
-  git clone https://github.com/PC0staS/CafeShop.git
-  cd CafeShop
-  cd backend/code && cp .env.example .env # configura DB_URL, JWT_SECRET, etc.
-  docker-compose up --build
-  ```
-- Frontend en otra terminal:
-  ```bash
-  cd frontend
-  npm install --legacy-peer-deps
-  npm run dev
-  ```
-- Acceso:
-  - Frontend: http://localhost:3000
-  - Admin: http://localhost:3000/admin
-  - API: http://localhost:8000 — Docs: http://localhost:8000/docs
-
----
-
-## Lo que aprendí
-
-- Diseño de APIs robustas con FastAPI y tipado estático end‑to‑end.
-- Integración JWT segura y manejo de refresco de tokens.
-- Orquestación con Docker Compose para desarrollo y despliegue.
-- UI responsive con Tailwind y view transitions en Next.js.
-
----
+## Código
+[Ver el repo en GitHub →](https://github.com/PC0staS/CafeShop)
 
