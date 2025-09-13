@@ -1,0 +1,116 @@
+/* MDX page typography styles — larger and more readable */
+
+.prose {
+  color: #e5e7eb; /* text-gray-200 */
+  font-size: clamp(1.08rem, 0.96rem + 0.6vw, 1.28rem);
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  max-width: 72ch;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: #ffffff;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 100px; /* anchor comfort if navbar present */
+}
+
+.prose h1 { font-size: clamp(2.4rem, 1.6rem + 2.4vw, 3.2rem); }
+.prose h2 { font-size: clamp(2rem, 1.3rem + 1.8vw, 2.6rem); }
+.prose h3 { font-size: clamp(1.5rem, 1.2rem + 0.9vw, 1.9rem); }
+.prose h4 { font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem); }
+.prose h5 { font-size: 1.125rem; }
+.prose h6 { font-size: 1rem; opacity: 0.9; }
+
+.prose p { margin: 1.2rem 0; }
+
+.prose a {
+  color: #60a5fa; /* blue-400 */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+.prose a:hover { color: #93c5fd; }
+
+.prose strong { color: #ffffff; }
+.prose em { color: #d1d5db; }
+
+.prose ul,
+.prose ol {
+  margin: 1.1rem 0;
+  padding-left: 1.5rem;
+}
+.prose li {
+  margin: 0.35rem 0;
+  line-height: 1.9;
+}
+
+.prose blockquote {
+  border-left: 4px solid #94a3b8; /* slate-400 */
+  background: rgba(148, 163, 184, 0.08);
+  padding: 0.9rem 1rem;
+  color: #cbd5e1; /* slate-300 */
+  margin: 1.2rem 0;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  margin: 2.2rem 0;
+}
+
+.prose pre {
+  background: #0f172a; /* slate-900 */
+  color: #e5e7eb;
+  padding: 1.1rem 1.2rem;
+  border-radius: 0.6rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  font-size: 0.98em;
+}
+
+.prose code {
+  background: rgba(148, 163, 184, 0.15);
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.4rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+.prose img {
+  border-radius: 0.9rem;
+  display: block;
+  margin: 1.25rem auto;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.98em;
+}
+.prose th,
+.prose td {
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 0.6rem 0.9rem;
+}
+.prose th {
+  background: rgba(148, 163, 184, 0.12);
+  color: #e5e7eb;
+}
+.prose tbody tr:nth-child(odd) {
+  background: rgba(148, 163, 184, 0.06);
+}
+
+@media (min-width: 1024px) {
+  .prose { font-size: 1.22rem; }
+}

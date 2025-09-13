@@ -1,6 +1,9 @@
+'use client'
+
 import Image from 'next/image';
 
 export default function MainScreen() {
+  const cv = "/cv.pdf"
   return (
     <div className="flex flex-col items-center mt-10">
       <Image src="/img/me.jpeg" alt="Description" width={200} height={200} className='rounded-full border-3 border-white' />
@@ -9,8 +12,8 @@ export default function MainScreen() {
         Estoy estudiando Administración de Sistemas Informáticos en Red. <br /> Además, me encanta el desarrollo de aplicaciones web y multiplataforma. <br /> El próximo paso es estudiar DAW y DAM para completar mi perfil full-stack. <br /> Mientras tanto, te enseño mis proyectos con los que aprendo:
       </h2>
       <div className='mt-8 flex flex-row justify-between w-100'>
-        <button className="bg-white text-black py-2 px-4 rounded-full border-2 border-white">Contacta conmigo</button>
-        <button className="bg-black text-white border-2 border-white py-2 px-4 rounded-full">Descarga mi CV</button>
+        <button className="bg-white text-black py-2 px-4 rounded-full border-2 border-white cursor-pointer hover:scale-110 transition-all">Contacta conmigo</button>
+        <button onClick={() => window.open(cv)} className="bg-black text-white border-2 border-white py-2 px-4 rounded-full cursor-pointer hover:scale-110 transition-all">Descarga mi CV</button>
       </div>
     </div>
   );
