@@ -29,7 +29,7 @@ export default function ProyectoPage({ params }: { params: { id: string } }) {
         <Navbar />
         <div className="max-w-3xl mx-auto mt-12 p-4 text-black dark:text-white">
           <Link href={`/`+'#proyectos'}>
-            <h1 className="text-gray-400 hover:underline transition-all">Volver a los proyectos</h1>
+            <h1 className="text-gray-600 dark:text-gray-400 hover:underline transition-all">Volver a los proyectos</h1>
           </Link>
             <div className="flex flex-col items-center">
             <ProyectoHeroImage src={proyecto.heroImage} alt={proyecto.title}  />
