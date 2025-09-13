@@ -16,9 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="bg-[#0e0e0e] text-white">
+    <html lang="es" className=" ">
       <body
-        className={`antialiased min-h-screen w-full bg-[#0e0e0e] overflow-x-hidden`}
+        className={`antialiased min-h-screen w-full bg-light dark:bg-[#0e0e0e] overflow-x-hidden text-black dark:text-white `}
         style={{ boxSizing: "border-box", scrollBehavior: "smooth"  }}
       >
         <ViewTransition>
