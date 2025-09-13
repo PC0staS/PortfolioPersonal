@@ -7,87 +7,150 @@ heroImage: 'LaRanaDePepito_nguhul'
 githubRepo: 'https://github.com/PC0staS/Merchi-Web'
 demoLink: 'https://laranadepepito.vercel.app'
 ---
-# La Rana de Pepito 👗🧵
+# La Rana de Pepito 👗✂️
 
-Sitio web para el atelier de confección infantil "La Rana De Pepito", desarrollado con Astro y Bootstrap. El proyecto destaca por su estructura modular, galería de imágenes, sección de servicios y contacto, y especial atención a SEO y accesibilidad.
+**Sitio web profesional para atelier de confección infantil** desarrollado con Astro y Bootstrap, destacando por su estructura modular, galería optimizada y excelentes prácticas de SEO y accesibilidad.
 
-## ¿Qué hice?
+## 🚀 ¿Qué hice?
 
-- Estructura con **Astro** y componentes reutilizables.
-- Estilos con **Bootstrap** y tokens CSS personalizados.
-- Galería/carousel de fotos, sección de servicios y contacto.
-- Layout principal con meta tags y carga de Bootstrap.
-- Buenas prácticas de SEO: sitemap, robots.txt, Open Graph, JSON-LD, etiquetas alt y jerarquía de títulos.
-- Accesibilidad: uso de `alt` descriptivos, estructura semántica, y elementos visualmente ocultos pero accesibles.
+Desarrollé un **sitio web completo y profesional** para el atelier de confección infantil "La Rana De Pepito", enfocándome en crear una presencia web moderna que destaque la calidad artesanal del negocio.
 
----
-
-## Características clave
-
-- Hero/cabecera, barra de navegación con scroll y active.
-- Sección "Sobre mí" y descripción de servicios.
-- Galería de imágenes optimizadas y carga perezosa.
-- Formulario de contacto y llamada a la acción.
-- Preparación para dominio propio y recomendaciones para indexación en Google.
+**Logros principales:**
+- 🏗️ **Arquitectura modular** - Componentes reutilizables con Astro para fácil mantenimiento
+- 📸 **Galería optimizada** - Carousel de imágenes con carga perezosa y responsive design
+- 🔍 **SEO avanzado** - Implementación completa de meta tags, JSON-LD y optimización para buscadores
+- ♿ **Accesibilidad total** - Cumplimiento de estándares WCAG con navegación por teclado
+- 🎨 **Diseño responsive** - Experiencia perfecta en móviles, tablets y desktop
 
 ---
 
-## Arquitectura
+## 🛠️ Tecnologías utilizadas
 
-- **Frontend:** Astro, Bootstrap, CSS personalizado.
-- **Componentes:**
-  - `src/components/Inicio.astro` — hero/cabecera.
-  - `src/components/Header.astro` — navegación y lógica de scroll.
-  - `src/components/SobreMi.astro` — sección personal.
-  - `src/components/Servicios.astro` — servicios.
-  - `src/components/CarruselFotos.astro` — galería/carousel.
-  - `src/components/Contacto.astro` — contacto y CTA.
-  - `src/layouts/Layout.astro` — plantilla principal y meta tags.
-- **Assets:** imágenes, favicon, robots.txt, sitemap.xml en `public/`.
+### Frontend Framework:
+- 🚀 **Astro** - Framework moderno para sitios estáticos ultrarrápidos
+- 🔷 **TypeScript** - Tipado estático para mejor desarrollo
+- 🎨 **CSS3** - Estilos personalizados y tokens CSS
 
----
+### UI Framework:
+- 🥾 **Bootstrap 5** - Sistema de componentes y grid responsivo
+- 📱 **Bootstrap Icons** - Iconografía consistente y moderna
+- 🎭 **CSS Custom Properties** - Variables CSS para theming
 
-## Tecnologías
-
-- Astro
-- Bootstrap
-- CSS
-- JavaScript (mínimo, solo para animaciones y scroll)
+### SEO & Performance:
+- 🔍 **JSON-LD** - Datos estructurados para buscadores
+- 🌐 **Open Graph** - Metadatos para redes sociales
+- 📄 **Sitemap XML** - Indexación optimizada
+- 🤖 **robots.txt** - Control de crawling
 
 ---
 
-## Despliegue y ejecución
+## ✨ Características principales
 
-- Instalar dependencias:
-  ```bash
-  npm install
-  ```
-- Desarrollo:
-  ```bash
-  npm run dev
-  ```
-- Build y preview:
-  ```bash
-  npm run build
-  npm run preview
-  ```
-- Scripts recomendados en `package.json`:
-  ```json
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
-  }
-  ```
+- **🏠 Hero section atractiva**: Presentación impactante con imagen destacada y call-to-action claro
+- **🧭 Navegación inteligente**: Barra de navegación con scroll sticky y indicador de sección activa
+- **👤 Sección personal**: Presentación profesional de la artesana con storytelling
+- **🧵 Showcase de servicios**: Descripción detallada de servicios de confección y personalización
+- **📸 Galería profesional**: Carousel de trabajos realizados con carga optimizada
+- **📞 Contacto integrado**: Formulario de contacto y información de ubicación
+- **⚡ Performance optimizada**: Carga ultrarrápida con generación estática
 
 ---
 
-## Lo que aprendí
+## 🏗️ Arquitectura
 
-- Modularidad y organización en Astro.
-- Integración de Bootstrap con Astro.
-- Buenas prácticas SEO y accesibilidad en sitios estáticos.
-- Optimización de imágenes y carga perezosa.
+### Estructura de componentes:
+```
+src/
+├── components/
+│   ├── Inicio.astro         # Hero section y presentación
+│   ├── Header.astro         # Navegación con scroll detection
+│   ├── SobreMi.astro        # Sección personal/biografía
+│   ├── Servicios.astro      # Servicios ofrecidos
+│   ├── CarruselFotos.astro  # Galería de trabajos
+│   └── Contacto.astro       # Información de contacto
+├── layouts/
+│   └── Layout.astro         # Template base con meta tags
+└── pages/
+    └── index.astro          # Página principal
+```
+
+### SEO Implementation:
+- **Meta tags completos**: Title, description, canonical, viewport
+- **Open Graph tags**: Para compartir en redes sociales
+- **JSON-LD Schema**: Datos estructurados para LocalBusiness
+- **Sitemap automático**: Generación con @astrojs/sitemap
+- **Performance**: Optimización de imágenes y lazy loading
+
+### Responsive Design:
+- **Mobile-first**: Diseño que prioriza dispositivos móviles
+- **Breakpoints Bootstrap**: Sistema de grid adaptativo
+- **Imágenes responsive**: Múltiples resoluciones con `srcset`
 
 ---
+
+## 📋 Instalación y uso
+
+### Requisitos:
+- Node.js 18+ y npm
+- Git para control de versiones
+
+### Desarrollo:
+```bash
+# Clonar repositorio
+git clone https://github.com/PC0staS/Merchi-Web.git
+cd Merchi-Web
+
+# Instalar dependencias
+npm install
+
+# Servidor de desarrollo
+npm run dev
+
+# Disponible en http://localhost:4321
+```
+
+### Build y despliegue:
+```bash
+# Generar build de producción
+npm run build
+
+# Previsualizar build
+npm run preview
+
+# Los archivos están en dist/ listos para despliegue
+```
+
+### Configuración SEO:
+```astro
+---
+// En Layout.astro - personalizar meta tags
+const { title, description } = Astro.props;
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+```
+
+---
+
+## 🎓 Lo que aprendí
+
+Este proyecto me permitió dominar:
+- **🚀 Astro Framework**: Generación de sitios estáticos con componentes modulares
+- **🔍 SEO técnico**: Implementación completa de meta tags, JSON-LD y optimización
+- **♿ Accesibilidad web**: Semántica HTML, navegación por teclado y lectores de pantalla
+- **📱 Diseño responsive**: Mobile-first approach con Bootstrap grid system
+- **⚡ Performance web**: Lazy loading, optimización de imágenes y Core Web Vitals
+- **🎨 CSS moderno**: Custom properties, flexbox y grid layout
+- **📈 Analytics setup**: Preparación para Google Analytics y Search Console
+
+---
+
+## 🔗 Enlaces
+
+- 📂 **[Código fuente](https://github.com/PC0staS/Merchi-Web)** - Ver el repositorio en GitHub
+- 🌐 **[Demo en vivo](https://laranadepepito.vercel.app)** - Visitar el sitio web
+
+---
+
+*Este proyecto demuestra mis habilidades en desarrollo web frontend y mi capacidad para crear sitios profesionales con excelente SEO y experiencia de usuario.*
 

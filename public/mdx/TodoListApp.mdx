@@ -6,26 +6,164 @@ pubDate: 'Aug 17 2025'
 heroImage: 'todolist_mjldsx'
 githubRepo: 'https://github.com/Pc0staS/TodoListApp'
 ---
-# To-Do-List-App ✨
+# To-Do-List-App ✅📋
 
-App Flutter para gestionar tareas con notificaciones persistentes y SQLite local. Minimalista, rápida y multiplataforma.
+**Aplicación móvil moderna para gestión de tareas** desarrollada con Flutter, que incluye organización automática por fechas, notificaciones persistentes y almacenamiento local con SQLite.
 
-## En una frase
-Organiza tareas por Hoy/Mañana/Futuro con notificaciones y persistencia local.
+## 🚀 ¿Qué hice?
 
-## Stack
-- Flutter + Dart, Material Design
-- SQLite (sqflite)
-- flutter_local_notifications
+Desarrollé una **aplicación completa de gestión de tareas** enfocada en simplicidad y eficiencia, con organización inteligente que categoriza automáticamente las tareas por fechas y un sistema robusto de notificaciones.
 
-## Highlights
-- Organización automática por fechas (Hoy, Mañana, Más tarde)
-- CRUD completo y estado Pendiente/Completada
-- Notificaciones persistentes (Android) con canal propio
-- Animaciones fluidas y UI limpia
+**Logros principales:**
+- 📅 **Organización automática** - Categorización inteligente en Hoy, Mañana y Más tarde
+- 🔔 **Notificaciones persistentes** - Sistema de recordatorios con canal personalizado en Android
+- 💾 **Persistencia local** - Base de datos SQLite para almacenamiento offline completo
+- 🎨 **UI/UX moderna** - Interfaz limpia con Material Design y animaciones fluidas
+- ⚡ **Performance optimizada** - CRUD eficiente con actualizaciones en tiempo real
 
-## Estructura
-- models, screens, services (DB/notifications), widgets reutilizables
+---
 
-## Código
-[Ver el repo en GitHub →](https://github.com/Pc0staS/TodoListApp)
+## 🛠️ Tecnologías utilizadas
+
+### Framework Principal:
+- 💙 **Flutter** - Framework multiplataforma de Google
+- 🎯 **Dart** - Lenguaje de programación optimizado para UI
+- 🎨 **Material Design** - Sistema de diseño de Google para consistencia visual
+
+### Gestión de Datos:
+- 🗄️ **SQLite** - Base de datos local embebida
+- 📦 **sqflite** - Plugin Flutter para integración SQLite
+- 💾 **Persistencia local** - Almacenamiento offline completo
+
+### Notificaciones:
+- 🔔 **flutter_local_notifications** - Notificaciones locales multiplataforma
+- 📱 **Android Channels** - Canales de notificación personalizados
+- ⏰ **Scheduled Notifications** - Recordatorios programados
+
+### UI/UX:
+- 🎬 **Flutter Animations** - Animaciones nativas y fluidas
+- 🎨 **Custom Themes** - Temas personalizados con Material You
+- 📱 **Responsive Design** - Adaptación a diferentes tamaños de pantalla
+
+---
+
+## ✨ Características principales
+
+- **📅 Organización inteligente**: Clasificación automática de tareas en "Hoy", "Mañana" y "Más tarde" según fechas
+- **✅ CRUD completo**: Crear, leer, actualizar y eliminar tareas con validación de datos
+- **🔔 Notificaciones avanzadas**: Recordatorios persistentes con canal personalizado y iconos
+- **💾 Almacenamiento offline**: Funcionalidad completa sin conexión a internet
+- **🎨 Interfaz moderna**: Diseño Material con animaciones suaves y feedback visual
+- **⚡ Performance nativa**: Rendimiento optimizado con compilación ahead-of-time
+- **🔄 Estados dinámicos**: Transición fluida entre estados Pendiente/Completada
+
+---
+
+## 🏗️ Arquitectura
+
+### Estructura del proyecto:
+```
+lib/
+├── models/
+│   └── task_model.dart      # Modelo de datos para tareas
+├── services/
+│   ├── database_service.dart # Servicio SQLite
+│   └── notification_service.dart # Gestión de notificaciones
+├── screens/
+│   ├── home_screen.dart     # Pantalla principal con listas
+│   ├── add_task_screen.dart # Formulario de nueva tarea
+│   └── task_detail_screen.dart # Detalle y edición
+└── widgets/
+    ├── task_card.dart       # Componente de tarea individual
+    ├── task_list.dart       # Lista de tareas por categoría
+    └── custom_button.dart   # Botones reutilizables
+```
+
+### Base de datos SQLite:
+```sql
+CREATE TABLE tasks (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  description TEXT,
+  due_date TEXT,
+  is_completed INTEGER DEFAULT 0,
+  created_at TEXT,
+  updated_at TEXT
+);
+```
+
+### Sistema de notificaciones:
+- **Canal personalizado** para la app con prioridad alta
+- **Notificaciones programadas** basadas en fecha y hora de vencimiento
+- **Persistencia** - Las notificaciones sobreviven al reinicio del dispositivo
+
+---
+
+## 📋 Instalación y uso
+
+### Requisitos:
+- Flutter SDK 3.0+
+- Dart 3.0+
+- Android Studio / VS Code
+- Emulador Android o dispositivo físico
+
+### Desarrollo:
+```bash
+# Clonar repositorio
+git clone https://github.com/PC0staS/TodoListApp.git
+cd TodoListApp
+
+# Instalar dependencias
+flutter pub get
+
+# Ejecutar en modo debug
+flutter run
+
+# Para Android
+flutter run -d android
+
+# Para iOS (requiere macOS)
+flutter run -d ios
+```
+
+### Build de producción:
+```bash
+# Android APK
+flutter build apk --release
+
+# Android App Bundle (recomendado para Play Store)
+flutter build appbundle --release
+
+# iOS (requiere macOS y Xcode)
+flutter build ios --release
+```
+
+### Configuración de notificaciones:
+```dart
+// Inicialización en main.dart
+await NotificationService.initialize();
+await NotificationService.requestPermissions();
+```
+
+---
+
+## 🎓 Lo que aprendí
+
+Este proyecto me permitió dominar:
+- **💙 Flutter framework**: Widgets, estado, navegación y arquitectura de apps móviles
+- **🗄️ SQLite local**: Modelado de datos, migraciones y consultas eficientes
+- **🔔 Notificaciones móviles**: Configuración de canales, permisos y scheduling
+- **🎨 Material Design**: Implementación de componentes y patrones de diseño móvil
+- **⚡ Performance móvil**: Optimización de renders, memoria y tiempo de carga
+- **📱 Desarrollo multiplataforma**: Compilación y testing en Android/iOS
+- **🔄 Gestión de estado**: Manejo eficiente de estado con setState y callbacks
+
+---
+
+## 🔗 Enlaces
+
+- 📂 **[Código fuente](https://github.com/PC0staS/TodoListApp)** - Ver el repositorio en GitHub
+
+---
+
+*Este proyecto demuestra mis habilidades en desarrollo móvil con Flutter y mi capacidad para crear aplicaciones nativas completas con persistencia local y notificaciones.*
