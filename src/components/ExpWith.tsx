@@ -13,9 +13,9 @@ export default function ExperienceWith() {
     ];
 
   return (
-    <div className="mt-20 text-center">
-      <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-400">Tengo experiencia con:</h2>
-      <ul className="grid grid-cols-4 gap-8 mt-6">
+    <div className="mt-20 text-center px-4">
+      <h2 className="text-lg sm:text-xl font-semibold text-gray-600 dark:text-gray-400">Tengo experiencia con:</h2>
+      <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-6 max-w-2xl mx-auto">
         {technologiesSVG.map((tech) => (
           <li key={tech.name} className="flex flex-col items-center">
             <Image src={tech.icon} alt={tech.name} width={60} height={60} className="hover:scale-110 transition-all" />
