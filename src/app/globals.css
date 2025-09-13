@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/* Ensure dark background in production too */
+html, body {
+	min-height: 100%;
+	background-color: #0e0e0e;
+}

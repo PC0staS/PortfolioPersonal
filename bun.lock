@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "portfolio-nuevo",
+      "name": "Portfolio",
       "dependencies": {
         "cloudinary": "^2.7.0",
         "gray-matter": "^4.0.3",

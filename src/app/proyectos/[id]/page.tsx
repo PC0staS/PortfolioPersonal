@@ -8,6 +8,15 @@ import "./mdx.css";
 import Navbar from "@/components/Navbar";
 
 
+export const dynamic = "force-static";
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const proyectos = getProyectos();
+  const proyecto = proyectos.find((p) => p.route === params.id);
+  if (!proyecto) return { title: "Proyecto no encontrado" };
+  return { title: proyecto.title };
+}
+
 export default function ProyectoPage({ params }: { params: { id: string } }) {
   const proyectos = getProyectos();
   const proyecto = proyectos.find((p) => p.route === params.id);
