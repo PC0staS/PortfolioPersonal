@@ -33,9 +33,9 @@ export default function ProyectoCards({
         <Link
             href={`/proyectos/${route}`}
             aria-label={`Abrir ${decodedTitle}`}
-            className="group flex flex-col mt-3 w-fit items-center justify-center rounded-xl cursor-pointer border border-black dark:border-zinc-700 bg-[#2e2e2e] transition-all shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-black dark:hover:border-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/60"
+            className="group flex flex-col mt-3 w-full max-w-md mx-auto items-center justify-center rounded-xl cursor-pointer border border-black dark:border-zinc-700 bg-[#2e2e2e] transition-all shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-black dark:hover:border-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/60"
         >
-            <div className="relative w-[450px] h-[250px] overflow-hidden rounded-t-xl">
+            <div className="relative w-full h-[200px] sm:h-[250px] overflow-hidden rounded-t-xl">
                 <CldImage
                     src={photo}
                     alt={decodedTitle}
