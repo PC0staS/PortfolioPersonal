@@ -16,89 +16,51 @@
 .prose h5,
 .prose h6 {
   color: #ffffff;
-  line-height: 1.3;
-  margin-top: 2.5rem;
-  margin-bottom: 1.2rem;
-  scroll-margin-top: 100px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 100px; /* anchor comfort if navbar present */
 }
 
-.prose h1 { 
-  font-size: clamp(2.5rem, 1.8rem + 2.4vw, 3.5rem);
-  margin-bottom: 1.5rem;
-  border-bottom: 3px solid rgba(96, 165, 250, 0.3);
-  padding-bottom: 0.5rem;
+.prose h1 {
+  font-size: clamp(2.4rem, 1.6rem + 2.4vw, 3.2rem);
 }
-.prose h2 { 
-  font-size: clamp(2.1rem, 1.5rem + 1.8vw, 2.8rem);
-  margin-top: 3rem;
-  position: relative;
+.prose h2 {
+  font-size: clamp(2rem, 1.3rem + 1.8vw, 2.6rem);
 }
-.prose h2::before {
-  content: '';
-  position: absolute;
-  left: -1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 1.5rem;
-  background: linear-gradient(135deg, #60a5fa, #3b82f6);
-  border-radius: 2px;
+.prose h3 {
+  font-size: clamp(1.5rem, 1.2rem + 0.9vw, 1.9rem);
 }
-.prose h3 { 
-  font-size: clamp(1.6rem, 1.3rem + 0.9vw, 2.1rem);
-  color: #60a5fa;
+.prose h4 {
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
 }
-.prose h4 { 
-  font-size: clamp(1.3rem, 1.15rem + 0.5vw, 1.6rem);
-  color: #93c5fd;
+.prose h5 {
+  font-size: 1.125rem;
 }
-.prose h5 { font-size: 1.15rem; }
-.prose h6 { font-size: 1rem; opacity: 0.9; }
+.prose h6 {
+  font-size: 1rem;
+  opacity: 0.9;
+}
 
-.prose p { 
-  margin: 1.3rem 0;
-  text-align: justify;
-  text-justify: inter-word;
+.prose p {
+  margin: 1.2rem 0;
 }
 
 .prose a {
-  color: #60a5fa;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s ease;
-  position: relative;
-  font-weight: 500;
-}
-.prose a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #60a5fa, #3b82f6);
-  transition: width 0.3s ease;
+  color: #60a5fa; /* blue-400 */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
 }
 .prose a:hover {
   color: #93c5fd;
-  transform: translateY(-1px);
-}
-.prose a:hover::after {
-  width: 100%;
 }
 
-.prose strong { 
+.prose strong {
   color: #ffffff;
-  font-weight: 600;
 }
-.prose em { 
+.prose em {
   color: #d1d5db;
-  font-style: italic;
 }
 
 .prose ul,
@@ -255,8 +217,7 @@
 }
 
 @media (min-width: 1024px) {
-  .prose { 
-    font-size: 1.25rem;
-    line-height: 1.85;
+  .prose {
+    font-size: 1.22rem;
   }
 }
