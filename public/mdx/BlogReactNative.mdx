@@ -1,0 +1,129 @@
+---
+title: 'BlogReactNative - App de Blog Full‑Stack'
+description: 'Aplicación de blog multiplataforma con React Native/Expo y backend Flask: autenticación JWT, CRUD de posts, subida de imágenes y búsqueda.'
+pubDate: 'Aug 30 2025'
+heroImage: 'BlogReactNative_nztq0t'
+githubRepo: 'https://github.com/PC0staS/BlogReactNative'
+---
+
+# BlogReactNative 📱📝
+
+Proyecto full‑stack que construí para demostrar un flujo completo de blog: autenticación, creación/lectura/edición/eliminación de artículos, subida de imágenes y experiencia móvil/web fluida con Expo.
+
+## ¿Qué hice?
+
+- Frontend con **React Native + Expo** (TypeScript), navegación con **Expo Router** y UI cuidada.
+- Integración con cámara/galería mediante **Expo Image Picker** y previsualización.
+- Animaciones fluidas con **React Native Reanimated**.
+- Backend **Python Flask** con **JWT** para autenticación, **SQLite** como base de datos y **Docker** para despliegue sencillo.
+- Búsqueda en tiempo real, estados de carga, feedback y manejo de errores.
+
+---
+
+## Características clave
+
+- Autenticación completa (registro, login, verificación de token).
+- CRUD de artículos con imagen en base64 y metadatos (autor, fecha).
+- Lista de posts con búsqueda y ordenación por fecha, detalle del post y creación desde la app.
+- Arquitectura limpia: rutas file‑based en el frontend, API REST bien delimitada en el backend.
+- Compatible con iOS, Android y Web.
+
+---
+
+## Arquitectura
+
+- Frontend (Expo):
+  - Expo Router, Reanimated, Image Picker, AsyncStorage, estilos nativos.
+  - Patrones: componentes reutilizables, hooks, pantallas de login/blog/lista/detalle/creación.
+- Backend (Flask):
+  - Endpoints REST, JWT, CORS, validación de entrada.
+  - Persistencia en SQLite y contenedorización con Docker.
+
+### Endpoints principales
+- Auth: `POST /api/auth/signup`, `POST /api/auth/login`, `GET /api/auth/check`
+- Posts: `GET /api/posts`, `GET /api/posts/{id}`, `POST /api/posts`, `PUT /api/posts/{id}`, `DELETE /api/posts/{id}`
+
+### Ejemplo de creación de post (frontend)
+```ts
+await fetch(`${BACKEND_URL}/api/posts`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+  body: JSON.stringify({
+    title: 'Mi nuevo artículo',
+    content: 'Contenido...',
+    thumbnail_base64: 'data:image/jpeg;base64,...',
+    author: 'Autor',
+  }),
+});
+```
+
+---
+
+## Tecnologías
+
+- Frontend: React Native/Expo 53, TypeScript, Expo Router, Reanimated, Image Picker.
+- Backend: Flask, Flask‑JWT‑Extended, Flask‑CORS, SQLite, Docker.
+- Utilidades: AsyncStorage, validación, manejo de errores, estados de carga.
+
+---
+
+## Despliegue y ejecución
+
+- Backend: Docker Compose listo o ejecución directa con entorno virtual.
+- Frontend: `npx expo start` para desarrollo; builds para iOS/Android/Web.
+- Config: `BACKEND_URL` en el frontend y `.env` en el backend.
+
+---
+
+## Lo que aprendí
+
+- Navegación file‑based en apps móviles con Expo Router.
+- Integración cámara/galería y manejo de archivos base64.
+- Flujo de autenticación JWT de extremo a extremo.
+- Buenas prácticas de UX en formularios y manejo de errores en móvil.
+
+---
+
+<div style="display: flex; justify-content: center; margin-top: 2rem;">
+  <a 
+    href="https://github.com/PC0staS/BlogReactNative" 
+    target="_blank"
+    style="
+      display: flex;
+      background-color: #24292e;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 20px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      width: 200px;
+      height: 40px;
+      line-height: 0px;
+      margin-bottom: 20px;
+      justify-content: center;
+      align-items: center;
+
+    "
+    onmouseover="this.style.backgroundColor='#444';"
+    onmouseout="this.style.backgroundColor='#24292e';"
+  >
+    <svg 
+      viewBox="0 0 16 16" 
+      aria-hidden="true" 
+      width="40" 
+      height="40" 
+      fill="currentColor" 
+      style="vertical-align: middle; margin-right: 10px;"
+    >
+      <path
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+      ></path>
+    </svg>
+    Ver en GitHub
+  </a>
+</div>
+

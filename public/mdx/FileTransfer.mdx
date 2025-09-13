@@ -1,0 +1,265 @@
+---
+title: 'FileTransfer - Servidor de Archivos'
+description: 'Plataforma web moderna para compartir archivos en red local con interfaz elegante'
+pubDate: 'Jan 10 2025'
+heroImage: 'Filetransfer_ylsbji'
+---
+# FileTransfer - Servidor de Archivos 📁🌐
+
+**FileTransfer** es una plataforma web moderna que desarrollé para compartir archivos de forma fácil y segura en redes locales. Con una interfaz elegante y funcionalidades avanzadas como subidas por chunks y enlaces de descarga directos.
+
+## ¿Qué hice?
+
+Desarrollé una aplicación web completa utilizando **Flask**, **SQLite** y **JavaScript vanilla**, con Docker para despliegue fácil. El sistema incluye autenticación de usuarios, subidas con progreso en tiempo real, y una interfaz moderna con efectos visuales.
+
+### Características principales:
+- **Interfaz moderna**: Diseño glassmorphism con gradientes y efectos visuales
+- **Subidas avanzadas**: Drag & drop, múltiples archivos, progreso en tiempo real
+- **Sistema de chunks**: Subidas resumibles para archivos grandes
+- **Enlaces directos**: Descargas públicas sin necesidad de autenticación
+- **Gestión de usuarios**: Sistema de aprobación manual de nuevos usuarios
+- **Dockerizado**: Despliegue fácil con Docker Compose
+
+---
+
+## Tecnologías utilizadas
+
+### Backend:
+- **Flask**: Framework web principal
+- **SQLite**: Base de datos embebida para metadatos y usuarios
+- **Werkzeug**: Hashing seguro de contraseñas y utilidades
+- **Python 3.8+**: Lógica del servidor y manejo de archivos
+
+### Frontend:
+- **HTML5 & CSS3**: Estructura y estilos modernos con glassmorphism
+- **JavaScript (Vanilla)**: Lógica de cliente, drag & drop, progreso
+- **Bootstrap 5**: Componentes UI y sistema de grid responsivo
+- **Bootstrap Icons**: Iconografía consistente
+
+### DevOps:
+- **Docker & Docker Compose**: Containerización y orquestación
+- **Nginx (opcional)**: Reverse proxy para producción
+- **Cloudflare Tunnel**: Exposición segura sin abrir puertos
+
+---
+
+## Funcionalidades destacadas
+
+### 🔐 Sistema de Autenticación
+- Registro de usuarios con aprobación manual
+- Estados de usuario: pendiente, activo, rechazado
+- Hashing seguro de contraseñas con Werkzeug
+- Sesiones seguras con cookies HttpOnly
+
+### 📤 Subida Avanzada de Archivos
+- **Drag & Drop**: Interfaz intuitiva para arrastrar archivos
+- **Múltiples archivos**: Subida simultánea con progreso individual
+- **Subida por chunks**: Para archivos grandes (>200MB) con reanudación
+- **Progreso en tiempo real**: Barras de progreso con velocidad y ETA
+- **Validación**: Verificación de integridad y manejo de errores
+
+### 📁 Gestión de Archivos
+- Organización por usuario en carpetas separadas
+- Metadatos completos: fecha de subida, expiración, tamaño
+- Expiración automática: archivos eliminados después de 5 días
+- Iconos por tipo de archivo para mejor UX
+
+### 🌐 Enlaces de Descarga
+- **Descargas públicas**: Sin necesidad de iniciar sesión
+- **Copiar enlace**: Botón con fallback para diferentes navegadores
+- **Descargas por rango**: Soporte para resumir descargas
+- **Nombres originales**: Preserva nombres de archivo originales
+
+---
+
+## Interfaz de usuario
+
+### Dashboard Principal
+```html
+<!-- Ejemplo de card de archivo -->
+<div class="file-card">
+    <div class="file-icon">
+        <i class="bi bi-file-pdf text-danger"></i>
+    </div>
+    <div class="file-info">
+        <h6>documento.pdf</h6>
+        <small>2.3 MB • Expira en 3 días</small>
+    </div>
+    <div class="file-actions">
+        <button class="btn btn-primary">Descargar</button>
+        <button class="btn btn-outline-secondary">Copiar enlace</button>
+    </div>
+</div>
+```
+
+### Zona de Subida
+- Área de drag & drop visual con animaciones
+- Previsualización de archivos seleccionados
+- Progreso individual por archivo
+- Controles para subir todos o limpiar lista
+
+---
+
+## Sistema de Chunks
+
+Para archivos grandes, implementé un sistema de subida por chunks:
+
+```javascript
+// Inicializar subida resumible
+const initResp = await fetch('/api/chunk/init', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+        filename: file.name, 
+        total_size: file.size 
+    })
+});
+
+// Subir chunk por chunk
+while (sentBytes < file.size) {
+    const chunk = file.slice(sentBytes, sentBytes + chunkSize);
+    const formData = new FormData();
+    formData.append('upload_id', uploadId);
+    formData.append('chunk_index', chunkIndex);
+    formData.append('chunk', chunk);
+    
+    // Enviar chunk con progreso
+    await sendChunk(formData);
+}
+```
+
+---
+
+## Despliegue con Docker
+
+### docker-compose.yml
+```yaml
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "${HOST_IP}:3456:5000"
+    volumes:
+      - ${DB_VOLUME}:/app/db
+      - ${UPLOADS_VOLUME}:/app/uploads
+    environment:
+      - FLASK_ENV=production
+```
+
+### Variables de entorno (.env)
+```env
+HOST_IP=192.168.1.100
+DB_VOLUME=/ruta/absoluta/db
+UPLOADS_VOLUME=/ruta/absoluta/uploads
+SECRET_KEY=tu_clave_secreta
+```
+
+---
+
+## Características de seguridad
+
+### Protección CSRF
+- Tokens CSRF en todos los formularios
+- Verificación en endpoints que modifican estado
+- Headers de seguridad configurados
+
+### Cookies Seguras
+```python
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE='Lax'
+)
+```
+
+### Validación de Archivos
+- Nombres de archivo seguros
+- Prevención de path traversal
+- Límites de tamaño configurables
+
+---
+
+## Integración con Cloudflare Tunnel
+
+Para exposición segura sin abrir puertos:
+
+```yaml
+# config.yml
+tunnel: tu-tunnel-uuid
+ingress:
+  - hostname: files.tu-dominio.com
+    service: http://localhost:3456
+  - service: http_status:404
+```
+
+---
+
+## API REST
+
+Endpoints principales:
+- `POST /api/upload_progress` - Subida de archivos con progreso
+- `POST /api/chunk/init` - Inicializar subida por chunks  
+- `POST /api/chunk/upload` - Subir chunk individual
+- `POST /api/chunk/finalize` - Finalizar subida por chunks
+- `POST /api/delete_file` - Eliminar archivo
+- `GET /download/<filename>` - Descarga pública
+
+---
+
+## Lo que aprendí
+
+Este proyecto me permitió:
+- **Desarrollo full-stack**: Backend robusto y frontend moderno
+- **Manejo de archivos**: Subidas por chunks, validación, metadatos
+- **UX/UI avanzado**: Drag & drop, progreso en tiempo real, efectos visuales
+- **Containerización**: Docker, volúmenes, variables de entorno
+- **Seguridad web**: CSRF, cookies seguras, validación de entrada
+- **APIs REST**: Diseño de endpoints RESTful
+- **Networking**: Reverse proxies, túneles, exposición segura
+
+FileTransfer demuestra mi capacidad para crear aplicaciones web completas, seguras y con excelente experiencia de usuario.
+
+---
+
+<div style="display: flex; justify-content: center; margin-top: 2rem;">
+  <a 
+    href="https://github.com/PC0staS/filetransfer" 
+    target="_blank"
+    style="
+      display: flex;
+      background-color: #24292e;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 20px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      width: 200px;
+      height: 40px;
+      line-height: 0px;
+      margin-bottom: 20px;
+      justify-content: center;
+      align-items: center;
+
+    "
+    onmouseover="this.style.backgroundColor='#444';"
+    onmouseout="this.style.backgroundColor='#24292e';"
+  >
+    <svg 
+      viewBox="0 0 16 16" 
+      aria-hidden="true" 
+      width="40" 
+      height="40" 
+      fill="currentColor" 
+      style="vertical-align: middle; margin-right: 10px;"
+    >
+      <path
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+      ></path>
+    </svg>
+    Ver en GitHub
+  </a>
+</div>
+
+¡Espero que este proyecto te inspire tanto como a mí me inspiró desarrollarlo! 🚀

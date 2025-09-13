@@ -1,0 +1,131 @@
+---
+title: 'La Rana De Pepito — Sitio web para atelier infantil'
+description: 'Web del atelier de confección infantil, construida con Astro y Bootstrap. Incluye galería, servicios, contacto y buenas prácticas SEO/accesibilidad.'
+pubDate: 'Sep 5 2025'
+heroImage: 'LaRanaDePepito_nguhul'
+githubRepo: 'https://github.com/PC0staS/Merchi-Web'
+---
+
+# La Rana de Pepito 👗🧵
+
+Sitio web para el atelier de confección infantil "La Rana De Pepito", desarrollado con Astro y Bootstrap. El proyecto destaca por su estructura modular, galería de imágenes, sección de servicios y contacto, y especial atención a SEO y accesibilidad.
+
+## ¿Qué hice?
+
+- Estructura con **Astro** y componentes reutilizables.
+- Estilos con **Bootstrap** y tokens CSS personalizados.
+- Galería/carousel de fotos, sección de servicios y contacto.
+- Layout principal con meta tags y carga de Bootstrap.
+- Buenas prácticas de SEO: sitemap, robots.txt, Open Graph, JSON-LD, etiquetas alt y jerarquía de títulos.
+- Accesibilidad: uso de `alt` descriptivos, estructura semántica, y elementos visualmente ocultos pero accesibles.
+
+---
+
+## Características clave
+
+- Hero/cabecera, barra de navegación con scroll y active.
+- Sección "Sobre mí" y descripción de servicios.
+- Galería de imágenes optimizadas y carga perezosa.
+- Formulario de contacto y llamada a la acción.
+- Preparación para dominio propio y recomendaciones para indexación en Google.
+
+---
+
+## Arquitectura
+
+- **Frontend:** Astro, Bootstrap, CSS personalizado.
+- **Componentes:**
+  - `src/components/Inicio.astro` — hero/cabecera.
+  - `src/components/Header.astro` — navegación y lógica de scroll.
+  - `src/components/SobreMi.astro` — sección personal.
+  - `src/components/Servicios.astro` — servicios.
+  - `src/components/CarruselFotos.astro` — galería/carousel.
+  - `src/components/Contacto.astro` — contacto y CTA.
+  - `src/layouts/Layout.astro` — plantilla principal y meta tags.
+- **Assets:** imágenes, favicon, robots.txt, sitemap.xml en `public/`.
+
+---
+
+## Tecnologías
+
+- Astro
+- Bootstrap
+- CSS
+- JavaScript (mínimo, solo para animaciones y scroll)
+
+---
+
+## Despliegue y ejecución
+
+- Instalar dependencias:
+  ```bash
+  npm install
+  ```
+- Desarrollo:
+  ```bash
+  npm run dev
+  ```
+- Build y preview:
+  ```bash
+  npm run build
+  npm run preview
+  ```
+- Scripts recomendados en `package.json`:
+  ```json
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  }
+  ```
+
+---
+
+## Lo que aprendí
+
+- Modularidad y organización en Astro.
+- Integración de Bootstrap con Astro.
+- Buenas prácticas SEO y accesibilidad en sitios estáticos.
+- Optimización de imágenes y carga perezosa.
+
+---
+
+<div style="display: flex; justify-content: center; margin-top: 2rem;">
+  <a 
+    href="https://github.com/PC0staS/Merchi-Web" 
+    target="_blank"
+    style="
+      display: flex;
+      background-color: #24292e;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 20px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      width: 200px;
+      height: 40px;
+      line-height: 0px;
+      margin-bottom: 20px;
+      justify-content: center;
+      align-items: center;
+    "
+    onmouseover="this.style.backgroundColor='#444';"
+    onmouseout="this.style.backgroundColor='#24292e';"
+  >
+    <svg 
+      viewBox="0 0 16 16" 
+      aria-hidden="true" 
+      width="40" 
+      height="40" 
+      fill="currentColor" 
+      style="vertical-align: middle; margin-right: 10px;"
+    >
+      <path
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+      ></path>
+    </svg>
+    Ver en GitHub
+  </a>
+</div>
+

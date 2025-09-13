@@ -1,0 +1,175 @@
+---
+title: 'NetWatch - Monitor de Red'
+description: 'Herramienta profesional de monitoreo de red con interfaz web moderna'
+pubDate: 'Dec 15 2024'
+heroImage: 'Netwatch_xsb6da'
+---
+# NetWatch - Monitor de Red 🌐📊
+
+**NetWatch** es una elegante herramienta de monitoreo de red que desarrollé para supervisar el tráfico de interfaces de red en tiempo real, con tanto interfaz de consola como interfaz web moderna.
+
+## ¿Qué hice?
+
+Desarrollé una aplicación completa de monitoreo de red utilizando **Python**, **Flask**, **Socket.IO** y **Chart.js**. El proyecto incluye dos modos de funcionamiento: una interfaz de consola colorida con gráficos ASCII y una interfaz web profesional con gráficos interactivos.
+
+### Características principales:
+- **Doble interfaz**: Consola con gráficos ASCII y web con visualización moderna
+- **Monitoreo en tiempo real**: Actualización automática de estadísticas cada segundo
+- **Diseño profesional**: Paleta de colores pastel y diseño responsivo
+- **API REST**: Endpoints para integración con otros sistemas
+- **Multiplataforma**: Compatible con Windows, Linux y macOS
+
+---
+
+## Tecnologías utilizadas
+
+### Backend:
+- **Python 3.7+**: Lógica principal de la aplicación
+- **psutil**: Obtención de estadísticas de red del sistema
+- **Flask & Flask-SocketIO**: Servidor web y comunicación en tiempo real
+- **WebSocket**: Para actualizaciones en tiempo real sin recargar la página
+
+### Frontend:
+- **HTML5 & CSS3**: Estructura y estilos modernos
+- **JavaScript (Vanilla)**: Lógica del cliente y manejo de datos en tiempo real
+- **Chart.js**: Gráficos interactivos y visualizaciones
+- **Bootstrap 5**: Componentes UI y diseño responsivo
+
+---
+
+## Interfaz de consola
+
+La interfaz de consola incluye:
+- Selección interactiva de interfaces de red
+- Gráficos ASCII coloridos en tiempo real
+- Estadísticas de velocidad actual y tráfico acumulado
+- Colores diferenciados para envío (azul) y recepción (verde)
+
+```bash
+# Ejecutar en modo consola
+netwatch
+
+# Monitorear interfaz específica
+netwatch -i eth0
+
+# Monitorear todas las interfaces
+netwatch --all
+```
+
+---
+
+## Interfaz web profesional
+
+La interfaz web moderna incluye:
+- **Gráficos interactivos**: Visualización en tiempo real con Chart.js
+- **Diseño responsivo**: Adaptable a móviles, tablets y desktop
+- **Paleta pastel**: Colores suaves y elegantes
+- **Sin datos simulados**: Muestra estado desconectado cuando no hay datos reales
+- **Control intuitivo**: Selección fácil de interfaces y controles de monitoreo
+
+```bash
+# Ejecutar interfaz web (localhost)
+netwatch-web
+
+# Ejecutar con acceso de red
+netwatch-web --network
+
+# Puerto personalizado
+netwatch-web --network --port 8080
+```
+
+---
+
+## API REST
+
+El proyecto incluye endpoints REST para integración:
+
+- `GET /api/interfaces` - Lista interfaces disponibles
+- `GET /api/stats` - Estadísticas actuales de red
+- `POST /api/start_monitoring` - Iniciar monitoreo de interfaces
+- `POST /api/stop_monitoring` - Detener monitoreo
+
+---
+
+## Instalación y uso
+
+### Instalación desde PyPI:
+```bash
+pip install netwatch-monitor
+```
+
+### Instalación desde código fuente:
+```bash
+git clone https://github.com/PC0staS/netwatch.git
+cd netwatch
+pip install -e .
+```
+
+---
+
+## Casos de uso
+
+- **Debugging de red**: Monitorear actividad durante resolución de problemas
+- **Monitoreo de rendimiento**: Seguimiento del uso de ancho de banda
+- **Desarrollo**: Monitorear actividad de red durante desarrollo de aplicaciones
+- **Administración de sistemas**: Vista rápida del estado de interfaces de red
+- **Educativo**: Aprender sobre interfaces de red y patrones de tráfico
+- **Monitoreo remoto**: Usar interfaz web para supervisión remota
+
+---
+
+## Lo que aprendí
+
+Este proyecto me permitió:
+- **Trabajo con APIs del sistema**: Usar psutil para obtener estadísticas de red
+- **Desarrollo full-stack**: Backend en Python y frontend moderno
+- **Comunicación en tiempo real**: WebSockets y actualizaciones live
+- **Visualización de datos**: Crear gráficos ASCII y web interactivos
+- **Diseño responsivo**: Interfaz que funciona en todos los dispositivos
+- **Packaging de Python**: Crear paquete distribuible en PyPI
+
+¡NetWatch demuestra mi capacidad para crear herramientas de sistema completas con interfaces tanto técnicas como amigables para el usuario!
+
+---
+
+<div style="display: flex; justify-content: center; margin-top: 2rem;">
+  <a 
+    href="https://github.com/PC0staS/netwatch" 
+    target="_blank"
+    style="
+      display: flex;
+      background-color: #24292e;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 20px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      width: 200px;
+      height: 40px;
+      line-height: 0px;
+      margin-bottom: 20px;
+      justify-content: center;
+      align-items: center;
+
+    "
+    onmouseover="this.style.backgroundColor='#444';"
+    onmouseout="this.style.backgroundColor='#24292e';"
+  >
+    <svg 
+      viewBox="0 0 16 16" 
+      aria-hidden="true" 
+      width="40" 
+      height="40" 
+      fill="currentColor" 
+      style="vertical-align: middle; margin-right: 10px;"
+    >
+      <path
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+      ></path>
+    </svg>
+    Ver en GitHub
+  </a>
+</div>
+
+¡Espero que este proyecto te inspire tanto como a mí me inspiró desarrollarlo! 🚀
