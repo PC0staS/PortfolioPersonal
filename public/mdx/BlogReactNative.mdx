@@ -7,44 +7,31 @@ heroImage: 'BlogReactNative_nztq0t'
 githubRepo: 'https://github.com/PC0staS/BlogReactNative'
 ---
 
-# BlogReactNative 📱📝
+# BlogReactNative 📱
 
-Proyecto full‑stack que construí para demostrar un flujo completo de blog: autenticación, creación/lectura/edición/eliminación de artículos, subida de imágenes y experiencia móvil/web fluida con Expo.
+App de blog full‑stack multiplataforma con React Native/Expo y Flask: autenticación JWT, CRUD completo y cámara integrada.
 
-## ¿Qué hice?
+## En una frase
+Blog completo con frontend móvil/web en Expo y backend Flask con autenticación JWT.
 
-- Frontend con **React Native + Expo** (TypeScript), navegación con **Expo Router** y UI cuidada.
-- Integración con cámara/galería mediante **Expo Image Picker** y previsualización.
-- Animaciones fluidas con **React Native Reanimated**.
-- Backend **Python Flask** con **JWT** para autenticación, **SQLite** como base de datos y **Docker** para despliegue sencillo.
-- Búsqueda en tiempo real, estados de carga, feedback y manejo de errores.
+## Stack
+- **Frontend:** React Native/Expo, TypeScript, Expo Router, Reanimated
+- **Backend:** Flask, JWT, SQLite, Docker
+- **Features:** Cámara/galería, AsyncStorage, navegación file‑based
 
----
+## Highlights
+- **Autenticación completa:** Registro, login, verificación de token
+- **CRUD de artículos:** Con imagen base64, autor y fecha
+- **Integración cámara:** Expo Image Picker con previsualización
+- **Búsqueda en tiempo real:** Con estados de carga y manejo de errores
+- **Multiplataforma:** iOS, Android y Web
+- **Arquitectura limpia:** File‑based routing + API REST
 
-## Características clave
-
-- Autenticación completa (registro, login, verificación de token).
-- CRUD de artículos con imagen en base64 y metadatos (autor, fecha).
-- Lista de posts con búsqueda y ordenación por fecha, detalle del post y creación desde la app.
-- Arquitectura limpia: rutas file‑based en el frontend, API REST bien delimitada en el backend.
-- Compatible con iOS, Android y Web.
-
----
-
-## Arquitectura
-
-- Frontend (Expo):
-  - Expo Router, Reanimated, Image Picker, AsyncStorage, estilos nativos.
-  - Patrones: componentes reutilizables, hooks, pantallas de login/blog/lista/detalle/creación.
-- Backend (Flask):
-  - Endpoints REST, JWT, CORS, validación de entrada.
-  - Persistencia en SQLite y contenedorización con Docker.
-
-### Endpoints principales
+## API endpoints
 - Auth: `POST /api/auth/signup`, `POST /api/auth/login`, `GET /api/auth/check`
 - Posts: `GET /api/posts`, `GET /api/posts/{id}`, `POST /api/posts`, `PUT /api/posts/{id}`, `DELETE /api/posts/{id}`
 
-### Ejemplo de creación de post (frontend)
+## Ejemplo de uso
 ```ts
 await fetch(`${BACKEND_URL}/api/posts`, {
   method: 'POST',
@@ -61,29 +48,10 @@ await fetch(`${BACKEND_URL}/api/posts`, {
 });
 ```
 
----
+## Deploy
+- Backend: Docker Compose o entorno virtual
+- Frontend: `npx expo start` para desarrollo, builds para producción
+- Config: `BACKEND_URL` en frontend, `.env` en backend
 
-## Tecnologías
-
-- Frontend: React Native/Expo 53, TypeScript, Expo Router, Reanimated, Image Picker.
-- Backend: Flask, Flask‑JWT‑Extended, Flask‑CORS, SQLite, Docker.
-- Utilidades: AsyncStorage, validación, manejo de errores, estados de carga.
-
----
-
-## Despliegue y ejecución
-
-- Backend: Docker Compose listo o ejecución directa con entorno virtual.
-- Frontend: `npx expo start` para desarrollo; builds para iOS/Android/Web.
-- Config: `BACKEND_URL` en el frontend y `.env` en el backend.
-
----
-
-## Lo que aprendí
-
-- Navegación file‑based en apps móviles con Expo Router.
-- Integración cámara/galería y manejo de archivos base64.
-- Flujo de autenticación JWT de extremo a extremo.
-- Buenas prácticas de UX en formularios y manejo de errores en móvil.
-
----
+## Código
+[Ver el repo en GitHub →](https://github.com/PC0staS/BlogReactNative)

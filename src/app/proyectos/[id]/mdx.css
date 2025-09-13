@@ -1,11 +1,12 @@
-/* MDX page typography styles — larger and more readable */
+/* Enhanced MDX typography styles — modern, readable and elegant */
 
 .prose {
   color: #e5e7eb; /* text-gray-200 */
-  font-size: clamp(1.08rem, 0.96rem + 0.6vw, 1.28rem);
-  line-height: 1.85;
+  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.3rem);
+  line-height: 1.8;
   letter-spacing: 0.01em;
-  max-width: 72ch;
+  max-width: 75ch;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .prose h1,
@@ -15,102 +16,247 @@
 .prose h5,
 .prose h6 {
   color: #ffffff;
-  line-height: 1.2;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  scroll-margin-top: 100px; /* anchor comfort if navbar present */
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+  scroll-margin-top: 100px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.prose h1 { font-size: clamp(2.4rem, 1.6rem + 2.4vw, 3.2rem); }
-.prose h2 { font-size: clamp(2rem, 1.3rem + 1.8vw, 2.6rem); }
-.prose h3 { font-size: clamp(1.5rem, 1.2rem + 0.9vw, 1.9rem); }
-.prose h4 { font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem); }
-.prose h5 { font-size: 1.125rem; }
+.prose h1 { 
+  font-size: clamp(2.5rem, 1.8rem + 2.4vw, 3.5rem);
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid rgba(96, 165, 250, 0.3);
+  padding-bottom: 0.5rem;
+}
+.prose h2 { 
+  font-size: clamp(2.1rem, 1.5rem + 1.8vw, 2.8rem);
+  margin-top: 3rem;
+  position: relative;
+}
+.prose h2::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.5rem;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  border-radius: 2px;
+}
+.prose h3 { 
+  font-size: clamp(1.6rem, 1.3rem + 0.9vw, 2.1rem);
+  color: #60a5fa;
+}
+.prose h4 { 
+  font-size: clamp(1.3rem, 1.15rem + 0.5vw, 1.6rem);
+  color: #93c5fd;
+}
+.prose h5 { font-size: 1.15rem; }
 .prose h6 { font-size: 1rem; opacity: 0.9; }
 
-.prose p { margin: 1.2rem 0; }
+.prose p { 
+  margin: 1.3rem 0;
+  text-align: justify;
+  text-justify: inter-word;
+}
 
 .prose a {
-  color: #60a5fa; /* blue-400 */
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 2px;
+  color: #60a5fa;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 500;
 }
-.prose a:hover { color: #93c5fd; }
+.prose a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  transition: width 0.3s ease;
+}
+.prose a:hover {
+  color: #93c5fd;
+  transform: translateY(-1px);
+}
+.prose a:hover::after {
+  width: 100%;
+}
 
-.prose strong { color: #ffffff; }
-.prose em { color: #d1d5db; }
+.prose strong { 
+  color: #ffffff;
+  font-weight: 600;
+}
+.prose em { 
+  color: #d1d5db;
+  font-style: italic;
+}
 
 .prose ul,
 .prose ol {
-  margin: 1.1rem 0;
-  padding-left: 1.5rem;
+  margin: 1.3rem 0;
+  padding-left: 1.8rem;
 }
 .prose li {
-  margin: 0.35rem 0;
-  line-height: 1.9;
+  margin: 0.5rem 0;
+  line-height: 1.8;
+  position: relative;
+}
+.prose ul li::marker {
+  color: #60a5fa;
+  font-size: 1.2em;
+}
+.prose ol li::marker {
+  color: #60a5fa;
+  font-weight: 600;
 }
 
 .prose blockquote {
-  border-left: 4px solid #94a3b8; /* slate-400 */
-  background: rgba(148, 163, 184, 0.08);
-  padding: 0.9rem 1rem;
-  color: #cbd5e1; /* slate-300 */
-  margin: 1.2rem 0;
+  border-left: 4px solid #60a5fa;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(59, 130, 246, 0.05));
+  padding: 1.2rem 1.5rem;
+  color: #cbd5e1;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  position: relative;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.prose blockquote::before {
+  content: '"';
+  font-size: 3rem;
+  color: #60a5fa;
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  opacity: 0.3;
+  font-family: Georgia, serif;
 }
 
 .prose hr {
   border: none;
-  border-top: 1px solid rgba(148, 163, 184, 0.3);
-  margin: 2.2rem 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+  margin: 3rem 0;
+  border-radius: 1px;
 }
 
 .prose pre {
-  background: #0f172a; /* slate-900 */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #e5e7eb;
-  padding: 1.1rem 1.2rem;
-  border-radius: 0.6rem;
+  padding: 1.5rem;
+  border-radius: 12px;
   overflow-x: auto;
-  margin: 1.25rem 0;
-  font-size: 0.98em;
+  margin: 1.5rem 0;
+  font-size: 0.95em;
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .prose code {
-  background: rgba(148, 163, 184, 0.15);
-  padding: 0.15rem 0.45rem;
-  border-radius: 0.4rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  background: rgba(96, 165, 250, 0.15);
+  color: #e5e7eb;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  color: inherit;
 }
 
 .prose img {
-  border-radius: 0.9rem;
+  border-radius: 12px;
   display: block;
-  margin: 1.25rem auto;
+  margin: 2rem auto;
   max-width: 100%;
   height: auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.prose img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
 .prose table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.25rem 0;
-  font-size: 0.98em;
+  margin: 2rem 0;
+  font-size: 0.95em;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 .prose th,
 .prose td {
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  padding: 0.6rem 0.9rem;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  padding: 0.8rem 1rem;
+  text-align: left;
 }
 .prose th {
-  background: rgba(148, 163, 184, 0.12);
-  color: #e5e7eb;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(59, 130, 246, 0.15));
+  color: #ffffff;
+  font-weight: 600;
 }
 .prose tbody tr:nth-child(odd) {
-  background: rgba(148, 163, 184, 0.06);
+  background: rgba(96, 165, 250, 0.05);
+}
+.prose tbody tr:hover {
+  background: rgba(96, 165, 250, 0.1);
+  transition: background 0.2s ease;
+}
+
+/* Section dividers */
+.prose h2 + * {
+  margin-top: 1rem;
+}
+
+/* Code highlight improvements */
+.prose pre[class*="language-"] {
+  position: relative;
+}
+
+/* Enhanced spacing for better readability */
+.prose > * + * {
+  margin-top: 1.5rem;
+}
+
+.prose li > * + * {
+  margin-top: 0.75rem;
+}
+
+/* Dark theme enhancements */
+@media (prefers-color-scheme: dark) {
+  .prose {
+    color: #e5e7eb;
+  }
+}
+
+/* Responsive improvements */
+@media (min-width: 640px) {
+  .prose {
+    font-size: 1.15rem;
+  }
 }
 
 @media (min-width: 1024px) {
-  .prose { font-size: 1.22rem; }
+  .prose { 
+    font-size: 1.25rem;
+    line-height: 1.85;
+  }
 }

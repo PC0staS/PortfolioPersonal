@@ -8,223 +8,61 @@ githubRepo: 'https://github.com/Pc0staS/FileTransfer'
 demoLink: 'https://filetransfer.jonastown.es'
 
 ---
-# FileTransfer - Servidor de Archivos 📁🌐
+# FileTransfer - Servidor de Archivos 📁
 
-**FileTransfer** es una plataforma web moderna que desarrollé para compartir archivos de forma fácil y segura en redes locales. Con una interfaz elegante y funcionalidades avanzadas como subidas por chunks y enlaces de descarga directos.
+Plataforma web moderna para compartir archivos en red local con diseño glassmorphism y subidas avanzadas.
 
-## ¿Qué hice?
+## En una frase
+Comparte archivos fácilmente con drag & drop, subidas por chunks y enlaces directos.
 
-Desarrollé una aplicación web completa utilizando **Flask**, **SQLite** y **JavaScript vanilla**, con Docker para despliegue fácil. El sistema incluye autenticación de usuarios, subidas con progreso en tiempo real, y una interfaz moderna con efectos visuales.
+## Stack
+- **Backend:** Flask, SQLite, Python
+- **Frontend:** JavaScript vanilla, Bootstrap
+- **Deploy:** Docker Compose, Cloudflare Tunnel
 
-### Características principales:
-- **Interfaz moderna**: Diseño glassmorphism con gradientes y efectos visuales
-- **Subidas avanzadas**: Drag & drop, múltiples archivos, progreso en tiempo real
-- **Sistema de chunks**: Subidas resumibles para archivos grandes
-- **Enlaces directos**: Descargas públicas sin necesidad de autenticación
-- **Gestión de usuarios**: Sistema de aprobación manual de nuevos usuarios
-- **Dockerizado**: Despliegue fácil con Docker Compose
+## Highlights
+- **Interfaz moderna:** Glassmorphism con gradientes y efectos visuales
+- **Subidas avanzadas:** Drag & drop, múltiples archivos, progreso en tiempo real
+- **Sistema de chunks:** Subidas resumibles para archivos grandes (>200MB)
+- **Enlaces directos:** Descargas públicas sin autenticación
+- **Gestión de usuarios:** Sistema de aprobación manual
+- **Dockerizado:** Despliegue fácil con Docker Compose
 
----
+## Funcionalidades clave
 
-## Tecnologías utilizadas
-
-### Backend:
-- **Flask**: Framework web principal
-- **SQLite**: Base de datos embebida para metadatos y usuarios
-- **Werkzeug**: Hashing seguro de contraseñas y utilidades
-- **Python 3.8+**: Lógica del servidor y manejo de archivos
-
-### Frontend:
-- **HTML5 & CSS3**: Estructura y estilos modernos con glassmorphism
-- **JavaScript (Vanilla)**: Lógica de cliente, drag & drop, progreso
-- **Bootstrap 5**: Componentes UI y sistema de grid responsivo
-- **Bootstrap Icons**: Iconografía consistente
-
-### DevOps:
-- **Docker & Docker Compose**: Containerización y orquestación
-- **Nginx (opcional)**: Reverse proxy para producción
-- **Cloudflare Tunnel**: Exposición segura sin abrir puertos
-
----
-
-## Funcionalidades destacadas
-
-### 🔐 Sistema de Autenticación
-- Registro de usuarios con aprobación manual
-- Estados de usuario: pendiente, activo, rechazado
-- Hashing seguro de contraseñas con Werkzeug
+### 🔐 Autenticación
+- Registro con aprobación manual
+- Estados: pendiente, activo, rechazado
 - Sesiones seguras con cookies HttpOnly
 
-### 📤 Subida Avanzada de Archivos
-- **Drag & Drop**: Interfaz intuitiva para arrastrar archivos
-- **Múltiples archivos**: Subida simultánea con progreso individual
-- **Subida por chunks**: Para archivos grandes (>200MB) con reanudación
-- **Progreso en tiempo real**: Barras de progreso con velocidad y ETA
-- **Validación**: Verificación de integridad y manejo de errores
+### 📤 Subidas Avanzadas
+- **Drag & Drop:** Interfaz intuitiva
+- **Múltiples archivos:** Subida simultánea con progreso individual
+- **Chunks resumibles:** Para archivos grandes con reanudación
+- **Progreso en tiempo real:** Barras con velocidad y ETA
 
-### 📁 Gestión de Archivos
-- Organización por usuario en carpetas separadas
-- Metadatos completos: fecha de subida, expiración, tamaño
-- Expiración automática: archivos eliminados después de 5 días
-- Iconos por tipo de archivo para mejor UX
+### 📁 Gestión
+- Organización por usuario
+- Expiración automática (5 días)
+- Metadatos completos
+- Iconos por tipo de archivo
 
-### 🌐 Enlaces de Descarga
-- **Descargas públicas**: Sin necesidad de iniciar sesión
-- **Copiar enlace**: Botón con fallback para diferentes navegadores
-- **Descargas por rango**: Soporte para resumir descargas
-- **Nombres originales**: Preserva nombres de archivo originales
+## API
+- `POST /api/upload_progress` - Subida con progreso
+- `POST /api/chunk/init` - Inicializar subida por chunks  
+- `POST /api/chunk/upload` - Subir chunk individual
+- `GET /download/<filename>` - Descarga pública
 
----
-
-## Interfaz de usuario
-
-### Dashboard Principal
-```html
-<!-- Ejemplo de card de archivo -->
-<div class="file-card">
-    <div class="file-icon">
-        <i class="bi bi-file-pdf text-danger"></i>
-    </div>
-    <div class="file-info">
-        <h6>documento.pdf</h6>
-        <small>2.3 MB • Expira en 3 días</small>
-    </div>
-    <div class="file-actions">
-        <button class="btn btn-primary">Descargar</button>
-        <button class="btn btn-outline-secondary">Copiar enlace</button>
-    </div>
-</div>
-```
-
-### Zona de Subida
-- Área de drag & drop visual con animaciones
-- Previsualización de archivos seleccionados
-- Progreso individual por archivo
-- Controles para subir todos o limpiar lista
-
----
-
-## Sistema de Chunks
-
-Para archivos grandes, implementé un sistema de subida por chunks:
-
-```javascript
-// Inicializar subida resumible
-const initResp = await fetch('/api/chunk/init', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-        filename: file.name, 
-        total_size: file.size 
-    })
-});
-
-// Subir chunk por chunk
-while (sentBytes < file.size) {
-    const chunk = file.slice(sentBytes, sentBytes + chunkSize);
-    const formData = new FormData();
-    formData.append('upload_id', uploadId);
-    formData.append('chunk_index', chunkIndex);
-    formData.append('chunk', chunk);
-    
-    // Enviar chunk con progreso
-    await sendChunk(formData);
-}
-```
-
----
-
-## Despliegue con Docker
-
-### docker-compose.yml
-```yaml
-version: '3.8'
-services:
-  web:
-    build: .
-    ports:
-      - "${HOST_IP}:3456:5000"
-    volumes:
-      - ${DB_VOLUME}:/app/db
-      - ${UPLOADS_VOLUME}:/app/uploads
-    environment:
-      - FLASK_ENV=production
-```
-
-### Variables de entorno (.env)
-```env
+## Deploy con Docker
+```bash
+# .env
 HOST_IP=192.168.1.100
 DB_VOLUME=/ruta/absoluta/db
 UPLOADS_VOLUME=/ruta/absoluta/uploads
-SECRET_KEY=tu_clave_secreta
+
+# Ejecutar
+docker-compose up -d
 ```
 
----
-
-## Características de seguridad
-
-### Protección CSRF
-- Tokens CSRF en todos los formularios
-- Verificación en endpoints que modifican estado
-- Headers de seguridad configurados
-
-### Cookies Seguras
-```python
-app.config.update(
-    SESSION_COOKIE_SECURE=True,
-    SESSION_COOKIE_HTTPONLY=True,
-    SESSION_COOKIE_SAMESITE='Lax'
-)
-```
-
-### Validación de Archivos
-- Nombres de archivo seguros
-- Prevención de path traversal
-- Límites de tamaño configurables
-
----
-
-## Integración con Cloudflare Tunnel
-
-Para exposición segura sin abrir puertos:
-
-```yaml
-# config.yml
-tunnel: tu-tunnel-uuid
-ingress:
-  - hostname: files.tu-dominio.com
-    service: http://localhost:3456
-  - service: http_status:404
-```
-
----
-
-## API REST
-
-Endpoints principales:
-- `POST /api/upload_progress` - Subida de archivos con progreso
-- `POST /api/chunk/init` - Inicializar subida por chunks  
-- `POST /api/chunk/upload` - Subir chunk individual
-- `POST /api/chunk/finalize` - Finalizar subida por chunks
-- `POST /api/delete_file` - Eliminar archivo
-- `GET /download/<filename>` - Descarga pública
-
----
-
-## Lo que aprendí
-
-Este proyecto me permitió:
-- **Desarrollo full-stack**: Backend robusto y frontend moderno
-- **Manejo de archivos**: Subidas por chunks, validación, metadatos
-- **UX/UI avanzado**: Drag & drop, progreso en tiempo real, efectos visuales
-- **Containerización**: Docker, volúmenes, variables de entorno
-- **Seguridad web**: CSRF, cookies seguras, validación de entrada
-- **APIs REST**: Diseño de endpoints RESTful
-- **Networking**: Reverse proxies, túneles, exposición segura
-
-FileTransfer demuestra mi capacidad para crear aplicaciones web completas, seguras y con excelente experiencia de usuario.
-
----
-
-
-¡Espero que este proyecto te inspire tanto como a mí me inspiró desarrollarlo! 🚀
+## Código
+[Ver el repo en GitHub →](https://github.com/Pc0staS/FileTransfer) | [Demo →](https://filetransfer.jonastown.es)
