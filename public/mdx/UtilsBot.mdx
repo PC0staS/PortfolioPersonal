@@ -6,118 +6,165 @@ pubDate: 'Nov 20 2024'
 heroImage: 'utilsbot_lq89oa'
 githubRepo: 'https://github.com/Pc0staS/UtilsBot'
 ---
-# UtilsBot - Bot de Discord 🤖⚡
+# UtilsBot 🤖⚡
 
-**UtilsBot** es un bot multifuncional para Discord que desarrollé para automatizar tareas comunes y proporcionar utilidades útiles a servidores de Discord. El bot incluye más de 30 comandos diferentes desde herramientas de red hasta funcionalidades de administración de sistemas.
+**Bot multifuncional para Discord** con más de 30 comandos útiles, desde herramientas de red hasta funcionalidades de administración de sistemas, diseñado para ejecutarse en Raspberry Pi.
 
-## ¿Qué hice?
+## 🚀 ¿Qué hice?
 
-Desarrollé un bot completo de Discord utilizando **Python** y **discord.py**, con integración de múltiples APIs y herramientas del sistema. El bot está diseñado para ejecutarse en una Raspberry Pi y proporciona funcionalidades tanto básicas como avanzadas.
+Desarrollé un **bot completo de Discord** que automatiza tareas comunes y proporciona utilidades útiles a servidores, integrando múltiples APIs y herramientas del sistema para crear una navaja suiza digital.
 
-### Características principales:
-- **30+ comandos slash**: Amplia gama de utilidades y herramientas
-- **Administración de sistemas**: Control remoto de Raspberry Pi
-- **Herramientas de red**: Ping, speedtest, información de dominios
-- **Utilidades multimedia**: Fusión de PDFs y videos, capturas web
-- **Funciones de productividad**: Recordatorios, hábitos, traducción
-- **Herramientas criptográficas**: Encriptación, hashing, generación de contraseñas
+**Logros principales:**
+- 🎯 **30+ comandos slash** - Amplia gama de utilidades y herramientas especializadas
+- 🖥️ **Administración de sistemas** - Control remoto completo de Raspberry Pi
+- 🌐 **Herramientas de red** - Ping, speedtest, información de dominios y dispositivos
+- 📁 **Utilidades multimedia** - Fusión de PDFs y videos, capturas web y QR
+- ⏰ **Funciones de productividad** - Recordatorios, hábitos, traducción y clima
+- 🔐 **Herramientas criptográficas** - Encriptación, hashing y generación de contraseñas
 
 ---
 
-## Comandos destacados
+## 🛠️ Tecnologías utilizadas
 
-### 🌐 Herramientas de Red
-- `/ping <ip>` - Realizar ping a una dirección IP
-- `/webping <url>` - Comprobar URL HTTP y medir latencia
-- `/speedtest` - Test de velocidad de internet
-- `/netdevices` - Listar dispositivos conectados a la red
-- `/whois <dominio>` - Información WHOIS de dominios
+### Core Framework:
+- 🐍 **Python 3.10+** - Lenguaje principal con features modernas
+- 🤖 **discord.py 2.x** - Biblioteca oficial para interactuar con Discord API
+- ⚡ **asyncio** - Programación asíncrona para mejor rendimiento
+- 🌐 **aiohttp** - Cliente HTTP asíncrono para APIs externas
 
-### 🛠️ Administración de Sistema
-- `/stats` - Estadísticas del sistema (CPU, RAM, disco)
-- `/reboot` - Reiniciar la Raspberry Pi
-- `/shutdown` - Apagar el sistema
-- `/update` - Actualizar el sistema (apt)
-- `/execute <comando>` - Ejecutar comandos del sistema
-- `/vpnstatus` - Estado de VPN WireGuard
+### Integración de APIs:
+- 🌍 **MyMemory API** - Servicios de traducción multiidioma
+- 🌤️ **Open-Meteo API** - Datos meteorológicos sin API key requerida
+- 📚 **DictionaryAPI** - Definiciones y significados de palabras
+- 📱 **QR Server API** - Generación de códigos QR personalizados
+- 🔗 **is.gd API** - Acortamiento de URLs con estadísticas
 
-### 📁 Herramientas Multimedia
+### Herramientas del Sistema:
+- 📊 **psutil** - Estadísticas detalladas del sistema
+- 🔧 **subprocess** - Ejecución segura de comandos del sistema
+- 🎬 **ffmpeg** - Procesamiento avanzado de videos
+- 📄 **pypdf** - Manipulación y fusión de archivos PDF
+- 🔒 **cryptography** - Funciones criptográficas avanzadas
+
+---
+
+## ✨ Características principales
+
+- **🌐 Suite de red completa**: Ping, speedtest, información WHOIS y listado de dispositivos
+- **🛠️ Control de sistemas**: Estadísticas en tiempo real, reinicio y actualización remota
+- **📁 Procesamiento multimedia**: Fusión de PDFs, concatenación de videos y capturas web
+- **💡 Productividad avanzada**: Sistema de recordatorios únicos y hábitos recurrentes
+- **🔐 Seguridad integrada**: Encriptación Fernet, hashing múltiple y generación de passwords
+- **🌍 Utilidades globales**: Traducción, clima mundial y zonas horarias
+- **🔄 Arquitectura asíncrona**: Todos los comandos optimizados para no bloquear el bot
+
+---
+
+## 🏗️ Arquitectura
+
+### Estructura de comandos:
+```python
+# Comando slash moderno
+@bot.tree.command(name="ping", description="Realizar ping a IP")
+async def ping_command(interaction: discord.Interaction, ip: str):
+    await interaction.response.defer()
+    result = await ping_host(ip)
+    await interaction.followup.send(f"📡 Ping a {ip}: {result}ms")
+```
+
+### Sistema de hábitos:
+```python
+# Recordatorios recurrentes cancelables
+class HabitManager:
+    def __init__(self):
+        self.active_habits = {}
+    
+    async def create_habit(self, user_id, interval, message):
+        task = asyncio.create_task(self.habit_loop(user_id, interval, message))
+        self.active_habits[user_id] = task
+    
+    async def cancel_habit(self, user_id):
+        if user_id in self.active_habits:
+            self.active_habits[user_id].cancel()
+```
+
+### Integración con Nextcloud:
+```python
+# Guardado automático de archivos generados
+async def save_to_nextcloud(file_path, filename):
+    nextcloud_path = f"{NEXTCLOUD_DIR}/{filename}"
+    shutil.copy2(file_path, nextcloud_path)
+    return f"✅ Guardado en Nextcloud: {filename}"
+```
+
+---
+
+## 🎯 Comandos destacados
+
+### 🌐 Herramientas de Red:
+- `/ping <ip>` - Realizar ping a una dirección IP con latencia
+- `/webping <url>` - Comprobar URL HTTP y medir tiempo de respuesta
+- `/speedtest` - Test completo de velocidad de internet
+- `/netdevices` - Listar dispositivos conectados a la red local
+- `/whois <dominio>` - Información WHOIS detallada de dominios
+
+### 🛠️ Administración de Sistema:
+- `/stats` - Estadísticas completas del sistema (CPU, RAM, disco)
+- `/reboot` - Reiniciar la Raspberry Pi de forma segura
+- `/shutdown` - Apagar el sistema completamente
+- `/update` - Actualizar paquetes del sistema (apt update/upgrade)
+- `/execute <comando>` - Ejecutar comandos del sistema con seguridad
+- `/vpnstatus` - Estado actual de VPN WireGuard
+
+### 📁 Herramientas Multimedia:
 - `/mergepdf` - Fusionar múltiples PDFs en uno solo
 - `/mergevid` - Concatenar videos en formato MP4
 - `/screenshotweb <url>` - Captura de pantalla de páginas web
-- `/qr <url>` - Generar códigos QR
+- `/qr <url>` - Generar códigos QR personalizados
 
-### 💡 Productividad
-- `/remind <minutos> <mensaje>` - Recordatorio único
-- `/habit <minutos> <mensaje>` - Recordatorios recurrentes
-- `/translate <texto> <idioma>` - Traducir texto a diferentes idiomas
-- `/definition <palabra>` - Definiciones de diccionario
-- `/weather <lugar>` - Clima actual de cualquier ciudad
-- `/timezone <zona>` - Hora en diferentes zonas horarias
+### 💡 Productividad:
+- `/remind <minutos> <mensaje>` - Recordatorio único programado
+- `/habit <minutos> <mensaje>` - Recordatorios recurrentes automáticos
+- `/translate <texto> <idioma>` - Traducir texto a 100+ idiomas
+- `/definition <palabra>` - Definiciones completas de diccionario
+- `/weather <lugar>` - Clima actual de cualquier ciudad mundial
+- `/timezone <zona>` - Hora actual en diferentes zonas horarias
 
-### 🔐 Herramientas Criptográficas
-- `/encrypt <mensaje> <clave>` - Encriptar texto (Fernet)
-- `/decrypt <mensaje> <clave>` - Desencriptar texto
-- `/hash <mensaje> [algoritmo]` - Hash de mensajes (SHA-256, SHA-512, etc.)
-- `/passw <caracteres>` - Generar contraseñas seguras
-
----
-
-## Tecnologías utilizadas
-
-### Core:
-- **Python 3.10+**: Lenguaje principal de desarrollo
-- **discord.py 2.x**: Biblioteca para interactuar con la API de Discord
-- **asyncio**: Programación asíncrona para mejor rendimiento
-- **aiohttp**: Cliente HTTP asíncrono para APIs externas
-
-### Integración de APIs:
-- **MyMemory API**: Servicios de traducción
-- **Open-Meteo API**: Datos meteorológicos sin API key
-- **DictionaryAPI**: Definiciones de palabras
-- **QR Server API**: Generación de códigos QR
-- **is.gd API**: Acortamiento de URLs
-
-### Herramientas del Sistema:
-- **psutil**: Estadísticas del sistema
-- **subprocess**: Ejecución de comandos del sistema
-- **ffmpeg**: Procesamiento de videos
-- **pypdf**: Manipulación de archivos PDF
-- **cryptography**: Funciones criptográficas
+### 🔐 Herramientas Criptográficas:
+- `/encrypt <mensaje> <clave>` - Encriptar texto con Fernet
+- `/decrypt <mensaje> <clave>` - Desencriptar texto cifrado
+- `/hash <mensaje> [algoritmo]` - Hash con SHA-256, SHA-512, MD5, etc.
+- `/passw <caracteres>` - Generar contraseñas seguras personalizables
 
 ---
 
-## Funcionalidades avanzadas
+## 📋 Instalación y uso
 
-### Sistema de Hábitos
-El bot incluye un sistema completo de recordatorios recurrentes:
-- Crear hábitos con intervalos personalizados
-- Listar hábitos activos
-- Eliminar hábitos específicos
-- Tareas asíncronas cancelables
+### Requisitos del sistema:
+- Python 3.10+ con pip
+- Raspberry Pi OS o Linux compatible
+- Conexión a internet estable
+- Token de bot de Discord
 
-### Integración con Nextcloud
-- Guarda automáticamente archivos generados (PDFs fusionados, capturas)
-- Nombres únicos para evitar sobrescrituras
-- Organización en carpetas específicas
+### Instalación:
+```bash
+# Clonar repositorio
+git clone https://github.com/PC0staS/UtilsBot.git
+cd UtilsBot
 
-### Manejo de Errores Robusto
-- Timeouts configurables para APIs externas
-- Fallbacks para servicios no disponibles
-- Manejo graceful de errores de sistema
+# Crear entorno virtual
+python -m venv venv
+source venv/bin/activate
 
----
+# Instalar dependencias
+pip install -r requirements.txt
 
-## Configuración y despliegue
-
-### Variables de entorno:
-```env
-DISCORD_TOKEN=tu_token_de_discord
-NEXTCLOUD_DIR=/ruta/a/nextcloud
-SERVICE_NAME=utilsbot.service
+# Configurar variables de entorno
+cp .env.example .env
+# Editar .env con tu DISCORD_TOKEN
 ```
 
-### Servicio systemd:
+### Configuración como servicio systemd:
 ```ini
 [Unit]
 Description=UtilsBot Discord Bot
@@ -126,41 +173,59 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/opt/utilsbot
-ExecStart=/opt/utilsbot/.venv/bin/python /opt/utilsbot/bot.py
+ExecStart=/opt/utilsbot/.venv/bin/python bot.py
 Environment=DISCORD_TOKEN=TU_TOKEN
+Environment=NEXTCLOUD_DIR=/ruta/nextcloud
 Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
 ```
 
+### Activar servicio:
+```bash
+# Copiar archivo de servicio
+sudo cp utilsbot.service /etc/systemd/system/
+
+# Habilitar y iniciar
+sudo systemctl enable utilsbot
+sudo systemctl start utilsbot
+
+# Verificar estado
+sudo systemctl status utilsbot
+```
+
 ---
 
-## Casos de uso
+## 🎯 Casos de uso
 
-- **Administración remota**: Controlar Raspberry Pi desde Discord
-- **Herramientas de red**: Diagnóstico y monitoreo de conectividad
-- **Productividad**: Recordatorios y herramientas de traducción
-- **Multimedia**: Procesamiento de archivos directamente en Discord
-- **Utilidades**: Generación de contraseñas, QR codes, etc.
-- **Información**: Clima, definiciones, zona horaria
+- **🏠 Administración doméstica**: Control remoto de Raspberry Pi desde cualquier lugar
+- **🌐 Diagnóstico de red**: Herramientas completas para troubleshooting de conectividad
+- **📚 Productividad personal**: Recordatorios, traducción y información útil
+- **📁 Procesamiento de archivos**: Automatizar tareas de manipulación de documentos
+- **🔧 Utilidades diarias**: Generación de passwords, QR codes y acortamiento de URLs
+- **🌍 Información global**: Clima, definiciones y zonas horarias al instante
 
 ---
 
-## Lo que aprendí
+## 🎓 Lo que aprendí
 
 Este proyecto me permitió profundizar en:
-- **Desarrollo de bots**: Comandos slash, manejo de eventos
-- **Programación asíncrona**: asyncio, aiohttp, concurrencia
-- **Integración de APIs**: Múltiples servicios web y manejo de errores
-- **Administración de sistemas**: Automatización con Python
-- **Multimedia**: Procesamiento de archivos PDF y video
-- **Criptografía**: Implementación segura de encriptación
-- **Deployment**: Servicios systemd y automatización
-
-UtilsBot demuestra mi capacidad para crear aplicaciones complejas que integran múltiples tecnologías y proporcionan valor real a los usuarios.
+- **🤖 Desarrollo de bots Discord**: Comandos slash modernos y manejo avanzado de eventos
+- **⚡ Programación asíncrona**: asyncio, aiohttp y concurrencia para performance óptima
+- **🌐 Integración de APIs**: Múltiples servicios web con manejo robusto de errores
+- **🖥️ Administración de sistemas**: Automatización completa con Python y subprocess
+- **📁 Procesamiento multimedia**: Manipulación de archivos PDF, video y capturas web
+- **🔒 Criptografía práctica**: Implementación segura de encriptación y hashing
+- **🚀 DevOps**: Servicios systemd, logging y monitoreo de aplicaciones
 
 ---
 
+## 🔗 Enlaces
 
-¡Espero que este proyecto te inspire tanto como a mí me inspiró desarrollarlo! 🚀
+- 📂 **[Código fuente](https://github.com/PC0staS/UtilsBot)** - Ver el repositorio en GitHub
+
+---
+
+*Este proyecto demuestra mis habilidades en automatización y desarrollo de herramientas útiles, integrando múltiples tecnologías para crear soluciones que aportan valor real a los usuarios.*
