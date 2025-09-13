@@ -4,6 +4,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Pablo Costas",
+  description: "Portfolio de Pablo Costas - Desarrollador Web y Móvil",
+  icons: {
+    icon: "/img/favicon.png",
+  },
 };
 
 export default function RootLayout({
