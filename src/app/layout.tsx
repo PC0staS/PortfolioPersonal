@@ -9,8 +9,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`antialiased justify-center mx-auto bg-dark text-white overflow-x-hidden`}
-        style={{ boxSizing: "border-box" }}
+        className={`antialiased justify-center mx-auto bg-[#0e0e0e] text-white overflow-x-hidden`}
+        style={{ boxSizing: "border-box", scrollBehavior: "smooth"  }}
       >
         <ViewTransition>
           {children}
