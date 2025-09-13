@@ -21,7 +21,7 @@ export default function ProyectoPage({ params }: { params: { id: string } }) {
   const proyectos = getProyectos();
   const proyecto = proyectos.find((p) => p.route === params.id);
   if (!proyecto) {
-    return <div className="text-center mt-20 text-2xl">Proyecto no encontrado</div>;
+    return <div className="text-center mt-20 text-3xl">Proyecto no encontrado</div>;
   }
 
   return (
