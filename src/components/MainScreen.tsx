@@ -27,13 +27,13 @@ export default function MainScreen() {
       <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 w-full max-w-sm">
         <a
           href="#contacto"
-          className="bg-white text-black py-3 px-6 rounded-full border-2 border-black dark:border-white cursor-pointer hover:scale-110 transition-all text-sm sm:text-base"
+          className="bg-white text-black py-3 px-6 rounded-full border-2 border-black dark:border-white cursor-pointer hover:scale-110 transition-all text-sm sm:text-base text-center"
         >
           Contacta conmigo
         </a>
         <a
           onClick={() => window.open(cv)}
-          className="bg-black text-white border-2 border-white py-3 px-6 rounded-full cursor-pointer hover:scale-110 transition-all text-sm sm:text-base"
+          className="bg-black text-white border-2 border-white py-3 px-6 rounded-full cursor-pointer hover:scale-110 transition-all text-sm sm:text-base text-center"
         >
           Descarga mi CV
         </a>
