@@ -24,7 +24,7 @@ export default function MainScreen() {
         full-stack. <br />
         Mientras tanto, te enseño mis proyectos con los que aprendo:
       </h2>
-      <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 w-full max-w-sm">
+      <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 w-full max-w-sm text-center">
         <a
           href="#contacto"
           className="bg-white text-black py-3 px-6 rounded-full border-2 border-black dark:border-white cursor-pointer hover:scale-110 transition-all text-sm sm:text-base text-center"
