@@ -21,7 +21,20 @@ export default function ProyectoPage({ params }: { params: { id: string } }) {
   const proyectos = getProyectos();
   const proyecto = proyectos.find((p) => p.route === params.id);
   if (!proyecto) {
-    return <div className="text-center mt-20 text-3xl">Proyecto no encontrado</div>;
+    // Not found pattern for Next.js app router
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] p-6 text-black dark:text-white">
+        <h1 className="text-3xl font-bold mb-4 text-center text-red-500">
+          Proyecto no encontrado
+        </h1>
+        <p className="mb-6 text-center text-gray-500 dark:text-gray-400">
+          El proyecto que buscas no existe o ha sido eliminado.
+        </p>
+        <Link href="/#proyectos" className="inline-block px-4 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition">
+          Volver a los proyectos
+        </Link>
+      </div>
+    );
   }
 
   return (
