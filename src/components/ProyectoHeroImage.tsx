@@ -16,8 +16,9 @@ export default function ProyectoHeroImage({
   height = 400,
   className,
 }: Props) {
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   // Fallback visual si no hay imagen de Cloudinary
-  if (!src) {
+  if (!src || !cloudName) {
     return (
       <div
         className={`rounded-xl mb-6 w-full h-[400px] bg-gradient-to-br from-gray-100 to-gray-200 ${

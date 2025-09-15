@@ -8,13 +8,20 @@ import Navbar from "@/components/Navbar";
 
 export const dynamic = "force-static";
 
+// Ensure all dynamic routes are statically generated
+export function generateStaticParams() {
+  const proyectos = getProyectos();
+  return proyectos.map((p) => ({ id: p.route ?? p.slug }));
+}
+
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const proyectos = getProyectos();
   const proyecto = proyectos.find((p) => p.route === params.id);
   if (!proyecto) return { title: "Proyecto no encontrado" };
   const url = `https://pablocostas.dev/proyectos/${params.id}`;
-  const ogImage = proyecto.heroImage
-    ? `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${proyecto.heroImage}.jpg`
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const ogImage = proyecto.heroImage && cloudName
+    ? `https://res.cloudinary.com/${cloudName}/image/upload/${proyecto.heroImage}.jpg`
     : "/img/me.jpeg";
   return {
     title: proyecto.title,

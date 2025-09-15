@@ -9,21 +9,24 @@ export function getProyectos() {
   const fileNames = fs.readdirSync(proyectosDirectory);
   return fileNames
     .filter((file) => file.endsWith('.mdx') || file.endsWith('.md'))
-    .map((fileName) => {
+    .flatMap((fileName) => {
       const fullPath = path.join(proyectosDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
       const parsed = proyectoSchema.safeParse(data);
       if (!parsed.success) {
-        throw new Error(`Invalid frontmatter in ${fileName}`);
+        console.warn(`[getProyectos] Invalid frontmatter in ${fileName}:`, parsed.error.flatten().fieldErrors);
+        return [] as const; // skip invalid entries instead of throwing
       }
       const slug = fileName.replace(/\.mdx?$/, '');
-      return {
-        ...parsed.data,
-        content,
-        slug,
-        route: parsed.data.route ?? slug,
-      };
+      return [
+        {
+          ...parsed.data,
+          content,
+          slug,
+          route: parsed.data.route ?? slug,
+        },
+      ] as const;
     });
 }
 

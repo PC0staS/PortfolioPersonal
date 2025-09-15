@@ -18,6 +18,7 @@ export default function ProyectoCards({
   demolink: string;
 }) {
   const decodedTitle = decodeURIComponent(title);
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
   const goRepo = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -36,15 +37,19 @@ export default function ProyectoCards({
       className="group flex flex-col mt-3 w-full max-w-md mx-auto items-center justify-center rounded-xl cursor-pointer border border-black dark:border-zinc-700 bg-[#2e2e2e] transition-all shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-black dark:hover:border-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300/60"
     >
       <div className="relative w-full h-[200px] sm:h-[250px] overflow-hidden rounded-t-xl">
-        <CldImage
-          src={photo}
-          alt={decodedTitle}
-          width={1000}
-          height={1000}
-          className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
-          style={{ viewTransitionName: `proyecto-hero-${photo}` }}
-          sizes="(max-width: 640px) 100vw, 450px"
-        />
+        {photo && cloudName ? (
+          <CldImage
+            src={photo}
+            alt={decodedTitle}
+            width={1000}
+            height={1000}
+            className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+            style={{ viewTransitionName: `proyecto-hero-${photo}` }}
+            sizes="(max-width: 640px) 100vw, 450px"
+          />
+        ) : (
+          <div className="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200" aria-label="Sin imagen" />
+        )}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <span className="pointer-events-none absolute bottom-2 right-2 rounded-md bg-black/50 px-2 py-0.5 text-xs text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           Ver proyecto →

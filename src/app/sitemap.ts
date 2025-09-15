@@ -6,7 +6,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const proyectos = getProyectos();
   const projectUrls = proyectos.map((p) => ({
     url: `${base}/proyectos/${p.route ?? p.slug}`,
-    lastModified: p.pubDate instanceof Date ? p.pubDate : new Date(),
+    lastModified: p.pubDate instanceof Date && !isNaN(p.pubDate.getTime())
+      ? p.pubDate
+      : new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
