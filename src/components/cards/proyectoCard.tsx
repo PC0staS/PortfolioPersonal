@@ -48,7 +48,10 @@ export default function ProyectoCards({
             sizes="(max-width: 640px) 100vw, 450px"
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200" aria-label="Sin imagen" />
+          <div
+            className="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200"
+            aria-label="Sin imagen"
+          />
         )}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <span className="pointer-events-none absolute bottom-2 right-2 rounded-md bg-black/50 px-2 py-0.5 text-xs text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">

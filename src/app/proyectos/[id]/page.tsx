@@ -20,9 +20,10 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   if (!proyecto) return { title: "Proyecto no encontrado" };
   const url = `https://pablocostas.dev/proyectos/${params.id}`;
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-  const ogImage = proyecto.heroImage && cloudName
-    ? `https://res.cloudinary.com/${cloudName}/image/upload/${proyecto.heroImage}.jpg`
-    : "/img/me.jpeg";
+  const ogImage =
+    proyecto.heroImage && cloudName
+      ? `https://res.cloudinary.com/${cloudName}/image/upload/${proyecto.heroImage}.jpg`
+      : "/img/me.jpeg";
   return {
     title: proyecto.title,
     description: proyecto.description,
