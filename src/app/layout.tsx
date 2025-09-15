@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="es" className=" ">
       <body
         className={`antialiased min-h-screen w-full bg-light dark:bg-[#0e0e0e] overflow-x-hidden text-black dark:text-white `}
-        style={{ boxSizing: "border-box", scrollBehavior: "smooth"  }}
+        style={{ boxSizing: "border-box", scrollBehavior: "smooth"}}
       >
         <ViewTransition>
           {children}
