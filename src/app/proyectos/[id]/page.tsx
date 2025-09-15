@@ -1,12 +1,10 @@
-
 import { getProyectos } from "@/lib/proyectos";
 import ProyectoHeroImage from "@/components/ProyectoHeroImage";
 import RenderMDX from "@/components/renderMDX";
-import Link from 'next/link';
+import Link from "next/link";
 
 import "./mdx.css";
 import Navbar from "@/components/Navbar";
-
 
 export const dynamic = "force-static";
 
@@ -14,7 +12,28 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   const proyectos = getProyectos();
   const proyecto = proyectos.find((p) => p.route === params.id);
   if (!proyecto) return { title: "Proyecto no encontrado" };
-  return { title: proyecto.title };
+  const url = `https://pablocostas.dev/proyectos/${params.id}`;
+  const ogImage = proyecto.heroImage
+    ? `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${proyecto.heroImage}.jpg`
+    : "/img/me.jpeg";
+  return {
+    title: proyecto.title,
+    description: proyecto.description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: proyecto.title,
+      description: proyecto.description,
+      images: [{ url: ogImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: proyecto.title,
+      description: proyecto.description,
+      images: [ogImage],
+    },
+  };
 }
 
 export default function ProyectoPage({ params }: { params: { id: string } }) {
@@ -30,7 +49,10 @@ export default function ProyectoPage({ params }: { params: { id: string } }) {
         <p className="mb-6 text-center text-gray-500 dark:text-gray-400">
           El proyecto que buscas no existe o ha sido eliminado.
         </p>
-        <Link href="/#proyectos" className="inline-block px-4 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition">
+        <Link
+          href="/#proyectos"
+          className="inline-block px-4 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition"
+        >
           Volver a los proyectos
         </Link>
       </div>
@@ -62,5 +84,3 @@ export default function ProyectoPage({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-
