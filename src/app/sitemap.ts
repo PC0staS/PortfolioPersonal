@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getProyectos } from "@/lib/proyectos";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://pablocostas.dev";
   const proyectos = getProyectos();
