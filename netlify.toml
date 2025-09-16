@@ -1,0 +1,25 @@
+# Netlify configuration for Next.js (App Router) using Bun
+# Docs: https://docs.netlify.com/integrations/frameworks/next-js/ and https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Use your package.json script (uses Bun)
+  command = "bun run build"
+  # Next.js plugin handles output and functions; publish .next for the plugin
+  publish = ".next"
+
+[build.environment]
+  # Ensure Bun is available in the build image
+  BUN_VERSION = "1.1.26"
+  # Recommended Node for Next.js 15
+  NODE_VERSION = "20"
+  # Optional: silence Next telemetry in CI
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Enable the official Next.js plugin for Netlify
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# (Optional) Functions bundling settings — defaults are fine for most apps
+#[functions]
+#  node_bundler = "esbuild"
+#  included_files = ["public/**"]
