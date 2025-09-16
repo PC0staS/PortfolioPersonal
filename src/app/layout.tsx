@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   metadataBase: new URL("https://pablocostas.dev"),
   title: {
-    default: "Pablo Costas – Mis proyectos",
+    default: "Pablo Costas - Desarrollador Full Stack",
     template: "%s | Pablo Costas",
   },
   description:
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://pablocostas.dev",
-    title: "Pablo Costas – Mis proyectos",
+    title: "Pablo Costas - Desarrollador Full Stack",
     description:
       "Portfolio de Pablo Costas — desarrollador web y móvil. Proyectos en Next.js, React, TypeScript y más.",
     siteName: "Pablo Costas",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pablo Costas – Mis proyectos",
+    title: "Pablo Costas - Desarrollador Full Stack",
     description:
       "Portfolio de Pablo Costas — desarrollador web y móvil. Proyectos en Next.js, React, TypeScript y más.",
     images: ["/img/me.jpeg"],
@@ -66,7 +66,11 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: dark)", color: "#0e0e0e" },
   ],
   icons: {
-    icon: "/img/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/img/favicon.png", type: "image/png" },
+    ],
+    apple: "/img/favicon.png",
   },
 };
 
