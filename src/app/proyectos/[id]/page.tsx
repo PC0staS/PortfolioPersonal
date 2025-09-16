@@ -47,8 +47,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       },
     };
   } catch (e) {
-    console.warn('[generateMetadata] fallback for proyectos/[id]:', e);
-    return { title: 'Proyecto', description: 'Detalle del proyecto' };
+    console.warn("[generateMetadata] fallback for proyectos/[id]:", e);
+    return { title: "Proyecto", description: "Detalle del proyecto" };
   }
 }
 
