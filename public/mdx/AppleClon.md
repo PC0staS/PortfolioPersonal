@@ -1,5 +1,5 @@
 ---
-route: 'appleCLon'
+route: 'appleClon'
 title: 'AppleClon - Landing Astro'
 description: 'Recreación del sitio web oficial de apple.'
 pubDate: 'Sep 17 2025'
