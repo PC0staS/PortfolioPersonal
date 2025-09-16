@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
+export const revalidate = false;
 
 // Ensure all dynamic routes are statically generated
 export function generateStaticParams() {
@@ -17,33 +18,38 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  const proyectos = getProyectos();
-  const proyecto = proyectos.find((p) => p.route === params.id);
-  if (!proyecto) return { title: "Proyecto no encontrado" };
-  const url = `https://pablocostas.dev/proyectos/${params.id}`;
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-  const ogImage =
-    proyecto.heroImage && cloudName
-      ? `https://res.cloudinary.com/${cloudName}/image/upload/${proyecto.heroImage}.jpg`
-      : "/img/me.jpeg";
-  return {
-    title: proyecto.title,
-    description: proyecto.description,
-    alternates: { canonical: url },
-    openGraph: {
-      type: "article",
-      url,
+  try {
+    const proyectos = getProyectos();
+    const proyecto = proyectos.find((p) => p.route === params.id);
+    if (!proyecto) return { title: "Proyecto no encontrado" };
+    const url = `https://pablocostas.dev/proyectos/${params.id}`;
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const ogImage =
+      proyecto.heroImage && cloudName
+        ? `https://res.cloudinary.com/${cloudName}/image/upload/${proyecto.heroImage}.jpg`
+        : "/img/me.jpeg";
+    return {
       title: proyecto.title,
       description: proyecto.description,
-      images: [{ url: ogImage }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: proyecto.title,
-      description: proyecto.description,
-      images: [ogImage],
-    },
-  };
+      alternates: { canonical: url },
+      openGraph: {
+        type: "article",
+        url,
+        title: proyecto.title,
+        description: proyecto.description,
+        images: [{ url: ogImage }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: proyecto.title,
+        description: proyecto.description,
+        images: [ogImage],
+      },
+    };
+  } catch (e) {
+    console.warn('[generateMetadata] fallback for proyectos/[id]:', e);
+    return { title: 'Proyecto', description: 'Detalle del proyecto' };
+  }
 }
 
 export default function ProyectoPage({ params }: { params: { id: string } }) {
