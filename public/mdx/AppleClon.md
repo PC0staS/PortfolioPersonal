@@ -146,16 +146,6 @@ bun preview
 - [ ] **E2E testing** con Playwright
 - [ ] **CMS integration**
 
-## 🎨 Capturas de Pantalla
-
-### Desktop
-
-![Desktop View](https://via.placeholder.com/800x400?text=Desktop+View)
-
-### Mobile
-
-![Mobile View](https://via.placeholder.com/300x600?text=Mobile+View)
-
 ## 🤝 Contribuciones
 
 Las contribuciones son bienvenidas. Para contribuir:
