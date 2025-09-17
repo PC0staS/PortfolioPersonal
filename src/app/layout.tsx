@@ -67,10 +67,13 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/img/favicon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/img/favicon.png", type: "image/png", sizes: "32x32" },
     ],
-    apple: "/img/favicon.png",
+    apple: [
+      { url: "/img/favicon.png", sizes: "180x180" }
+    ],
+    shortcut: "/favicon.ico",
   },
 };
 
@@ -85,6 +88,20 @@ export default function RootLayout({
         className={`antialiased min-h-screen w-full bg-light dark:bg-[#0e0e0e] overflow-x-hidden text-black dark:text-white `}
         style={{ boxSizing: "border-box", scrollBehavior: "smooth" }}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Pablo Costas",
+              jobTitle: "Desarrollador Full Stack",
+              url: "https://pablocostas.dev",
+              image: "https://pablocostas.dev/img/me.jpeg",
+              sameAs: ["https://pablocostas.dev"],
+            }),
+          }}
+        />
         <ViewTransition>{children}</ViewTransition>
       </body>
     </html>
