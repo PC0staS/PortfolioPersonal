@@ -1,5 +1,4 @@
 import "./globals.css";
-import { unstable_ViewTransition as ViewTransition } from "react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -102,7 +101,7 @@ export default function RootLayout({
             }),
           }}
         />
-        <ViewTransition>{children}</ViewTransition>
+        {children}
       </body>
     </html>
   );

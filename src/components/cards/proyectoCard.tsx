@@ -3,6 +3,8 @@ import { CldImage } from "next-cloudinary";
 import Image from "next/image";
 import Link from "next/link";
 import type { MouseEvent } from "react";
+import { unstable_ViewTransition as ViewTransition } from "react";
+
 
 export default function ProyectoCards({
   route,
@@ -31,6 +33,7 @@ export default function ProyectoCards({
   };
 
   return (
+    <ViewTransition>
     <Link
       href={`/proyectos/${route}`}
       aria-label={`Abrir ${decodedTitle}`}
@@ -100,5 +103,6 @@ export default function ProyectoCards({
         </div>
       </div>
     </Link>
+    </ViewTransition>
   );
 }
