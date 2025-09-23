@@ -14,7 +14,7 @@ export default function Contacto() {
               saludar? ¡Estoy disponible!
             </p>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-xl">
               <a
                 href={`mailto:${email}`}
                 className="inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 bg-emerald-500 text-white font-semibold hover:bg-emerald-400 transition-colors shadow-sm hover:shadow"
@@ -35,6 +35,23 @@ export default function Contacto() {
                   />
                 </svg>
                 Email
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pablocostasnieto/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-colors shadow-sm hover:shadow"
+                aria-label="Abrir LinkedIn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.966 0-1.75-.79-1.75-1.76 0-.97.784-1.76 1.75-1.76s1.75.79 1.75 1.76c0 .97-.784 1.76-1.75 1.76zm15.5 11.28h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z" />
+                </svg>
+                LinkedIn
               </a>
               <a
                 href="https://github.com/Pc0staS"
