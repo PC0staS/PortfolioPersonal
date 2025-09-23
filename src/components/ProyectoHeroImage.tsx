@@ -29,7 +29,8 @@ export default function ProyectoHeroImage({
     );
   }
   return (
-    <CldImage
+    <CldImage 
+      loading="eager"
       src={src}
       alt={alt}
       width={width}

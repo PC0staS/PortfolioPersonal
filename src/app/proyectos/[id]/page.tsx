@@ -5,7 +5,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { unstable_ViewTransition as ViewTransition } from "react";
 
-
 import "./mdx.css";
 import Navbar from "@/components/Navbar";
 
@@ -72,7 +71,10 @@ export default function ProyectoPage({ params }: { params: { id: string } }) {
             </h1>
           </Link>
           <div className="flex flex-col items-center">
-            <ProyectoHeroImage src={proyecto.heroImage} alt={proyecto.title} />
+              <ProyectoHeroImage
+                src={proyecto.heroImage}
+                alt={proyecto.title}
+              />
             <h1
               className="text-4xl font-bold mb-8 text-center"
               style={{ viewTransitionName: `proyecto-title-${proyecto.title}` }}
