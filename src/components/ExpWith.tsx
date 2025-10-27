@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 gsap.registerPlugin(useGSAP);
 // Tipado para facilitar mantenimiento y posibles ampliaciones
@@ -67,6 +67,11 @@ const asir: Technology[] = [
     description: "Sistema operativo para servidores",
   },
   {
+    name: "Seguridad Informática",
+    icon: "/svg/cybersecurity.svg",
+    description: "Protección de sistemas y datos",
+  },
+  {
     name: "Wazuh",
     icon: "/svg/wazuh.png",
     description: "Plataforma de seguridad y monitoreo",
@@ -82,25 +87,86 @@ const asir: Technology[] = [
     description: "Gestión de identidades y accesos",
   },
   {
-    name: "VMware",
-    icon: "/svg/vmware.svg",
-    description: "Virtualización de servidores y escritorios",
+    name: "Mantenimiento de Sistemas",
+    icon: "/svg/maintenance.svg",
+    description: "Administración y mantenimiento de infraestructura",
   },
   {
     name: "Redes TCP/IP",
     icon: "/svg/networking.svg",
     description: "Fundamentos de redes y protocolos",
   },
-  {
-    name: "Seguridad Informática",
-    icon: "/svg/cybersecurity.svg",
-    description: "Protección de sistemas y datos",
-  },
 ];
 
 export default function ExperienceWith() {
-  useGSAP(() => {});
   const [currentTech, setCurrentTech] = useState(technologies);
+  const containerRef = useRef<HTMLUListElement>(null);
+  const isAnimating = useRef(false);
+  const isFirstRender = useRef(true);
+
+  // Animación inicial
+  useGSAP(() => {
+    if (containerRef.current && isFirstRender.current) {
+      gsap.from(containerRef.current.children, {
+        opacity: 0,
+        y: 30,
+        scale: 0.8,
+        duration: 0.6,
+        stagger: 0.08,
+        ease: "back.out(1.7)",
+      });
+      isFirstRender.current = false;
+    }
+  }, []);
+
+  // Animación de entrada después de cambiar contenido
+  useEffect(() => {
+    if (containerRef.current && !isFirstRender.current && isAnimating.current) {
+      gsap.fromTo(
+        containerRef.current.children,
+        {
+          opacity: 0,
+          y: -20,
+          scale: 0.8,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.06,
+          ease: "back.out(1.4)",
+          onComplete: () => {
+            isAnimating.current = false;
+          },
+        }
+      );
+    }
+  }, [currentTech]);
+
+  const handleTechChange = (newTech: Technology[]) => {
+    if (newTech === currentTech || isAnimating.current) return;
+
+    isAnimating.current = true;
+
+    // Animación de salida
+    if (containerRef.current) {
+      gsap.to(containerRef.current.children, {
+        opacity: 0,
+        y: 20,
+        scale: 0.9,
+        duration: 0.3,
+        stagger: 0.04,
+        ease: "power2.in",
+        onComplete: () => {
+          // Cambiar el contenido
+          setCurrentTech(newTech);
+        },
+      });
+    }
+  };
+
+
   return (
     <section
       className="mt-20 px-4"
@@ -116,7 +182,7 @@ export default function ExperienceWith() {
       <div>
         <div className="flex justify-center mt-4 space-x-4 bg-gray-700/40 mx-auto w-max p-2 rounded-full">
           <button
-            onClick={() => setCurrentTech(technologies)}
+            onClick={() => handleTechChange(technologies)}
             className={`px-4 py-2 rounded-full font-medium focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 cursor-pointer ${
               currentTech === technologies
                 ? " bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
@@ -126,7 +192,7 @@ export default function ExperienceWith() {
             Desarrollo Web
           </button>
           <button
-            onClick={() => setCurrentTech(asir)}
+            onClick={() => handleTechChange(asir)}
             className={`px-4 py-2 rounded-full font-medium focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 cursor-pointer ${
               currentTech === asir
                 ? "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
@@ -138,6 +204,7 @@ export default function ExperienceWith() {
         </div>
       </div>
       <ul
+        ref={containerRef}
         className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-8 max-w-3xl mx-auto"
         role="list"
         id="tech-list"
