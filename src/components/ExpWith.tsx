@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { useState } from "react";
 
 gsap.registerPlugin(useGSAP);
 // Tipado para facilitar mantenimiento y posibles ampliaciones
@@ -54,31 +55,52 @@ const technologies: Technology[] = [
     description: "Automatización y scripting backend",
   },
 ];
+const asir: Technology[] = [
+  {
+    name: "Grafana",
+    icon: "/svg/grafana.svg",
+    description: "Visualización y monitoreo de datos",
+  },
+  {
+    name: "Ubuntu Server",
+    icon: "/svg/ubuntu.svg",
+    description: "Sistema operativo para servidores",
+  },
+  {
+    name: "Wazuh",
+    icon: "/svg/wazuh.png",
+    description: "Plataforma de seguridad y monitoreo",
+  },
+  {
+    name: "Kali Linux",
+    icon: "/svg/kali-linux.png",
+    description: "Distribución para pruebas de penetración",
+  },
+  {
+    name: "Active Directory",
+    icon: "/svg/active-directory.svg",
+    description: "Gestión de identidades y accesos",
+  },
+  {
+    name: "VMware",
+    icon: "/svg/vmware.svg",
+    description: "Virtualización de servidores y escritorios",
+  },
+  {
+    name: "Redes TCP/IP",
+    icon: "/svg/networking.svg",
+    description: "Fundamentos de redes y protocolos",
+  },
+  {
+    name: "Seguridad Informática",
+    icon: "/svg/cybersecurity.svg",
+    description: "Protección de sistemas y datos",
+  },
+];
 
 export default function ExperienceWith() {
-  useGSAP(() => {
-    gsap.fromTo(
-      `#tech-list li`,
-      {
-        duration: 0,
-        x: () => Math.random() * 300 * (Math.random() < 0.5 ? -1 : 1),
-        y: () => Math.random() * 300 * (Math.random() < 0.5 ? -1 : 1),
-      },
-      {
-        duration: 1,
-        opacity: 1,
-        x: 0,
-        y: 0,
-        scale: 1.05,
-        stagger: {
-          ease: "power1.inOut",
-          each: 0.1,
-          from: "random",
-        },
-      }
-    );
-  });
-
+  useGSAP(() => {});
+  const [currentTech, setCurrentTech] = useState(technologies);
   return (
     <section
       className="mt-20 px-4"
@@ -91,17 +113,40 @@ export default function ExperienceWith() {
       >
         Tengo experiencia con:
       </h2>
-
+      <div>
+        <div className="flex justify-center mt-4 space-x-4 bg-gray-700/40 mx-auto w-max p-2 rounded-full">
+          <button
+            onClick={() => setCurrentTech(technologies)}
+            className={`px-4 py-2 rounded-full font-medium focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 cursor-pointer ${
+              currentTech === technologies
+                ? " bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                : ""
+            }`}
+          >
+            Desarrollo Web
+          </button>
+          <button
+            onClick={() => setCurrentTech(asir)}
+            className={`px-4 py-2 rounded-full font-medium focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 cursor-pointer ${
+              currentTech === asir
+                ? "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                : ""
+            }`}
+          >
+            Sistemas Informáticos
+          </button>
+        </div>
+      </div>
       <ul
         className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-8 max-w-3xl mx-auto"
         role="list"
         id="tech-list"
       >
-        {technologies.map((tech) => (
+        {currentTech.map((tech) => (
           <li
             key={tech.name}
             data-tech-item
-            className="group relative flex flex-col opacity-0 items-center translate-y-4 transition-all duration-500 ease-out mb-4"
+            className="group relative flex flex-col items-center mb-4"
           >
             <figure className="flex flex-col items-center">
               <div
