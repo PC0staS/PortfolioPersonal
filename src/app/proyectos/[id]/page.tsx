@@ -18,12 +18,17 @@ export function generateStaticParams() {
   return proyectos.map((p) => ({ id: p.route ?? p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   try {
+    const { id } = await params;
     const proyectos = getProyectos();
-    const proyecto = proyectos.find((p) => p.route === params.id);
+    const proyecto = proyectos.find((p) => p.route === id);
     if (!proyecto) return { title: "Proyecto no encontrado" };
-    const url = `https://pablocostas.dev/proyectos/${params.id}`;
+    const url = `https://pablocostas.dev/proyectos/${id}`;
     const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
     const ogImage =
       proyecto.heroImage && cloudName
@@ -53,9 +58,14 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   }
 }
 
-export default function ProyectoPage({ params }: { params: { id: string } }) {
+export default async function ProyectoPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   const proyectos = getProyectos();
-  const proyecto = proyectos.find((p) => p.route === params.id);
+  const proyecto = proyectos.find((p) => p.route === id);
   if (!proyecto) {
     return notFound();
   }
@@ -71,10 +81,7 @@ export default function ProyectoPage({ params }: { params: { id: string } }) {
             </h1>
           </Link>
           <div className="flex flex-col items-center">
-              <ProyectoHeroImage
-                src={proyecto.heroImage}
-                alt={proyecto.title}
-              />
+            <ProyectoHeroImage src={proyecto.heroImage} alt={proyecto.title} />
             <h1
               className="text-4xl font-bold mb-8 text-center"
               style={{ viewTransitionName: `proyecto-title-${proyecto.title}` }}
