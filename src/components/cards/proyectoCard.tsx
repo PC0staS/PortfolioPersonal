@@ -3,7 +3,8 @@ import { CldImage } from "next-cloudinary";
 import Image from "next/image";
 import Link from "next/link";
 import type { MouseEvent } from "react";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
+
 
 export default function ProyectoCards({
   route,

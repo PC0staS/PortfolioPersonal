@@ -3,7 +3,7 @@ import ProyectoHeroImage from "@/components/ProyectoHeroImage";
 import RenderMDX from "@/components/renderMDX";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 
 import "./mdx.css";
 import Navbar from "@/components/Navbar";
