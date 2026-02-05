@@ -20,13 +20,13 @@ const technologies: Technology[] = [
     description: "Framework UI basado en componentes",
   },
   {
-    name: "HTML",
-    icon: "/svg/html5.svg",
+    name: "Angular",
+    icon: "/svg/angular.svg",
     description: "Estructura semántica de la web",
   },
   {
-    name: "CSS",
-    icon: "/svg/css3.svg",
+    name: "FastAPI",
+    icon: "/svg/fastapi.webp",
     description: "Estilos responsivos y animaciones",
   },
   {
@@ -72,9 +72,9 @@ const asir: Technology[] = [
     description: "Protección de sistemas y datos",
   },
   {
-    name: "Wazuh",
-    icon: "/svg/wazuh.png",
-    description: "Plataforma de seguridad y monitoreo",
+    name: "n8n",
+    icon: "/svg/n8n-color.svg",
+    description: "Plataforma de automatización de flujos de trabajo",
   },
   {
     name: "Kali Linux",
@@ -139,7 +139,7 @@ export default function ExperienceWith() {
           onComplete: () => {
             isAnimating.current = false;
           },
-        }
+        },
       );
     }
   }, [currentTech]);
