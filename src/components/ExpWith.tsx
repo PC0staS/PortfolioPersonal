@@ -93,7 +93,7 @@ const asir: Technology[] = [
   },
   {
     name: "Wazuh",
-    icon: "/svg/networking.svg",
+    icon: "/svg/wazuh.png",
     description: "Plataforma de seguridad y monitoreo",
   },
 ];
