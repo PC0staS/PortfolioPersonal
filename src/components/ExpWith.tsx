@@ -92,9 +92,9 @@ const asir: Technology[] = [
     description: "Administración y mantenimiento de infraestructura",
   },
   {
-    name: "Redes TCP/IP",
+    name: "Wazuh",
     icon: "/svg/networking.svg",
-    description: "Fundamentos de redes y protocolos",
+    description: "Plataforma de seguridad y monitoreo",
   },
 ];
 
