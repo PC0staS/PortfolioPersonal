@@ -44,7 +44,7 @@ export default function MainScreen() {
           opacity: 1,
           y: 0,
           stagger: 0.2,
-        }
+        },
       )
       .fromTo(
         "#contacto-button",
@@ -57,7 +57,7 @@ export default function MainScreen() {
           autoAlpha: 1,
           duration: 1.5,
           ease: "power2.out",
-        }
+        },
       )
       .fromTo(
         "#cv-button",
@@ -71,7 +71,7 @@ export default function MainScreen() {
           duration: 1.5,
           ease: "power2.out",
         },
-        "<"
+        "<",
       );
   });
 
