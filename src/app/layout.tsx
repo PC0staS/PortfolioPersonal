@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pablocostas.dev"),
@@ -69,9 +70,7 @@ export const metadata: Metadata = {
       { url: "/favicon.ico", sizes: "32x32" },
       { url: "/img/favicon.png", type: "image/png", sizes: "32x32" },
     ],
-    apple: [
-      { url: "/img/favicon.png", sizes: "180x180" }
-    ],
+    apple: [{ url: "/img/favicon.png", sizes: "180x180" }],
     shortcut: "/favicon.ico",
   },
 };
@@ -103,6 +102,7 @@ export default function RootLayout({
         />
         {children}
       </body>
+      <SpeedInsights />
     </html>
   );
 }
