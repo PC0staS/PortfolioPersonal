@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pablocostas.dev"),
@@ -103,6 +104,7 @@ export default function RootLayout({
         {children}
       </body>
       <SpeedInsights />
+      <Analytics />
     </html>
   );
 }
