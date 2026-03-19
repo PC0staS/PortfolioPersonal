@@ -21,7 +21,7 @@
     "mdx-components": "^1.0.1",
     "next": "^16.0.10",
     "next-cloudinary": "^6.17.5",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "6.0.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "standard": "^17.1.2",
