@@ -9,97 +9,79 @@ gsap.registerPlugin(useGSAP);
 interface Technology {
   name: string;
   icon: string;
-  description?: string; // descripción breve opcional
+  description?: string;
 }
 
-// Fuente de datos: fácil de reutilizar en otras partes (por ejemplo, para SEO / JSON-LD)
-const technologies: Technology[] = [
+const frontend: Technology[] = [
   {
     name: "React",
     icon: "/svg/react.svg",
-    description: "Framework UI basado en componentes",
+    description: "Interfaz y componentes",
   },
-  {
-    name: "Angular",
-    icon: "/svg/angular.svg",
-    description: "Estructura semántica de la web",
-  },
-  {
-    name: "FastAPI",
-    icon: "/svg/fastapi.webp",
-    description: "Estilos responsivos y animaciones",
-  },
-  {
-    name: "TypeScript",
-    icon: "/svg/typescript.svg",
-    description: "JavaScript tipado para escalabilidad",
-  },
-  {
-    name: "Docker",
-    icon: "/svg/docker.svg",
-    description: "Contenerización y entornos reproducibles",
-  },
+  { name: "TypeScript", icon: "/svg/typescript.svg", description: "Tipado" },
   {
     name: "Astro",
     icon: "/svg/astro.svg",
-    description: "Sitios rápidos orientados a contenido",
+    description: "Sitios estáticos y contenidos",
   },
-  {
-    name: "PostgreSQL",
-    icon: "/svg/postgres.svg",
-    description: "Base de datos relacional robusta",
-  },
+  { name: "GSAP", icon: "/svg/gsap.svg", description: "Animaciones" },
+];
+
+const backendCli: Technology[] = [
+  { name: "FastAPI", icon: "/svg/fastapi.webp", description: "APIs rápidas" },
   {
     name: "Python",
     icon: "/svg/python.svg",
-    description: "Automatización y scripting backend",
+    description: "Scripting y automatización",
+  },
+  { name: "Docker", icon: "/svg/docker.svg", description: "Contenerización" },
+  {
+    name: "PostgreSQL",
+    icon: "/svg/postgres.svg",
+    description: "Bases de datos",
   },
 ];
-const asir: Technology[] = [
-  {
-    name: "Grafana",
-    icon: "/svg/grafana.svg",
-    description: "Visualización y monitoreo de datos",
-  },
-  {
-    name: "Ubuntu Server",
-    icon: "/svg/ubuntu.svg",
-    description: "Sistema operativo para servidores",
-  },
-  {
-    name: "Seguridad Informática",
-    icon: "/svg/cybersecurity.svg",
-    description: "Protección de sistemas y datos",
-  },
+
+const systemsAutomation: Technology[] = [
+  { name: "Ubuntu Server", icon: "/svg/ubuntu.svg", description: "Servidores" },
   {
     name: "n8n",
     icon: "/svg/n8n-color.svg",
-    description: "Plataforma de automatización de flujos de trabajo",
+    description: "Automatización de flujos",
   },
+  { name: "Grafana", icon: "/svg/grafana.svg", description: "Monitoreo" },
+  {
+    name: "Wazuh",
+    icon: "/svg/wazuh.png",
+    description: "Seguridad y monitoreo",
+  },
+];
+
+const cybersecurity: Technology[] = [
   {
     name: "Kali Linux",
     icon: "/svg/kali-linux.png",
-    description: "Distribución para pruebas de penetración",
+    description: "Pentesting",
   },
   {
     name: "Active Directory",
     icon: "/svg/active-directory.svg",
-    description: "Gestión de identidades y accesos",
+    description: "IAM",
   },
   {
-    name: "Mantenimiento de Sistemas",
+    name: "Seguridad Informática",
+    icon: "/svg/cybersecurity.svg",
+    description: "Protección",
+  },
+  {
+    name: "Mantenimiento",
     icon: "/svg/maintenance.svg",
-    description: "Administración y mantenimiento de infraestructura",
-  },
-  {
-    name: "Wazuh",
-    icon: "/svg/wazuh.png",
-    description: "Plataforma de seguridad y monitoreo",
+    description: "Operaciones",
   },
 ];
 
 export default function ExperienceWith() {
-  const [currentTech, setCurrentTech] = useState(technologies);
+  const [currentTech, setCurrentTech] = useState(frontend);
   const containerRef = useRef<HTMLUListElement>(null);
   const isAnimating = useRef(false);
   const isFirstRender = useRef(true);
@@ -179,26 +161,49 @@ export default function ExperienceWith() {
         Tengo experiencia con:
       </h2>
       <div>
-        <div className="flex justify-center mt-4 space-x-4 bg-gray-700/40 mx-auto w-max p-2 rounded-full">
+        <div className="grid grid-cols-2 gap-3 mt-4 bg-gray-700/40 mx-auto max-w-[640px] w-full p-3 rounded-xl justify-center items-center shadow-sm backdrop-blur-sm border border-gray-200/5">
           <button
-            onClick={() => handleTechChange(technologies)}
-            className={`px-4 py-2 rounded-full font-medium focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 cursor-pointer ${
-              currentTech === technologies
-                ? " bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
-                : ""
+            onClick={() => handleTechChange(frontend)}
+            className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
+              currentTech === frontend
+                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
+                : "text-gray-100 hover:bg-white/5"
             }`}
           >
-            Desarrollo Web
+            Desarrollo frontend
           </button>
+
           <button
-            onClick={() => handleTechChange(asir)}
-            className={`px-4 py-2 rounded-full font-medium focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 cursor-pointer ${
-              currentTech === asir
-                ? "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
-                : ""
+            onClick={() => handleTechChange(backendCli)}
+            className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
+              currentTech === backendCli
+                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
+                : "text-gray-100 hover:bg-white/5"
             }`}
           >
-            Sistemas Informáticos
+            Desarrollo backend/cli
+          </button>
+
+          <button
+            onClick={() => handleTechChange(systemsAutomation)}
+            className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
+              currentTech === systemsAutomation
+                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
+                : "text-gray-100 hover:bg-white/5"
+            }`}
+          >
+            Sistemas/Automatización
+          </button>
+
+          <button
+            onClick={() => handleTechChange(cybersecurity)}
+            className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
+              currentTech === cybersecurity
+                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
+                : "text-gray-100 hover:bg-white/5"
+            }`}
+          >
+            Ciberseguridad/Pentesting
           </button>
         </div>
       </div>
