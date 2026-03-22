@@ -68,7 +68,7 @@ const backendCli: Technology[] = [
   {
     name: "Packet Managers",
     icon: "/svg/package.png",
-    description: "npm / pnpm / yarn / brew",
+    description: "dnf/ snap / brew",
   },
   {
     name: "GitHub",
