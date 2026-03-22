@@ -72,7 +72,7 @@ const backendCli: Technology[] = [
   },
   {
     name: "GitHub",
-    icon: "/svg/github-mark.png",
+    icon: "/svg/github.svg",
     description: "Repos, Actions, branches y CI/CD",
   },
 ];
