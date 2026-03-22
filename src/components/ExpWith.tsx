@@ -145,9 +145,9 @@ const cybersecurity: Technology[] = [
     description: "Herramienta de seguridad web",
   },
   {
-    name: "Recon & PrivEsc",
-    icon: "/svg/cybersecurity.svg",
-    description: "Enumeración y elevación de privilegios",
+    name: "bettercap",
+    icon: "/svg/bettercap.png",
+    description: "Análisis y manipulación de tráfico",
   },
   {
     name: "WireGuard",
