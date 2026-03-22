@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useState, useRef, useEffect } from "react";
 
-gsap.registerPlugin(useGSAP);
 // Tipado para facilitar mantenimiento y posibles ampliaciones
 interface Technology {
   name: string;
@@ -20,11 +19,27 @@ const frontend: Technology[] = [
   },
   { name: "TypeScript", icon: "/svg/typescript.svg", description: "Tipado" },
   {
+    name: "Expo",
+    icon: "/svg/expo.png",
+    description: "Desarrollo de apps móviles (React Native)",
+  },
+  { name: "Angular", icon: "/svg/angular.svg", description: "Framework SPA" },
+  {
+    name: "HTML5",
+    icon: "/svg/html5.svg",
+    description: "Maquetación semántica",
+  },
+  { name: "CSS3", icon: "/svg/css3.svg", description: "Estilos y diseño" },
+  {
     name: "Astro",
     icon: "/svg/astro.svg",
-    description: "Sitios estáticos y contenidos",
+    description: "Contenido estático y rendimiento",
   },
-  { name: "GSAP", icon: "/svg/gsap.svg", description: "Animaciones" },
+  {
+    name: "GSAP",
+    icon: "/svg/gsap.webp",
+    description: "Animaciones avanzadas",
+  },
 ];
 
 const backendCli: Technology[] = [
@@ -34,11 +49,31 @@ const backendCli: Technology[] = [
     icon: "/svg/python.svg",
     description: "Scripting y automatización",
   },
+  {
+    name: "Go",
+    icon: "/svg/golang.svg",
+    description: "Servicios concurrentes",
+  },
+  {
+    name: "Makefile",
+    icon: "/svg/makefile.png",
+    description: "Automatización de tareas (Make)",
+  },
   { name: "Docker", icon: "/svg/docker.svg", description: "Contenerización" },
   {
     name: "PostgreSQL",
     icon: "/svg/postgres.svg",
     description: "Bases de datos",
+  },
+  {
+    name: "Packet Managers",
+    icon: "/svg/package.png",
+    description: "npm / pnpm / yarn / brew",
+  },
+  {
+    name: "GitHub",
+    icon: "/svg/github-mark.png",
+    description: "Repos, Actions, branches y CI/CD",
   },
 ];
 
@@ -49,11 +84,32 @@ const systemsAutomation: Technology[] = [
     icon: "/svg/n8n-color.svg",
     description: "Automatización de flujos",
   },
-  { name: "Grafana", icon: "/svg/grafana.svg", description: "Monitoreo" },
   {
-    name: "Wazuh",
-    icon: "/svg/wazuh.png",
-    description: "Seguridad y monitoreo",
+    name: "Grafana",
+    icon: "/svg/grafana.svg",
+    description: "Monitoreo y dashboards",
+  },
+  { name: "Wazuh", icon: "/svg/wazuh.png", description: "Seguridad y alertas" },
+  {
+    name: "Ansible",
+    icon: "/svg/ansible.png",
+    description: "Configuración de infra",
+  },
+  {
+    name: "Prometheus",
+    icon: "/svg/prometheus.png",
+    description: "Métricas y scraping",
+  },
+  {
+    name: "Active Directory",
+    icon: "/svg/active-directory.svg",
+    description: "IAM y post-explotación",
+  },
+  // Docker eliminado aquí porque ya está listado en `backendCli`
+  {
+    name: "Networking",
+    icon: "/svg/networking.svg",
+    description: "Redes y entornos",
   },
 ];
 
@@ -61,22 +117,42 @@ const cybersecurity: Technology[] = [
   {
     name: "Kali Linux",
     icon: "/svg/kali-linux.png",
-    description: "Pentesting",
+    description: "Pentesting y herramientas",
   },
   {
-    name: "Active Directory",
-    icon: "/svg/active-directory.svg",
-    description: "IAM",
+    name: "Nmap",
+    icon: "/svg/nmap.png",
+    description: "Reconocimiento de red",
   },
   {
-    name: "Seguridad Informática",
+    name: "Burp Suite",
+    icon: "/svg/burp-suite.png",
+    description: "Proxy y análisis web",
+  },
+  {
+    name: "Metasploit",
+    icon: "/svg/metasploit.png",
+    description: "Explotación y pruebas",
+  },
+  {
+    name: "Wireshark",
+    icon: "/svg/wireshark.webp",
+    description: "Análisis de tráfico",
+  },
+  {
+    name: "CAIDO",
+    icon: "/svg/caido.png",
+    description: "Herramienta de seguridad web",
+  },
+  {
+    name: "Recon & PrivEsc",
     icon: "/svg/cybersecurity.svg",
-    description: "Protección",
+    description: "Enumeración y elevación de privilegios",
   },
   {
-    name: "Mantenimiento",
-    icon: "/svg/maintenance.svg",
-    description: "Operaciones",
+    name: "WireGuard",
+    icon: "/svg/wireguard.png",
+    description: "VPN segura y ligera",
   },
 ];
 
@@ -161,7 +237,7 @@ export default function ExperienceWith() {
         Tengo experiencia con:
       </h2>
       <div>
-        <div className="grid grid-cols-2 gap-3 mt-4 bg-gray-700/40 mx-auto max-w-[640px] w-full p-3 rounded-xl justify-center items-center shadow-sm backdrop-blur-sm border border-gray-200/5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 bg-gray-700/40 mx-auto max-w-[640px] w-full p-3 rounded-xl justify-center items-center shadow-sm backdrop-blur-sm border border-gray-200/5">
           <button
             onClick={() => handleTechChange(frontend)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${

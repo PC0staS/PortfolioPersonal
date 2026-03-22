@@ -20,7 +20,7 @@ export function getProyectos(): Proyecto[] {
       return [];
     }
     const fileNames = fs.readdirSync(proyectosDirectory);
-    return fileNames
+    const proyectos = fileNames
       .filter((file) => file.endsWith('.mdx') || file.endsWith('.md'))
       .flatMap((fileName) => {
         try {
@@ -49,6 +49,13 @@ export function getProyectos(): Proyecto[] {
           return [] as const;
         }
       });
+
+    // Ordenar por fecha (pubDate) — más recientes primero
+    return proyectos.sort((a, b) => {
+      const at = a.pubDate instanceof Date ? a.pubDate.getTime() : new Date(a.pubDate).getTime();
+      const bt = b.pubDate instanceof Date ? b.pubDate.getTime() : new Date(b.pubDate).getTime();
+      return bt - at;
+    });
   } catch (e) {
     console.warn('[getProyectos] Failed to list directory:', e);
     return [];
