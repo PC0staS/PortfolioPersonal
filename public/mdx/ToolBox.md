@@ -1,12 +1,11 @@
 ---
 route: "toolbox"
 title: "ToolBox"
-description: "A full-stack web application providing image processing, PDF manipulation, QR code generation, video downloading, text encoding, and hash generation tools. Built with Astro, FastAPI, and enterprise-grade security."
+description: "A full-stack web application providing image processing, PDF manipulation, QR code generation, video downloading, text encoding, and hash generation tools. Built with Astro, GO, and enterprise-grade security."
 pubDate: "2026-04-23"
 heroImage: "toolbox"
 githubRepo: "https://github.com/PC0staS"
-demoLink: 'https://toolbox.pablocostas.dev'
-
+demoLink: "https://toolbox.pablocostas.dev"
 ---
 
 # ToolBox
@@ -24,7 +23,7 @@ The backend implements security measures including HMAC-signed tokens, SSRF prev
 ## Tech stack
 
 - **Frontend:** Astro 5, React, TypeScript, TailwindCSS
-- **Backend:** FastAPI (Python 3.12), Uvicorn, Redis, FFmpeg
+- **Backend:** GO, Gin
 - **Authentication:** Clerk
 - **Infrastructure:** Docker, Nginx, Cloudflare Tunnel, Ansible
 - **Security:** SlowAPI rate limiting, HMAC-SHA256 tokens, input sanitization
