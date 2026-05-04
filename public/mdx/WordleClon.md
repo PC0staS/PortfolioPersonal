@@ -1,106 +1,36 @@
 ---
 route: 'wordleClon'
 title: 'wordleClon'
-description: ''
+description: 'An interactive Wordle clone built with React, TypeScript, and Vite. Features word validation via the RAE API, animated cell flips, and support for both limited and unlimited attempts.'
 pubDate: 'Sep 22 2025'
 heroImage: 'WordleClon_zvr6di'
 githubRepo: 'https://github.com/PC0staS/WordleClon'
 demoLink: 'https://wordleClon.pablocostas.dev'
 ---
+
 # WordleClon
 
-WordleClon es un clon interactivo del popular juego Wordle, desarrollado con React, Vite y TypeScript. El objetivo es adivinar una palabra de 5 letras en un número limitado de intentos, con animaciones y lógica fiel al juego original.
+An interactive clone of the Wordle game built with React and TypeScript. The goal is to guess a five-letter word within a limited number of attempts, with faithful animation and color logic matching the original game.
 
-## Características
+**Demo:** [wordleClon.pablocostas.dev](https://wordleClon.pablocostas.dev) | **Code:** [GitHub](https://github.com/PC0staS/WordleClon)
 
-- **Animaciones avanzadas:** Las celdas giran (flip) y se colorean de izquierda a derecha usando `framer-motion`.
-- **Colores de feedback:**
-  - Verde: letra correcta y en posición correcta.
-  - Amarillo: letra correcta pero en posición incorrecta.
-  - Gris: letra no está en la palabra.
-- **Intentos limitados o ilimitados:** El usuario puede alternar entre modos.
-- **Modales de victoria y derrota:** Mensajes superpuestos con significado de la palabra.
-- **Validación de palabras:** Se consulta la API de la RAE para verificar y obtener el significado.
-- **Animación de shake:** El input tiembla si la palabra no es válida.
-- **Animación de flip:** Cada celda gira al revelarse el color.
-- **Animación spring en filas:** La fila entera se anima al aparecer.
+## What it does
 
-## Estructura del proyecto
+WordleClon replicates the core Wordle gameplay: players submit five-letter guesses and receive color-coded feedback (green for correct position, yellow for wrong position, gray for absent letters). It implements the original Wordle coloring logic for repeated letters, marking greens first and then yellows only if available instances remain in the solution.
 
-```
-WordleClon/
-├── public/
-├── src/
-│   ├── App.tsx
-│   ├── index.css
-│   ├── main.tsx
-│   ├── components/
-│   │   ├── Cell.tsx
-│   │   ├── GuessGrid.tsx
-│   │   ├── GuessInput.tsx
-│   │   ├── InputCell.tsx
-│   │   └── Solution.tsx
-│   └── data/
-│       ├── config.ts
-│       └── words.ts
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── README.md
-```
+Invalid words are validated against the RAE (Real Academia Española) API and trigger a shake animation. A modal at the end of each game displays the word's definition. Players can toggle between limited and unlimited attempt modes.
 
-## Instalación y ejecución
+## Tech stack
 
-1. Instala dependencias:
-   ```bash
-   npm install
-   ```
-2. Ejecuta el proyecto:
-   ```bash
-   npm run dev
-   ```
+- **Frontend:** React, TypeScript, Vite, TailwindCSS
+- **Animation:** framer-motion (cell flip, row spring, input shake)
+- **API:** RAE API (word validation and definitions)
 
-## Uso
+## Key features
 
-- Escribe una palabra de 5 letras y pulsa "Guess".
-- El grid mostrará el feedback de colores y animaciones.
-- Cambia entre intentos limitados e ilimitados con el botón correspondiente.
-- Al ganar o perder, se muestra un modal con el significado de la palabra.
-
-## Tecnologías
-
-- React
-- TypeScript
-- Vite
-- framer-motion
-- TailwindCSS
-
-## API utilizada
-
-- [RAE API](https://rae-api.com/) para validación y significado de palabras.
-
-## Lógica de coloreo
-
-- Las letras repetidas se colorean siguiendo la lógica de Wordle original:
-  - Primero se marcan las verdes.
-  - Luego los amarillos solo si quedan instancias disponibles en la palabra solución.
-  - Si una letra no está, se marca gris.
-
-## Animaciones
-
-- **Flip:** Cada celda gira al revelarse el color.
-- **Spring:** La fila entera se anima al aparecer.
-- **Shake:** El input tiembla si la palabra no es válida.
-
-## Personalización
-
-- Puedes ajustar los delays, colores y efectos en los componentes `Cell.tsx` y `GuessGrid.tsx`.
-
-## Autor
-
-- Pablo Costas
-
-## Licencia
-
-MIT
-
+- Accurate Wordle color logic for repeated letters
+- Cell flip animation with staggered reveal
+- Word validation against the RAE dictionary
+- Shake animation on invalid word submission
+- Victory/defeat modals with word definitions
+- Toggle between limited and unlimited attempts

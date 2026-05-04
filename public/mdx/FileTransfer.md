@@ -1,184 +1,36 @@
 ---
 route: 'file-transfer'
 title: 'FileTransfer - Flask'
-description: 'Plataforma web moderna para compartir archivos en red local con interfaz elegante'
+description: 'A local network file sharing platform with chunked uploads for large files, manual user approval system, and direct download links. Built with Flask, SQLite, and Docker.'
 pubDate: 'Jan 10 2025'
 heroImage: 'Filetransfer_ylsbji'
 githubRepo: 'https://github.com/Pc0staS/FileTransfer'
 demoLink: 'https://files.jonastown.es'
 
 ---
-# FileTransfer 📁🌐
 
-**Plataforma web moderna para compartir archivos** en redes locales con interfaz elegante, subidas por chunks, enlaces de descarga directos y sistema de usuarios con aprobación manual.
+# FileTransfer
 
-## 🚀 ¿Qué hice?
+A web-based file sharing platform designed for local networks. Supports chunked uploads for large files, a manual user approval system, and direct download links without authentication.
 
-Desarrollé una **aplicación web completa para compartir archivos** enfocada en simplicidad y seguridad para redes locales, con características avanzadas como subidas resumibles y gestión granular de usuarios.
+**Demo:** [files.jonastown.es](https://files.jonastown.es) | **Code:** [GitHub](https://github.com/Pc0staS/FileTransfer)
 
-**Logros principales:**
-- 🎨 **Interfaz glassmorphism** - Diseño moderno con gradientes y efectos visuales
-- 📤 **Subidas avanzadas** - Drag & drop, múltiples archivos, progreso en tiempo real
-- 🔄 **Sistema de chunks** - Subidas resumibles para archivos grandes (+200MB)
-- 🔗 **Enlaces directos** - Descargas públicas sin necesidad de autenticación
-- 👥 **Gestión de usuarios** - Sistema de aprobación manual para nuevos usuarios
-- 🐳 **Dockerizado completo** - Despliegue fácil con Docker Compose
+## What it does
 
----
+FileTransfer lets users upload and share files over a local network through a clean web interface. Files are organized per user with automatic expiration after five days. The chunked upload system handles files over 200 MB with resumable transfers and individual progress tracking for each file.
 
-## 🛠️ Tecnologías utilizadas
+New user registrations go through a manual approval workflow (pending, active, rejected states). Public download links allow recipients to download files without logging in, preserving original filenames.
 
-### Backend:
-- 🐍 **Python 3.8+** - Lógica del servidor y manejo de archivos
-- 🌶️ **Flask** - Framework web principal minimalista y potente
-- 🗄️ **SQLite** - Base de datos embebida para metadatos y usuarios
-- 🔒 **Werkzeug** - Hashing seguro de contraseñas y utilidades
-- 📁 **OS/Path** - Manejo seguro del sistema de archivos
+## Tech stack
 
-### Frontend:
-- 📄 **HTML5 & CSS3** - Estructura y estilos modernos con glassmorphism
-- 🟨 **JavaScript Vanilla** - Lógica de cliente, drag & drop, progreso
-- 🥾 **Bootstrap 5** - Componentes UI y sistema de grid responsivo
-- 🎨 **Bootstrap Icons** - Iconografía consistente y moderna
+- **Backend:** Python, Flask, SQLite, Werkzeug (password hashing)
+- **Frontend:** Bootstrap 5, vanilla JavaScript (drag & drop, progress tracking)
+- **Infrastructure:** Docker, Docker Compose, Nginx, Cloudflare Tunnel
 
-### DevOps:
-- 🐳 **Docker & Docker Compose** - Containerización y orquestación
-- 🌐 **Nginx** - Reverse proxy para producción (opcional)
-- ☁️ **Cloudflare Tunnel** - Exposición segura sin abrir puertos
+## Key features
 
----
-
-## ✨ Características principales
-
-- **🔐 Sistema de autenticación completo**: Registro con aprobación manual y estados de usuario
-- **📤 Subida avanzada de archivos**: Drag & drop intuitivo con progreso individual
-- **🔄 Subidas por chunks**: Para archivos grandes con reanudación automática
-- **📁 Gestión organizada**: Carpetas por usuario y expiración automática (5 días)
-- **🌐 Enlaces públicos**: Descargas sin login con preservación de nombres originales
-- **🎨 UI moderna**: Diseño glassmorphism con animaciones y feedback visual
-- **⚡ Performance optimizada**: Validación de integridad y manejo robusto de errores
-
----
-
-## 🏗️ Arquitectura
-
-### Estructura del proyecto:
-```
-FileTransfer/
-├── app.py              # Aplicación Flask principal
-├── models/             # Modelos de base de datos
-├── templates/          # Templates HTML con Jinja2
-├── static/            # CSS, JS y assets estáticos
-├── uploads/           # Directorio de archivos subidos
-├── docker-compose.yml # Orquestación de servicios
-└── requirements.txt   # Dependencias Python
-```
-
-### Sistema de autenticación:
-```python
-# Estados de usuario
-USER_STATES = {
-    'pending': 'Pendiente de aprobación',
-    'active': 'Usuario activo',
-    'rejected': 'Acceso denegado'
-}
-
-# Hashing seguro con Werkzeug
-password_hash = generate_password_hash(password)
-check_password_hash(stored_hash, password)
-```
-
-### Sistema de chunks:
-```javascript
-// Inicializar subida resumible
-const response = await fetch('/api/chunk/init', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-        filename: file.name, 
-        total_size: file.size 
-    })
-});
-
-// Subir chunk por chunk con progreso
-while (sentBytes < file.size) {
-    const chunk = file.slice(sentBytes, sentBytes + chunkSize);
-    await uploadChunk(chunk, chunkIndex);
-    updateProgress(sentBytes / file.size * 100);
-}
-```
-
----
-
-## 📋 Instalación y uso
-
-### Opción Docker (recomendada):
-```bash
-# Clonar repositorio
-git clone https://github.com/PC0staS/FileTransfer.git
-cd FileTransfer
-
-# Configurar variables de entorno
-cp .env.example .env
-# Editar configuración:
-# HOST_IP=192.168.1.100
-# DB_VOLUME=/ruta/absoluta/db
-# UPLOADS_VOLUME=/ruta/absoluta/uploads
-
-# Levantar servicios
-docker-compose up --build
-
-# Disponible en http://HOST_IP:3456
-```
-
-### Instalación manual:
-```bash
-# Crear entorno virtual
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# venv\Scripts\activate   # Windows
-
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Configurar variables de entorno
-export FLASK_ENV=development
-export SECRET_KEY=tu_clave_secreta
-
-# Ejecutar aplicación
-python app.py
-```
-
-### API REST:
-```
-POST /api/upload_progress     - Subida con progreso en tiempo real
-POST /api/chunk/init         - Inicializar subida por chunks  
-POST /api/chunk/upload       - Subir chunk individual
-POST /api/chunk/finalize     - Finalizar subida por chunks
-POST /api/delete_file        - Eliminar archivo
-GET  /download/<filename>    - Descarga pública directa
-```
-
----
-
-## 🎓 Lo que aprendí
-
-Este proyecto me permitió dominar:
-- **🌐 Desarrollo web full-stack**: Backend robusto con frontend moderno y responsivo
-- **📁 Manejo avanzado de archivos**: Subidas por chunks, validación y metadatos
-- **🎨 UX/UI avanzado**: Drag & drop, progreso en tiempo real y efectos glassmorphism
-- **🐳 Containerización**: Docker, volúmenes persistentes y variables de entorno
-- **🔒 Seguridad web**: CSRF, cookies seguras, validación de entrada y auth
-- **🌐 APIs REST**: Diseño de endpoints RESTful con documentación clara
-- **⚡ Performance**: Optimización de subidas grandes y gestión de memoria
-
----
-
-## 🔗 Enlaces
-
-- 📂 **[Código fuente](https://github.com/PC0staS/FileTransfer)** - Ver el repositorio en GitHub
-- 🌐 **[Demo en vivo](https://files.jonastown.es)** - Probar la aplicación
-
----
-
-*Este proyecto demuestra mis habilidades en desarrollo web completo y mi capacidad para crear aplicaciones seguras con excelente experiencia de usuario y características avanzadas.*
+- Drag-and-drop file uploads with per-file progress tracking
+- Chunked uploads for files over 200 MB with automatic resume
+- Manual user approval system (pending, active, rejected states)
+- Public download links that preserve original filenames
+- Automatic file expiration after 5 days

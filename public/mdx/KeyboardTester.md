@@ -1,32 +1,33 @@
 ---
 route: "keyboard-tester"
 title: "Keyboard Tester — Vite"
-description: "Herramienta web para visualizar y testear teclas, combinaciones y anti-ghosting al instante"
+description: "A web-based keyboard testing tool that visualizes key presses, combinations, and ghosting issues in real time. Supports multiple layouts with key highlighting and keystroke counting."
 pubDate: "Sep 15 2025"
 heroImage: "KeyboardTester_kl3ja"
 githubRepo: "https://github.com/Pc0staS/Keyboard-Tester"
 demoLink: "https://keyboardtester.pablocostas.dev"
 ---
 
-# Keyboard Tester ⌨️
+# Keyboard Tester
 
-Una herramienta web simple y precisa para verificar el estado de tu teclado en tiempo real: qué teclas detecta, combinaciones simultáneas y posibles problemas de ghosting.
+A web tool for verifying keyboard functionality in real time: which keys are detected, how many simultaneous presses register, and whether ghosting issues exist.
 
-## Highlights
+**Demo:** [keyboardtester.pablocostas.dev](https://keyboardtester.pablocostas.dev) | **Code:** [GitHub](https://github.com/Pc0staS/Keyboard-Tester)
 
-- Detección en vivo de teclas presionadas y liberadas
-- Visualización por layout (ES/ANSI/ISO) con resaltado por tecla
-- Contador de pulsaciones y combinaciones (modificadores incluidos)
-- Indicador de repetición (KeyRepeat) y bloqueo (Caps/Num/Scroll)
-- Reset rápido y pantalla completa para pruebas cómodas
+## What it does
 
-## Stack
+Keyboard Tester captures `keydown` and `keyup` events to display an interactive visual representation of the keyboard. Pressed keys are highlighted on a layout-specific grid, with support for ES, ANSI, and ISO layouts. A keystroke counter tracks total presses and simultaneous key combinations, including modifier keys.
 
-- Next.js + React + TypeScript
-- Tailwind CSS
-- Eventos de teclado (keydown/keyup) con gestión de estados y prevenciones seguras
+The tool also detects key repeat frequency and displays Caps Lock, Num Lock, and Scroll Lock status. A fullscreen mode and quick reset button make it convenient for testing after cleaning or repairing a keyboard.
 
-## Prueba y código
+## Tech stack
 
-- Demo: [KeyboardTester.pablocostas.dev](https://KeyboardTester.pablocostas.dev)
-- Código: [GitHub →](https://github.com/Pc0staS/Keyboard-Tester)
+- **Frontend:** Next.js, React, TypeScript, TailwindCSS
+- **Input:** Native keyboard events (keydown/keyup) with state management and prevention handling
+
+## Key features
+
+- Live key press detection with layout-specific highlighting (ES, ANSI, ISO)
+- Keystroke counter and simultaneous key combination detection
+- Key repeat rate indicator and lock key status display (Caps, Num, Scroll)
+- Fullscreen mode and quick reset for convenient testing
