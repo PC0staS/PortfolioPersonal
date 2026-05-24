@@ -306,7 +306,6 @@ export default function ExperienceWith() {
                   width={60}
                   height={60}
                   className="transition-transform duration-300 group-hover:scale-110"
-                  loading="lazy"
                 />
               </div>
               <div className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
