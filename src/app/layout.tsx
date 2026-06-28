@@ -1,54 +1,57 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
+import './globals.css'
+import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pablocostas.dev"),
+  metadataBase: new URL('https://pablocostas.dev'),
   title: {
-    default: "Pablo Costas - Desarrollador Full Stack",
-    template: "%s | Pablo Costas",
+    default: 'Pablo Costas - Técnico Superior ASIR & Desarrollador Full Stack',
+    template: '%s | Pablo Costas',
   },
   description:
-    "Portfolio de Pablo Costas — desarrollador web y móvil. Proyectos en Next.js, React, TypeScript y más.",
+    'Portfolio de Pablo Costas — Técnico Superior en ASIR, estudiante de DAM y desarrollador web y móvil. Proyectos en Next.js, React, TypeScript y más.',
   keywords: [
-    "Pablo Costas",
-    "Portfolio",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "React Native",
-    "Desarrollador",
-    "Full Stack",
+    'Pablo Costas',
+    'Portfolio',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'React Native',
+    'Desarrollador',
+    'Golang',
+    'Full Stack',
+    'ASIR',
+    'DAM',
   ],
-  authors: [{ name: "Pablo Costas", url: "https://pablocostas.dev" }],
-  creator: "Pablo Costas",
-  publisher: "Pablo Costas",
+  authors: [{ name: 'Pablo Costas', url: 'https://pablocostas.dev' }],
+  creator: 'Pablo Costas',
+  publisher: 'Pablo Costas',
   alternates: {
-    canonical: "/",
+    canonical: '/',
   },
   openGraph: {
-    type: "website",
-    url: "https://pablocostas.dev",
-    title: "Pablo Costas - Desarrollador Full Stack",
+    type: 'website',
+    url: 'https://pablocostas.dev',
+    title: 'Pablo Costas - Técnico Superior ASIR & Desarrollador Full Stack',
     description:
-      "Portfolio de Pablo Costas — desarrollador web y móvil. Proyectos en Next.js, React, TypeScript y más.",
-    siteName: "Pablo Costas",
-    locale: "es_ES",
+      'Portfolio de Pablo Costas — Técnico Superior en ASIR, estudiante de DAM y desarrollador web y móvil. Proyectos en Next.js, React, TypeScript y más.',
+    siteName: 'Pablo Costas',
+    locale: 'es_ES',
     images: [
       {
-        url: "/img/me.jpeg",
+        url: '/img/me.jpeg',
         width: 1200,
         height: 630,
-        alt: "Pablo Costas",
+        alt: 'Pablo Costas',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Pablo Costas - Desarrollador Full Stack",
+    card: 'summary_large_image',
+    title: 'Pablo Costas - Técnico Superior ASIR & Desarrollador Full Stack',
     description:
-      "Portfolio de Pablo Costas — desarrollador web y móvil. Proyectos en Next.js, React, TypeScript y más.",
-    images: ["/img/me.jpeg"],
+      'Portfolio de Pablo Costas — Técnico Superior en ASIR, estudiante de DAM y desarrollador web y móvil. Proyectos en Next.js, React, TypeScript y más.',
+    images: ['/img/me.jpeg'],
   },
   robots: {
     index: true,
@@ -56,47 +59,47 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e0e0e" },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0e0e0e' },
   ],
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/img/favicon.png", type: "image/png", sizes: "32x32" },
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/img/favicon.png', type: 'image/png', sizes: '32x32' },
     ],
-    apple: [{ url: "/img/favicon.png", sizes: "180x180" }],
-    shortcut: "/favicon.ico",
+    apple: [{ url: '/img/favicon.png', sizes: '180x180' }],
+    shortcut: '/favicon.ico',
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="es" className=" ">
       <body
         className={`antialiased min-h-screen w-full bg-light dark:bg-[#0e0e0e] overflow-x-hidden text-black dark:text-white `}
-        style={{ boxSizing: "border-box", scrollBehavior: "smooth" }}
+        style={{ boxSizing: 'border-box', scrollBehavior: 'smooth' }}
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Pablo Costas",
-              jobTitle: "Desarrollador Full Stack",
-              url: "https://pablocostas.dev",
-              image: "https://pablocostas.dev/img/me.jpeg",
-              sameAs: ["https://pablocostas.dev"],
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Pablo Costas',
+              jobTitle: 'Técnico Superior ASIR & Desarrollador Full Stack',
+              url: 'https://pablocostas.dev',
+              image: 'https://pablocostas.dev/img/me.jpeg',
+              sameAs: ['https://pablocostas.dev'],
             }),
           }}
         />
@@ -104,5 +107,5 @@ export default function RootLayout({
       </body>
       <Analytics />
     </html>
-  );
+  )
 }
