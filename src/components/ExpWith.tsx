@@ -1,166 +1,165 @@
-"use client";
-import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { useState, useRef, useEffect } from "react";
+'use client'
+import Image from 'next/image'
+import { useGSAP } from '@gsap/react'
+import { gsap } from 'gsap'
+import { useState, useRef, useEffect } from 'react'
 
 // Tipado para facilitar mantenimiento y posibles ampliaciones
 interface Technology {
-  name: string;
-  icon: string;
-  description?: string;
+  name: string
+  icon: string
+  description?: string
 }
 
 const frontend: Technology[] = [
   {
-    name: "React",
-    icon: "/svg/react.svg",
-    description: "Interfaz y componentes",
+    name: 'React',
+    icon: '/svg/react.svg',
+    description: 'Interfaz y componentes',
   },
-  { name: "TypeScript", icon: "/svg/typescript.svg", description: "Tipado" },
+  { name: 'TypeScript', icon: '/svg/typescript.svg', description: 'Tipado' },
   {
-    name: "Expo",
-    icon: "/svg/expo.png",
-    description: "Desarrollo de apps móviles (React Native)",
+    name: 'Expo',
+    icon: '/svg/expo.png',
+    description: 'Desarrollo de apps móviles (React Native)',
   },
-  { name: "Angular", icon: "/svg/angular.svg", description: "Framework SPA" },
+  { name: 'Angular', icon: '/svg/angular.svg', description: 'Framework SPA' },
   {
-    name: "HTML5",
-    icon: "/svg/html5.svg",
-    description: "Maquetación semántica",
+    name: 'HTML5',
+    icon: '/svg/html5.svg',
+    description: 'Maquetación semántica',
   },
-  { name: "CSS3", icon: "/svg/css3.svg", description: "Estilos y diseño" },
+  { name: 'CSS3', icon: '/svg/css3.svg', description: 'Estilos y diseño' },
   {
-    name: "Astro",
-    icon: "/svg/astro.svg",
-    description: "Contenido estático y rendimiento",
+    name: 'Astro',
+    icon: '/svg/astro.svg',
+    description: 'Contenido estático y rendimiento',
   },
   {
-    name: "GSAP",
-    icon: "/svg/gsap.webp",
-    description: "Animaciones avanzadas",
+    name: 'GSAP',
+    icon: '/svg/gsap.webp',
+    description: 'Animaciones avanzadas',
   },
-];
+]
 
 const backendCli: Technology[] = [
-  { name: "FastAPI", icon: "/svg/fastapi.webp", description: "APIs rápidas" },
+  { name: 'FastAPI', icon: '/svg/fastapi.webp', description: 'APIs rápidas' },
   {
-    name: "Python",
-    icon: "/svg/python.svg",
-    description: "Scripting y automatización",
+    name: 'Python',
+    icon: '/svg/python.svg',
+    description: 'Backend y herramientas',
   },
   {
-    name: "Go",
-    icon: "/svg/golang.svg",
-    description: "Servicios concurrentes",
+    name: 'Go',
+    icon: '/svg/golang.svg',
+    description: 'Servicios concurrentes',
   },
   {
-    name: "Makefile",
-    icon: "/svg/makefile.png",
-    description: "Automatización de tareas (Make)",
+    name: 'Shell',
+    icon: '/svg/bash-icon.svg',
+    description: 'Scripting y automatización CLI',
   },
-  { name: "Docker", icon: "/svg/docker.svg", description: "Contenerización" },
+  { name: 'Docker', icon: '/svg/docker.svg', description: 'Contenerización' },
   {
-    name: "PostgreSQL",
-    icon: "/svg/postgres.svg",
-    description: "Bases de datos",
-  },
-  {
-    name: "Packet Managers",
-    icon: "/svg/package.png",
-    description: "dnf/ snap / brew",
+    name: 'PostgreSQL',
+    icon: '/svg/postgres.svg',
+    description: 'Bases de datos',
   },
   {
-    name: "GitHub",
-    icon: "/svg/github.svg",
-    description: "Repos, Actions, branches y CI/CD",
+    name: 'Packet Managers',
+    icon: '/svg/package.png',
+    description: 'dnf/ snap / brew',
   },
-];
+  {
+    name: 'Auth / JWT',
+    icon: '/svg/jwt.svg',
+    description: 'Autenticación y autorización',
+  },
+]
 
 const systemsAutomation: Technology[] = [
-  { name: "Ubuntu Server", icon: "/svg/ubuntu.svg", description: "Servidores" },
+  { name: 'Linux', icon: '/svg/linux.svg', description: 'Servidores y CLI' },
   {
-    name: "n8n",
-    icon: "/svg/n8n-color.svg",
-    description: "Automatización de flujos",
+    name: 'n8n',
+    icon: '/svg/n8n-color.svg',
+    description: 'Automatización de flujos',
   },
   {
-    name: "Grafana",
-    icon: "/svg/grafana.svg",
-    description: "Monitoreo y dashboards",
+    name: 'Grafana',
+    icon: '/svg/grafana.svg',
+    description: 'Monitoreo y dashboards',
   },
-  { name: "Wazuh", icon: "/svg/wazuh.png", description: "Seguridad y alertas" },
+  { name: 'Wazuh', icon: '/svg/wazuh.png', description: 'Seguridad y alertas' },
   {
-    name: "Ansible",
-    icon: "/svg/ansible.png",
-    description: "Configuración de infra",
-  },
-  {
-    name: "Prometheus",
-    icon: "/svg/prometheus.png",
-    description: "Métricas y scraping",
+    name: 'Ansible',
+    icon: '/svg/ansible.png',
+    description: 'Configuración de infra',
   },
   {
-    name: "Active Directory",
-    icon: "/svg/active-directory.svg",
-    description: "IAM y post-explotación",
+    name: 'Prometheus',
+    icon: '/svg/prometheus.png',
+    description: 'Métricas y scraping',
   },
-  // Docker eliminado aquí porque ya está listado en `backendCli`
   {
-    name: "Networking",
-    icon: "/svg/networking.svg",
-    description: "Redes y entornos",
+    name: 'Active Directory',
+    icon: '/svg/active-directory.svg',
+    description: 'IAM y post-explotación',
   },
-];
+  {
+    name: 'GitHub',
+    icon: '/svg/github.svg',
+    description: 'Repos, Actions y CI/CD',
+  },
+]
 
 const cybersecurity: Technology[] = [
   {
-    name: "Kali Linux",
-    icon: "/svg/kali-linux.png",
-    description: "Pentesting y herramientas",
+    name: 'Kali Linux',
+    icon: '/svg/kali-linux.png',
+    description: 'Pentesting y herramientas',
   },
   {
-    name: "Nmap",
-    icon: "/svg/nmap.png",
-    description: "Reconocimiento de red",
+    name: 'Nmap',
+    icon: '/svg/nmap.png',
+    description: 'Reconocimiento de red',
   },
   {
-    name: "Burp Suite",
-    icon: "/svg/burp-suite.png",
-    description: "Proxy y análisis web",
+    name: 'Burp Suite',
+    icon: '/svg/burp-suite.png',
+    description: 'Proxy y análisis web',
   },
   {
-    name: "Metasploit",
-    icon: "/svg/metasploit.png",
-    description: "Explotación y pruebas",
+    name: 'Metasploit',
+    icon: '/svg/metasploit.png',
+    description: 'Explotación y pruebas',
   },
   {
-    name: "Wireshark",
-    icon: "/svg/wireshark.webp",
-    description: "Análisis de tráfico",
+    name: 'Wireshark',
+    icon: '/svg/wireshark.webp',
+    description: 'Análisis de tráfico',
   },
   {
-    name: "CAIDO",
-    icon: "/svg/caido.png",
-    description: "Herramienta de seguridad web",
+    name: 'CAIDO',
+    icon: '/svg/caido.png',
+    description: 'Herramienta de seguridad web',
   },
   {
-    name: "bettercap",
-    icon: "/svg/bettercap.png",
-    description: "Análisis y manipulación de tráfico",
+    name: 'bettercap',
+    icon: '/svg/bettercap.png',
+    description: 'Análisis y manipulación de tráfico',
   },
   {
-    name: "WireGuard",
-    icon: "/svg/wireguard.png",
-    description: "VPN segura y ligera",
+    name: 'WireGuard',
+    icon: '/svg/wireguard.png',
+    description: 'VPN segura y ligera',
   },
-];
+]
 
 export default function ExperienceWith() {
-  const [currentTech, setCurrentTech] = useState(frontend);
-  const containerRef = useRef<HTMLUListElement>(null);
-  const isAnimating = useRef(false);
-  const isFirstRender = useRef(true);
+  const [currentTech, setCurrentTech] = useState(frontend)
+  const containerRef = useRef<HTMLUListElement>(null)
+  const isAnimating = useRef(false)
+  const isFirstRender = useRef(true)
 
   // Animación inicial
   useGSAP(() => {
@@ -171,11 +170,11 @@ export default function ExperienceWith() {
         scale: 0.8,
         duration: 0.6,
         stagger: 0.08,
-        ease: "back.out(1.7)",
-      });
-      isFirstRender.current = false;
+        ease: 'back.out(1.7)',
+      })
+      isFirstRender.current = false
     }
-  }, []);
+  }, [])
 
   // Animación de entrada después de cambiar contenido
   useEffect(() => {
@@ -193,19 +192,19 @@ export default function ExperienceWith() {
           scale: 1,
           duration: 0.5,
           stagger: 0.06,
-          ease: "back.out(1.4)",
+          ease: 'back.out(1.4)',
           onComplete: () => {
-            isAnimating.current = false;
+            isAnimating.current = false
           },
         },
-      );
+      )
     }
-  }, [currentTech]);
+  }, [currentTech])
 
   const handleTechChange = (newTech: Technology[]) => {
-    if (newTech === currentTech || isAnimating.current) return;
+    if (newTech === currentTech || isAnimating.current) return
 
-    isAnimating.current = true;
+    isAnimating.current = true
 
     // Animación de salida
     if (containerRef.current) {
@@ -215,21 +214,17 @@ export default function ExperienceWith() {
         scale: 0.9,
         duration: 0.3,
         stagger: 0.04,
-        ease: "power2.in",
+        ease: 'power2.in',
         onComplete: () => {
           // Cambiar el contenido
-          setCurrentTech(newTech);
+          setCurrentTech(newTech)
         },
-      });
+      })
     }
-  };
+  }
 
   return (
-    <section
-      className="mt-20 px-4"
-      aria-labelledby="exp-tech-heading"
-      role="region"
-    >
+    <section className="mt-20 px-4" aria-labelledby="exp-tech-heading" role="region">
       <h2
         id="exp-tech-heading"
         className="text-lg sm:text-xl font-semibold text-center text-gray-700 dark:text-gray-300"
@@ -242,8 +237,8 @@ export default function ExperienceWith() {
             onClick={() => handleTechChange(frontend)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
               currentTech === frontend
-                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
-                : "text-gray-100 hover:bg-white/5"
+                ? 'bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30'
+                : 'text-gray-100 hover:bg-white/5'
             }`}
           >
             Desarrollo frontend
@@ -253,8 +248,8 @@ export default function ExperienceWith() {
             onClick={() => handleTechChange(backendCli)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
               currentTech === backendCli
-                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
-                : "text-gray-100 hover:bg-white/5"
+                ? 'bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30'
+                : 'text-gray-100 hover:bg-white/5'
             }`}
           >
             Desarrollo backend/cli
@@ -264,8 +259,8 @@ export default function ExperienceWith() {
             onClick={() => handleTechChange(systemsAutomation)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
               currentTech === systemsAutomation
-                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
-                : "text-gray-100 hover:bg-white/5"
+                ? 'bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30'
+                : 'text-gray-100 hover:bg-white/5'
             }`}
           >
             Sistemas/Automatización
@@ -275,8 +270,8 @@ export default function ExperienceWith() {
             onClick={() => handleTechChange(cybersecurity)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
               currentTech === cybersecurity
-                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
-                : "text-gray-100 hover:bg-white/5"
+                ? 'bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30'
+                : 'text-gray-100 hover:bg-white/5'
             }`}
           >
             Ciberseguridad/Pentesting
@@ -289,7 +284,7 @@ export default function ExperienceWith() {
         role="list"
         id="tech-list"
       >
-        {currentTech.map((tech) => (
+        {currentTech.map(tech => (
           <li
             key={tech.name}
             data-tech-item
@@ -327,5 +322,5 @@ export default function ExperienceWith() {
         ))}
       </ul>
     </section>
-  );
+  )
 }
