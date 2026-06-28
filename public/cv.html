@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pablo Costas Nieto — CV</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          'Inter',
+          system-ui,
+          -apple-system,
+          sans-serif;
+        font-size: 9.5pt;
+        color: #1e1e1e;
+        line-height: 1.5;
+        background: #fff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        overflow: hidden;
+      }
+
+      /* ── Sidebar ── */
+      .sidebar {
+        width: 33%;
+        background: #1a1a2e;
+        color: #e0e0e0;
+        padding: 10mm 5mm 8mm 7mm;
+        display: flex;
+        flex-direction: column;
+        gap: 5mm;
+      }
+
+      .sidebar .avatar {
+        width: 24mm;
+        height: 24mm;
+        border-radius: 50%;
+        border: 1.5pt solid rgba(255, 255, 255, 0.12);
+        object-fit: cover;
+      }
+
+      .sidebar .name {
+        font-size: 15pt;
+        font-weight: 800;
+        letter-spacing: -0.3pt;
+        color: #fff;
+        line-height: 1.1;
+      }
+      .sidebar .name span {
+        color: #64b5f6;
+      }
+
+      .sidebar .subtitle {
+        font-size: 7.5pt;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2.2pt;
+        color: #90caf9;
+        margin-top: 0.5mm;
+      }
+
+      .sidebar h3 {
+        font-size: 7.5pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.8pt;
+        color: #90caf9;
+        margin-bottom: 1.5mm;
+      }
+
+      .sidebar .contact-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.8mm;
+        font-size: 7.5pt;
+        color: #c0c0d0;
+        margin-bottom: 1.2mm;
+        line-height: 1.25;
+      }
+      .sidebar .contact-row .icon {
+        width: 3mm;
+        text-align: center;
+        flex-shrink: 0;
+        opacity: 0.55;
+        font-size: 7pt;
+      }
+      .sidebar a {
+        color: #90caf9;
+        text-decoration: none;
+        font-size: 7.5pt;
+      }
+
+      .sidebar .lang-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 8pt;
+        margin-bottom: 1mm;
+        color: #c0c0d0;
+      }
+      .sidebar .lang-dots {
+        color: #64b5f6;
+        letter-spacing: 1pt;
+        font-size: 6.5pt;
+      }
+
+      .sidebar .soft-skill {
+        font-size: 8pt;
+        color: #c0c0d0;
+        margin-bottom: 1mm;
+        padding-left: 2mm;
+        border-left: 1pt solid rgba(100, 181, 246, 0.3);
+      }
+
+      /* ── Main ── */
+      .main {
+        width: 67%;
+        padding: 10mm 7mm 8mm 7mm;
+        display: flex;
+        flex-direction: column;
+        gap: 4.5mm;
+      }
+
+      .main h2 {
+        font-size: 9pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.6pt;
+        color: #1a1a2e;
+        border-bottom: 1pt solid #e0e0e0;
+        padding-bottom: 1mm;
+        margin-bottom: 2mm;
+        display: flex;
+        align-items: center;
+        gap: 1.8mm;
+      }
+      .main h2::before {
+        content: '';
+        display: inline-block;
+        width: 2.5mm;
+        height: 2.5mm;
+        background: #1a1a2e;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .main .about-text {
+        font-size: 8.5pt;
+        color: #444;
+        line-height: 1.55;
+      }
+
+      /* Experience & Education */
+      .item {
+        margin-bottom: 2.8mm;
+        border-left: 1pt solid #ddd;
+        padding-left: 2.8mm;
+      }
+      .item:last-child {
+        margin-bottom: 0;
+      }
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+      }
+      .item-title {
+        font-weight: 700;
+        font-size: 9.5pt;
+        color: #1a1a2e;
+      }
+      .item-date {
+        font-size: 7.5pt;
+        color: #999;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .item-sub {
+        font-weight: 600;
+        font-size: 8.5pt;
+        color: #555;
+        margin-bottom: 0.5mm;
+      }
+      .item-desc {
+        font-size: 8pt;
+        color: #666;
+        line-height: 1.4;
+        list-style: none;
+      }
+      .item-desc li {
+        margin-bottom: 0.3mm;
+        padding-left: 2.5mm;
+        position: relative;
+      }
+      .item-desc li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: #bbb;
+        font-size: 7pt;
+      }
+
+      .course-item {
+        font-size: 8pt;
+        color: #555;
+        margin-bottom: 0.8mm;
+      }
+      .course-item strong {
+        color: #1a1a2e;
+      }
+
+      .portfolio-link {
+        margin-top: 1mm;
+        font-size: 8pt;
+        color: #1a1a2e;
+        font-weight: 600;
+      }
+      .portfolio-link a {
+        color: #1a1a2e;
+      }
+
+      @media print {
+        .page {
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <img class="avatar" src="https://pablocostas.dev/img/me.jpeg" alt="Pablo Costas" />
+
+        <div>
+          <div class="name">Pablo <span>Costas</span> Nieto</div>
+          <div class="subtitle">Desarrollador &amp; Admin. de Sistemas</div>
+        </div>
+
+        <div>
+          <h3>Contacto</h3>
+          <div class="contact-row">
+            <span class="icon">📍</span>
+            <span>Rúa José Ramón Fontán, 5<br />36208 Vigo, España</span>
+          </div>
+          <div class="contact-row">
+            <span class="icon">📞</span>
+            <span>610 306 542</span>
+          </div>
+          <div class="contact-row">
+            <span class="icon">✉️</span>
+            <span>pablocostasnieto@gmail.com</span>
+          </div>
+          <div class="contact-row">
+            <span class="icon">🌐</span>
+            <a href="https://pablocostas.dev">pablocostas.dev</a>
+          </div>
+          <div class="contact-row">
+            <span class="icon">⌨️</span>
+            <a href="https://github.com/Pc0staS">github.com/Pc0staS</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Idiomas</h3>
+          <div class="lang-item">
+            <span>Español</span>
+            <span class="lang-dots">●●●●●</span>
+          </div>
+          <div class="lang-item">
+            <span>Gallego</span>
+            <span class="lang-dots">●●●●●</span>
+          </div>
+          <div class="lang-item">
+            <span>Inglés — C1</span>
+            <span class="lang-dots">●●●●○</span>
+          </div>
+        </div>
+
+        <div>
+          <h3>Aptitudes</h3>
+          <div class="soft-skill">Resolución de problemas</div>
+          <div class="soft-skill">Aprendizaje autónomo</div>
+          <div class="soft-skill">Trabajo en equipo</div>
+          <div class="soft-skill">Organización</div>
+          <div class="soft-skill">Adaptabilidad</div>
+        </div>
+
+        <div>
+          <h3>Permisos</h3>
+          <div class="soft-skill">Conducir B</div>
+          <div class="soft-skill">Conducir A2</div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <div>
+          <h2>Perfil</h2>
+          <p class="about-text">
+            Técnico Superior en Administración de Sistemas Informáticos en Red con perfil en
+            ciberseguridad. Actualmente realizo prácticas como desarrollador de software y
+            administrador de dispositivos en Adealoxica Ingeniería, mientras curso Desarrollo de
+            Aplicaciones Multiplataforma. Me motiva crear herramientas que resuelvan problemas
+            reales y automatizar procesos combinando sistemas, seguridad y desarrollo.
+          </p>
+        </div>
+
+        <div>
+          <h2>Experiencia</h2>
+
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">Adealoxica Ingeniería</span>
+              <span class="item-date">Feb 2026 — Actualidad</span>
+            </div>
+            <div class="item-sub">Desarrollo de software &amp; Administración de sistemas</div>
+            <ul class="item-desc">
+              <li>Desarrollo de aplicaciones internas para la gestión de procesos empresariales</li>
+              <li>Administración y mantenimiento de dispositivos y servidores</li>
+              <li>Automatización de flujos de trabajo y despliegues</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2>Formación</h2>
+
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">Desarrollo de Aplicaciones Multiplataforma</span>
+              <span class="item-date">2026 — Actualidad</span>
+            </div>
+            <div class="item-sub">Innovación en Formación Profesional, Vigo</div>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title"
+                >Téc. Superior en Admin. de Sistemas Informáticos en Red</span
+              >
+              <span class="item-date">2024 — 2026</span>
+            </div>
+            <div class="item-sub">
+              Innovación en Formación Profesional, Vigo — Perfil en Ciberseguridad
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <span class="item-title">Bachillerato de Ciencias</span>
+              <span class="item-date">2022 — 2024</span>
+            </div>
+            <div class="item-sub">Colegio Amor de Dios, Vigo</div>
+          </div>
+        </div>
+
+        <div>
+          <h2>Formación complementaria</h2>
+
+          <div class="course-item"><strong>Desarrollo Frontend y Backend</strong> — Mastermind</div>
+
+          <div class="course-item"><strong>Seguridad Informática y Redes</strong> — Mastermind</div>
+
+          <div class="course-item">
+            <strong>TryHackMe</strong> — Plataforma de ciberseguridad práctica
+          </div>
+        </div>
+
+        <div class="portfolio-link">
+          ⤷ Proyectos destacados en <a href="https://pablocostas.dev">pablocostas.dev</a>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
