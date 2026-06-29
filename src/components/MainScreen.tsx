@@ -78,11 +78,11 @@ export default function MainScreen() {
   return (
     <div className="flex flex-col items-center mt-10 px-4">
       <Image
-        src="/img/me.jpeg"
+        src="/img/me.webp"
         alt="Description"
         width={200}
         height={200}
-        className="rounded-full border-3 border-white"
+        className="rounded-full border-3 border-white object-cover w-[200px] h-[200px]"
       />
       <h1 id="nombre" className="text-xl sm:text-2xl font-extrabold mt-4 text-center invisible">
         ¡Hola! Soy Pablo Costas
