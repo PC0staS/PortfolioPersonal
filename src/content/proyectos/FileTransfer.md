@@ -6,7 +6,7 @@ pubDate: 'Jan 10 2025'
 heroImage: 'Filetransfer_ylsbji'
 githubRepo: 'https://github.com/Pc0staS/FileTransfer'
 demoLink: 'https://files.jonastown.es'
-
+tags: ['Flask']
 ---
 
 # FileTransfer

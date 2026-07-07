@@ -5,6 +5,7 @@ description: 'A multi-purpose Discord bot with 30+ slash commands for network di
 pubDate: 'Nov 20 2024'
 heroImage: 'utilsbot_lq89oa'
 githubRepo: 'https://github.com/Pc0staS/UtilsBot'
+tags: ['Python']
 ---
 
 # UtilsBot

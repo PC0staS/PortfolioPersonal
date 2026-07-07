@@ -5,6 +5,7 @@ description: "A lightweight CLI tool for interactively generating infrastructure
 pubDate: "2026-03-22"
 heroImage: "conga"
 githubRepo: "https://github.com/PC0staS/conga"
+tags: ['Go', 'CLI']
 ---
 
 # CONGA

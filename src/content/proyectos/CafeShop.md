@@ -5,6 +5,7 @@ description: 'A full-stack e-commerce platform for managing coffee products, fea
 pubDate: 'Sep 7 2025'
 heroImage: 'CafeShop_301h1dc'
 githubRepo: 'https://github.com/PC0staS/CafeShop'
+tags: ['Next.js', 'FastAPI', 'PostgreSQL']
 ---
 
 # CafeShop

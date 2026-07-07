@@ -6,6 +6,7 @@ pubDate: "2026-04-27"
 heroImage: "tango"
 githubRepo: "https://github.com/pc0stas/tango"
 demoLink: "https://asciinema.org/a/4TUGFXRgmZ16v7HD"
+tags: ['Go', 'CLI']
 ---
 
 # Tango

@@ -1,5 +1,4 @@
-"use client";
-import { CldImage } from "next-cloudinary";
+import { cloudinaryUrl } from "@/lib/cloudinary";
 
 type Props = {
   src?: string;
@@ -16,9 +15,7 @@ export default function ProyectoHeroImage({
   height = 400,
   className,
 }: Props) {
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-  // Fallback visual si no hay imagen de Cloudinary
-  if (!src || !cloudName) {
+  if (!src) {
     return (
       <div
         className={`rounded-xl mb-6 w-full h-[400px] bg-gradient-to-br from-gray-100 to-gray-200 ${
@@ -29,15 +26,13 @@ export default function ProyectoHeroImage({
     );
   }
   return (
-    <CldImage 
+    <img
       loading="eager"
-      src={src}
+      src={cloudinaryUrl(src)}
       alt={alt}
       width={width}
       height={height}
-      className={`rounded-xl object-cover mb-6 w-full h-[400px] ${
-        className ?? ""
-      }`}
+      className={`rounded-xl object-cover mb-6 w-full h-[400px] ${className ?? ""}`}
       style={{ viewTransitionName: `proyecto-hero-${src}` }}
     />
   );

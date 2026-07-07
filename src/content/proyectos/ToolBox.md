@@ -6,6 +6,7 @@ pubDate: "2026-04-23"
 heroImage: "toolbox"
 githubRepo: "https://github.com/PC0staS"
 demoLink: "https://toolbox.pablocostas.dev"
+tags: ['Astro', 'Go', 'React', 'TailwindCSS', 'TypeScript']
 ---
 
 # ToolBox

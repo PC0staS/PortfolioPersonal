@@ -5,6 +5,7 @@ description: 'A production-ready user authentication template built with FastAPI
 pubDate: 'Sep 18 2025'
 heroImage: 'FastApiUserTemplate_xsxrlc'
 githubRepo: 'https://github.com/PC0staS/FastApiUserTemplate'
+tags: ['FastAPI', 'PostgreSQL']
 ---
 
 # FastAPI User Template

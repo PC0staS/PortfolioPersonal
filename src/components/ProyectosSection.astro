@@ -1,0 +1,22 @@
+---
+import ProyectosAnimated from '@/components/ProyectosAnimated'
+import { getCollection } from 'astro:content'
+
+const allProyectos = await getCollection('proyectos')
+const proyectos = allProyectos.map((p) => ({
+  slug: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  heroImage: p.data.heroImage,
+  githubRepo: p.data.githubRepo,
+  demoLink: p.data.demoLink,
+  route: p.data.route ?? p.id,
+  tags: p.data.tags ?? [],
+  pubDate: p.data.pubDate,
+}))
+  .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+
+const allTags = [...new Set(proyectos.flatMap((p) => p.tags))].sort()
+---
+
+<ProyectosAnimated client:load proyectos={proyectos} allTags={allTags} />

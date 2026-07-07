@@ -5,6 +5,7 @@ description: 'A cross-platform mobile blog app built with React Native and Expo,
 pubDate: 'Aug 30 2025'
 heroImage: 'BlogReactNative_nztq0t'
 githubRepo: 'https://github.com/PC0staS/BlogReactNative'
+tags: ['React Native']
 ---
 
 # BlogReactNative
