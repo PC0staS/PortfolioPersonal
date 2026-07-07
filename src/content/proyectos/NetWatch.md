@@ -6,6 +6,7 @@ pubDate: 'Dec 15 2024'
 heroImage: 'Netwatch_xsb6da'
 githubRepo: 'https://github.com/Pc0staS/Netwatch'
 demoLink: 'https://asciinema.org/a/rnuSdhmi4U4Oe5FThZGiaVbfp'
+tags: ['FastAPI']
 ---
 
 # NetWatch

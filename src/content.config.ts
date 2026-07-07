@@ -11,6 +11,7 @@ const proyectos = defineCollection({
     githubRepo: z.string().url().optional(),
     demoLink: z.string().url().optional(),
     route: z.string().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 })
 

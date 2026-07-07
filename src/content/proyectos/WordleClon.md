@@ -6,6 +6,7 @@ pubDate: 'Sep 22 2025'
 heroImage: 'WordleClon_zvr6di'
 githubRepo: 'https://github.com/PC0staS/WordleClon'
 demoLink: 'https://wordleClon.pablocostas.dev'
+tags: ['React', 'TypeScript']
 ---
 
 # WordleClon

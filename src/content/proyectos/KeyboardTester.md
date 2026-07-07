@@ -6,6 +6,7 @@ pubDate: "Sep 15 2025"
 heroImage: "KeyboardTester_kl3ja"
 githubRepo: "https://github.com/Pc0staS/Keyboard-Tester"
 demoLink: "https://keyboardtester.pablocostas.dev"
+tags: ['JavaScript']
 ---
 
 # Keyboard Tester
