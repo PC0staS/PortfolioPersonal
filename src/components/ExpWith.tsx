@@ -1,297 +1,254 @@
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 
-interface Technology {
-  name: string;
-  icon: string;
-  description?: string;
-}
-
-const frontend: Technology[] = [
+const categories = [
   {
-    name: "React",
-    icon: "/svg/react.svg",
-    description: "Interfaz y componentes",
-  },
-  { name: "TypeScript", icon: "/svg/typescript.svg", description: "Tipado" },
-  {
-    name: "Expo",
-    icon: "/svg/expo.png",
-    description: "Desarrollo de apps móviles (React Native)",
-  },
-  { name: "Angular", icon: "/svg/angular.svg", description: "Framework SPA" },
-  {
-    name: "HTML5",
-    icon: "/svg/html5.svg",
-    description: "Maquetación semántica",
-  },
-  { name: "CSS3", icon: "/svg/css3.svg", description: "Estilos y diseño" },
-  {
-    name: "Astro",
-    icon: "/svg/astro.svg",
-    description: "Contenido estático y rendimiento",
-  },
-  {
-    name: "GSAP",
-    icon: "/svg/gsap.webp",
-    description: "Animaciones avanzadas",
-  },
-];
-
-const backendCli: Technology[] = [
-  { name: "FastAPI", icon: "/svg/fastapi.webp", description: "APIs rápidas" },
-  {
-    name: "Python",
-    icon: "/svg/python.svg",
-    description: "Backend y herramientas",
+    label: "Frontend",
+    techs: [
+      {
+        name: "React",
+        icon: "/svg/react.svg",
+        description: "Interfaz y componentes",
+      },
+      {
+        name: "TypeScript",
+        icon: "/svg/typescript.svg",
+        description: "Tipado",
+      },
+      {
+        name: "Expo",
+        icon: "/svg/expo.png",
+        description: "Apps móviles (React Native)",
+      },
+      {
+        name: "Angular",
+        icon: "/svg/angular.svg",
+        description: "Framework SPA",
+      },
+      {
+        name: "HTML5",
+        icon: "/svg/html5.svg",
+        description: "Maquetación semántica",
+      },
+      { name: "CSS3", icon: "/svg/css3.svg", description: "Estilos y diseño" },
+      {
+        name: "Astro",
+        icon: "/svg/astro.svg",
+        description: "Contenido estático",
+      },
+      {
+        name: "GSAP",
+        icon: "/svg/gsap.webp",
+        description: "Animaciones avanzadas",
+      },
+    ],
   },
   {
-    name: "Go",
-    icon: "/svg/golang.svg",
-    description: "Servicios concurrentes",
+    label: "Backend / CLI",
+    techs: [
+      {
+        name: "FastAPI",
+        icon: "/svg/fastapi.webp",
+        description: "APIs rápidas",
+      },
+      {
+        name: "Python",
+        icon: "/svg/python.svg",
+        description: "Backend y herramientas",
+      },
+      {
+        name: "Go",
+        icon: "/svg/golang.svg",
+        description: "Servicios concurrentes",
+      },
+      {
+        name: "Shell",
+        icon: "/svg/bash-icon.svg",
+        description: "Scripting y CLI",
+      },
+      {
+        name: "Docker",
+        icon: "/svg/docker.svg",
+        description: "Contenerización",
+      },
+      {
+        name: "PostgreSQL",
+        icon: "/svg/postgres.svg",
+        description: "Bases de datos",
+      },
+      {
+        name: "Packet Managers",
+        icon: "/svg/package.png",
+        description: "dnf / snap / brew",
+      },
+      {
+        name: "Auth / JWT",
+        icon: "/svg/jwt.svg",
+        description: "Autenticación",
+      },
+    ],
   },
   {
-    name: "Shell",
-    icon: "/svg/bash-icon.svg",
-    description: "Scripting y automatización CLI",
-  },
-  { name: "Docker", icon: "/svg/docker.svg", description: "Contenerización" },
-  {
-    name: "PostgreSQL",
-    icon: "/svg/postgres.svg",
-    description: "Bases de datos",
-  },
-  {
-    name: "Packet Managers",
-    icon: "/svg/package.png",
-    description: "dnf/ snap / brew",
-  },
-  {
-    name: "Auth / JWT",
-    icon: "/svg/jwt.svg",
-    description: "Autenticación y autorización",
-  },
-];
-
-const systemsAutomation: Technology[] = [
-  { name: "Linux", icon: "/svg/linux.svg", description: "Servidores y CLI" },
-  {
-    name: "n8n",
-    icon: "/svg/n8n-color.svg",
-    description: "Automatización de flujos",
-  },
-  {
-    name: "Grafana",
-    icon: "/svg/grafana.svg",
-    description: "Monitoreo y dashboards",
-  },
-  { name: "Wazuh", icon: "/svg/wazuh.png", description: "Seguridad y alertas" },
-  {
-    name: "Ansible",
-    icon: "/svg/ansible.png",
-    description: "Configuración de infra",
-  },
-  {
-    name: "Prometheus",
-    icon: "/svg/prometheus.png",
-    description: "Métricas y scraping",
-  },
-  {
-    name: "Active Directory",
-    icon: "/svg/active-directory.svg",
-    description: "IAM y post-explotación",
+    label: "Sistemas / Automatización",
+    techs: [
+      {
+        name: "Linux",
+        icon: "/svg/linux.svg",
+        description: "Servidores y CLI",
+      },
+      {
+        name: "n8n",
+        icon: "/svg/n8n-color.svg",
+        description: "Automatización de flujos",
+      },
+      {
+        name: "Grafana",
+        icon: "/svg/grafana.svg",
+        description: "Monitoreo y dashboards",
+      },
+      {
+        name: "Wazuh",
+        icon: "/svg/wazuh.png",
+        description: "Seguridad y alertas",
+      },
+      {
+        name: "Ansible",
+        icon: "/svg/ansible.png",
+        description: "Configuración de infra",
+      },
+      {
+        name: "Prometheus",
+        icon: "/svg/prometheus.png",
+        description: "Métricas y scraping",
+      },
+      {
+        name: "Active Directory",
+        icon: "/svg/active-directory.svg",
+        description: "IAM y post-explotación",
+      },
+      {
+        name: "GitHub",
+        icon: "/svg/github.svg",
+        description: "Repos, Actions y CI/CD",
+      },
+    ],
   },
   {
-    name: "GitHub",
-    icon: "/svg/github.svg",
-    description: "Repos, Actions y CI/CD",
-  },
-];
-
-const cybersecurity: Technology[] = [
-  {
-    name: "Kali Linux",
-    icon: "/svg/kali-linux.png",
-    description: "Pentesting y herramientas",
-  },
-  { name: "Nmap", icon: "/svg/nmap.png", description: "Reconocimiento de red" },
-  {
-    name: "Burp Suite",
-    icon: "/svg/burp-suite.png",
-    description: "Proxy y análisis web",
-  },
-  {
-    name: "Metasploit",
-    icon: "/svg/metasploit.png",
-    description: "Explotación y pruebas",
-  },
-  {
-    name: "Wireshark",
-    icon: "/svg/wireshark.webp",
-    description: "Análisis de tráfico",
-  },
-  {
-    name: "CAIDO",
-    icon: "/svg/caido.png",
-    description: "Herramienta de seguridad web",
-  },
-  {
-    name: "bettercap",
-    icon: "/svg/bettercap.png",
-    description: "Análisis y manipulación de tráfico",
-  },
-  {
-    name: "WireGuard",
-    icon: "/svg/wireguard.png",
-    description: "VPN segura y ligera",
+    label: "Ciberseguridad",
+    techs: [
+      {
+        name: "Kali Linux",
+        icon: "/svg/kali-linux.png",
+        description: "Pentesting",
+      },
+      {
+        name: "Nmap",
+        icon: "/svg/nmap.png",
+        description: "Reconocimiento de red",
+      },
+      {
+        name: "Burp Suite",
+        icon: "/svg/burp-suite.png",
+        description: "Proxy y análisis web",
+      },
+      {
+        name: "Metasploit",
+        icon: "/svg/metasploit.png",
+        description: "Explotación y pruebas",
+      },
+      {
+        name: "Wireshark",
+        icon: "/svg/wireshark.webp",
+        description: "Análisis de tráfico",
+      },
+      { name: "CAIDO", icon: "/svg/caido.png", description: "Seguridad web" },
+      {
+        name: "bettercap",
+        icon: "/svg/bettercap.png",
+        description: "Manipulación de tráfico",
+      },
+      {
+        name: "WireGuard",
+        icon: "/svg/wireguard.png",
+        description: "VPN segura y ligera",
+      },
+    ],
   },
 ];
 
 export default function ExpWith() {
-  const [currentTech, setCurrentTech] = useState(frontend);
-  const containerRef = useRef<HTMLUListElement>(null);
-  const isAnimating = useRef(false);
-  const isFirstRender = useRef(true);
+  const [active, setActive] = useState(0);
+  const [fadeOut, setFadeOut] = useState(false);
 
-  useGSAP(() => {
-    if (containerRef.current && isFirstRender.current) {
-      gsap.from(containerRef.current.children, {
-        opacity: 0,
-        y: 30,
-        scale: 0.8,
-        duration: 0.6,
-        stagger: 0.08,
-        ease: "back.out(1.7)",
-      });
-      isFirstRender.current = false;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (containerRef.current && !isFirstRender.current && isAnimating.current) {
-      gsap.fromTo(
-        containerRef.current.children,
-        { opacity: 0, y: -20, scale: 0.8 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.06,
-          ease: "back.out(1.4)",
-          onComplete: () => {
-            isAnimating.current = false;
-          },
-        },
-      );
-    }
-  }, [currentTech]);
-
-  const handleTechChange = (newTech: Technology[]) => {
-    if (newTech === currentTech || isAnimating.current) return;
-    isAnimating.current = true;
-    if (containerRef.current) {
-      gsap.to(containerRef.current.children, {
-        opacity: 0,
-        y: 20,
-        scale: 0.9,
-        duration: 0.3,
-        stagger: 0.04,
-        ease: "power2.in",
-        onComplete: () => {
-          setCurrentTech(newTech);
-        },
-      });
-    }
+  const switchCategory = (index: number) => {
+    if (index === active) return;
+    setFadeOut(true);
+    setTimeout(() => {
+      setActive(index);
+      setFadeOut(false);
+    }, 150);
   };
 
   return (
-    <section className="mt-20 px-4" aria-labelledby="exp-tech-heading">
-      <h2
-        id="exp-tech-heading"
-        className="text-lg sm:text-xl font-semibold text-center text-gray-700 dark:text-gray-300"
-      >
-        Tengo experiencia con:
-      </h2>
-      <div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 bg-gray-700/40 mx-auto max-w-[640px] w-full p-3 rounded-xl justify-center items-center shadow-sm backdrop-blur-sm border border-gray-200/5">
-          <button
-            onClick={() => handleTechChange(frontend)}
-            className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
-              currentTech === frontend
-                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
-                : "text-gray-100 hover:bg-white/5"
-            }`}
-          >
-            Desarrollo frontend
-          </button>
-          <button
-            onClick={() => handleTechChange(backendCli)}
-            className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
-              currentTech === backendCli
-                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
-                : "text-gray-100 hover:bg-white/5"
-            }`}
-          >
-            Desarrollo backend/cli
-          </button>
-          <button
-            onClick={() => handleTechChange(systemsAutomation)}
-            className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
-              currentTech === systemsAutomation
-                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
-                : "text-gray-100 hover:bg-white/5"
-            }`}
-          >
-            Sistemas/Automatización
-          </button>
-          <button
-            onClick={() => handleTechChange(cybersecurity)}
-            className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
-              currentTech === cybersecurity
-                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
-                : "text-gray-100 hover:bg-white/5"
-            }`}
-          >
-            Ciberseguridad/Pentesting
-          </button>
-        </div>
+    <section id="tecnologias" className="mt-20 px-4">
+      <div className="text-center mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white mb-2">
+          Tecnologías
+        </h2>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto">
+          Con lo que trabajo en el día a día, organizado por disciplinas.
+        </p>
       </div>
-      <ul
-        ref={containerRef}
-        className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-8 max-w-3xl mx-auto"
-        id="tech-list"
-      >
-        {currentTech.map((tech) => (
-          <li
-            key={tech.name}
-            className="group relative flex flex-col items-center mb-4"
+
+      {/* Pestañas de categorías */}
+      <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {categories.map((cat, i) => (
+          <button
+            key={cat.label}
+            onClick={() => switchCategory(i)}
+            className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all cursor-pointer border ${
+              active === i
+                ? "bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white"
+                : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500"
+            }`}
           >
-            <figure className="flex flex-col items-center">
-              <div
-                className="rounded-xl bg-gray-50 dark:bg-zinc-800/60 backdrop-blur-sm p-4 shadow-sm ring-1 ring-gray-200/60 dark:ring-white/10 hover:shadow-md transition-all w-24 h-24 flex items-center justify-center"
-                aria-hidden="true"
-              >
-                <img
-                  src={tech.icon}
-                  alt={tech.name}
-                  width={60}
-                  height={60}
-                  className="transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <div className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                {tech.name}
-              </div>
-            </figure>
-            <div className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-1 text-[11px] font-medium text-white opacity-0 shadow-lg transition group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-zinc-700">
-              {tech.description || tech.name}
-            </div>
-            <span className="absolute inset-0 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900" />
-          </li>
+            {cat.label}
+            <span className="ml-1.5 text-xs opacity-60">
+              {cat.techs.length}
+            </span>
+          </button>
         ))}
-      </ul>
+      </div>
+
+      {/* Grid de tecnologías */}
+      <div
+        className={`grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto transition-opacity duration-150 ${
+          fadeOut ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        {categories[active].techs.map((tech) => (
+          <div
+            key={tech.name}
+            className="group flex flex-col items-center gap-2 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm transition-all"
+          >
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                loading="lazy"
+              />
+            </div>
+            <div className="text-center">
+              <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                {tech.name}
+              </p>
+              <p className="text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-500 mt-0.5 line-clamp-1">
+                {tech.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
