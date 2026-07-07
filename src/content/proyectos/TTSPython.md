@@ -26,6 +26,7 @@ El endpoint `POST /premios/` permite asociar un sonido a una cantidad numérica 
 
 ## Tech stack
 
+- **Cliente:** Adealoxica
 - **Lenguaje:** Python 3.10
 - **API:** FastAPI + uvicorn (1 worker)
 - **TTS Engine:** Piper TTS (binario ARM64, offline, sin GPU)
