@@ -25,9 +25,11 @@ const pubDate = new Date(entry.data.pubDate).toLocaleDateString("es-ES", {
 ---
 
 <Layout>
+    <Fragment slot="head">
+        {heroImg && <link rel="preload" as="image" href={heroImg} />}
+    </Fragment>
     <a
         href="/#proyectos"
-        data-astro-reload
         class="fixed top-20 left-4 sm:left-8 z-40 flex items-center gap-2 rounded-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm transition-colors"
     >
         <svg
@@ -52,23 +54,19 @@ const pubDate = new Date(entry.data.pubDate).toLocaleDateString("es-ES", {
                     src={heroImg}
                     alt={entry.data.title}
                     class="h-full w-full object-cover"
-                    style={`view-transition-name: proyecto-hero-${entry.data.heroImage}`}
+                    fetchpriority="high"
+                    loading="eager"
+                    decoding="sync"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
                 <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-16 max-w-6xl mx-auto">
-                    <h1
-                        class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight"
-                        style={`view-transition-name: proyecto-title-${entry.data.title}`}
-                    >
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
                         {entry.data.title}
                     </h1>
                 </div>
             </div>
         ) : (
-            <h1
-                class="text-3xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight pt-8 px-4 sm:px-8 max-w-6xl mx-auto"
-                style={`view-transition-name: proyecto-title-${entry.data.title}`}
-            >
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-black dark:text-white tracking-tight pt-8 px-4 sm:px-8 max-w-6xl mx-auto">
                 {entry.data.title}
             </h1>
         )

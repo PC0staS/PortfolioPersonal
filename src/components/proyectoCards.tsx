@@ -54,7 +54,6 @@ export default function ProyectoCards({
             src={cloudinaryUrl(photo, "c_scale,w_600")}
             alt={title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            style={{ viewTransitionName: `proyecto-hero-${photo}` }}
             loading="lazy"
           />
         ) : (
@@ -76,10 +75,7 @@ export default function ProyectoCards({
       <div className="p-4 sm:p-5 flex flex-col flex-1">
         {/* Título + botones */}
         <div className="flex items-start justify-between gap-2 mb-2">
-          <h3
-            className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-white leading-snug"
-            style={{ viewTransitionName: `proyecto-title-${title}` }}
-          >
+          <h3 className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-white leading-snug">
             {title}
           </h3>
           <div className="flex items-center gap-0.5 shrink-0">
