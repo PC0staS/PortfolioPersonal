@@ -1,167 +1,159 @@
-'use client'
-import Image from 'next/image'
-import { useGSAP } from '@gsap/react'
-import { gsap } from 'gsap'
-import { useState, useRef, useEffect } from 'react'
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { useState, useRef, useEffect } from "react";
 
-// Tipado para facilitar mantenimiento y posibles ampliaciones
 interface Technology {
-  name: string
-  icon: string
-  description?: string
+  name: string;
+  icon: string;
+  description?: string;
 }
 
 const frontend: Technology[] = [
   {
-    name: 'React',
-    icon: '/svg/react.svg',
-    description: 'Interfaz y componentes',
+    name: "React",
+    icon: "/svg/react.svg",
+    description: "Interfaz y componentes",
   },
-  { name: 'TypeScript', icon: '/svg/typescript.svg', description: 'Tipado' },
+  { name: "TypeScript", icon: "/svg/typescript.svg", description: "Tipado" },
   {
-    name: 'Expo',
-    icon: '/svg/expo.png',
-    description: 'Desarrollo de apps móviles (React Native)',
+    name: "Expo",
+    icon: "/svg/expo.png",
+    description: "Desarrollo de apps móviles (React Native)",
   },
-  { name: 'Angular', icon: '/svg/angular.svg', description: 'Framework SPA' },
+  { name: "Angular", icon: "/svg/angular.svg", description: "Framework SPA" },
   {
-    name: 'HTML5',
-    icon: '/svg/html5.svg',
-    description: 'Maquetación semántica',
+    name: "HTML5",
+    icon: "/svg/html5.svg",
+    description: "Maquetación semántica",
   },
-  { name: 'CSS3', icon: '/svg/css3.svg', description: 'Estilos y diseño' },
+  { name: "CSS3", icon: "/svg/css3.svg", description: "Estilos y diseño" },
   {
-    name: 'Astro',
-    icon: '/svg/astro.svg',
-    description: 'Contenido estático y rendimiento',
+    name: "Astro",
+    icon: "/svg/astro.svg",
+    description: "Contenido estático y rendimiento",
   },
   {
-    name: 'GSAP',
-    icon: '/svg/gsap.webp',
-    description: 'Animaciones avanzadas',
+    name: "GSAP",
+    icon: "/svg/gsap.webp",
+    description: "Animaciones avanzadas",
   },
-]
+];
 
 const backendCli: Technology[] = [
-  { name: 'FastAPI', icon: '/svg/fastapi.webp', description: 'APIs rápidas' },
+  { name: "FastAPI", icon: "/svg/fastapi.webp", description: "APIs rápidas" },
   {
-    name: 'Python',
-    icon: '/svg/python.svg',
-    description: 'Backend y herramientas',
+    name: "Python",
+    icon: "/svg/python.svg",
+    description: "Backend y herramientas",
   },
   {
-    name: 'Go',
-    icon: '/svg/golang.svg',
-    description: 'Servicios concurrentes',
+    name: "Go",
+    icon: "/svg/golang.svg",
+    description: "Servicios concurrentes",
   },
   {
-    name: 'Shell',
-    icon: '/svg/bash-icon.svg',
-    description: 'Scripting y automatización CLI',
+    name: "Shell",
+    icon: "/svg/bash-icon.svg",
+    description: "Scripting y automatización CLI",
   },
-  { name: 'Docker', icon: '/svg/docker.svg', description: 'Contenerización' },
+  { name: "Docker", icon: "/svg/docker.svg", description: "Contenerización" },
   {
-    name: 'PostgreSQL',
-    icon: '/svg/postgres.svg',
-    description: 'Bases de datos',
-  },
-  {
-    name: 'Packet Managers',
-    icon: '/svg/package.png',
-    description: 'dnf/ snap / brew',
+    name: "PostgreSQL",
+    icon: "/svg/postgres.svg",
+    description: "Bases de datos",
   },
   {
-    name: 'Auth / JWT',
-    icon: '/svg/jwt.svg',
-    description: 'Autenticación y autorización',
+    name: "Packet Managers",
+    icon: "/svg/package.png",
+    description: "dnf/ snap / brew",
   },
-]
+  {
+    name: "Auth / JWT",
+    icon: "/svg/jwt.svg",
+    description: "Autenticación y autorización",
+  },
+];
 
 const systemsAutomation: Technology[] = [
-  { name: 'Linux', icon: '/svg/linux.svg', description: 'Servidores y CLI' },
+  { name: "Linux", icon: "/svg/linux.svg", description: "Servidores y CLI" },
   {
-    name: 'n8n',
-    icon: '/svg/n8n-color.svg',
-    description: 'Automatización de flujos',
+    name: "n8n",
+    icon: "/svg/n8n-color.svg",
+    description: "Automatización de flujos",
   },
   {
-    name: 'Grafana',
-    icon: '/svg/grafana.svg',
-    description: 'Monitoreo y dashboards',
+    name: "Grafana",
+    icon: "/svg/grafana.svg",
+    description: "Monitoreo y dashboards",
   },
-  { name: 'Wazuh', icon: '/svg/wazuh.png', description: 'Seguridad y alertas' },
+  { name: "Wazuh", icon: "/svg/wazuh.png", description: "Seguridad y alertas" },
   {
-    name: 'Ansible',
-    icon: '/svg/ansible.png',
-    description: 'Configuración de infra',
-  },
-  {
-    name: 'Prometheus',
-    icon: '/svg/prometheus.png',
-    description: 'Métricas y scraping',
+    name: "Ansible",
+    icon: "/svg/ansible.png",
+    description: "Configuración de infra",
   },
   {
-    name: 'Active Directory',
-    icon: '/svg/active-directory.svg',
-    description: 'IAM y post-explotación',
+    name: "Prometheus",
+    icon: "/svg/prometheus.png",
+    description: "Métricas y scraping",
   },
   {
-    name: 'GitHub',
-    icon: '/svg/github.svg',
-    description: 'Repos, Actions y CI/CD',
+    name: "Active Directory",
+    icon: "/svg/active-directory.svg",
+    description: "IAM y post-explotación",
   },
-]
+  {
+    name: "GitHub",
+    icon: "/svg/github.svg",
+    description: "Repos, Actions y CI/CD",
+  },
+];
 
 const cybersecurity: Technology[] = [
   {
-    name: 'Kali Linux',
-    icon: '/svg/kali-linux.png',
-    description: 'Pentesting y herramientas',
+    name: "Kali Linux",
+    icon: "/svg/kali-linux.png",
+    description: "Pentesting y herramientas",
+  },
+  { name: "Nmap", icon: "/svg/nmap.png", description: "Reconocimiento de red" },
+  {
+    name: "Burp Suite",
+    icon: "/svg/burp-suite.png",
+    description: "Proxy y análisis web",
   },
   {
-    name: 'Nmap',
-    icon: '/svg/nmap.png',
-    description: 'Reconocimiento de red',
+    name: "Metasploit",
+    icon: "/svg/metasploit.png",
+    description: "Explotación y pruebas",
   },
   {
-    name: 'Burp Suite',
-    icon: '/svg/burp-suite.png',
-    description: 'Proxy y análisis web',
+    name: "Wireshark",
+    icon: "/svg/wireshark.webp",
+    description: "Análisis de tráfico",
   },
   {
-    name: 'Metasploit',
-    icon: '/svg/metasploit.png',
-    description: 'Explotación y pruebas',
+    name: "CAIDO",
+    icon: "/svg/caido.png",
+    description: "Herramienta de seguridad web",
   },
   {
-    name: 'Wireshark',
-    icon: '/svg/wireshark.webp',
-    description: 'Análisis de tráfico',
+    name: "bettercap",
+    icon: "/svg/bettercap.png",
+    description: "Análisis y manipulación de tráfico",
   },
   {
-    name: 'CAIDO',
-    icon: '/svg/caido.png',
-    description: 'Herramienta de seguridad web',
+    name: "WireGuard",
+    icon: "/svg/wireguard.png",
+    description: "VPN segura y ligera",
   },
-  {
-    name: 'bettercap',
-    icon: '/svg/bettercap.png',
-    description: 'Análisis y manipulación de tráfico',
-  },
-  {
-    name: 'WireGuard',
-    icon: '/svg/wireguard.png',
-    description: 'VPN segura y ligera',
-  },
-]
+];
 
-export default function ExperienceWith() {
-  const [currentTech, setCurrentTech] = useState(frontend)
-  const containerRef = useRef<HTMLUListElement>(null)
-  const isAnimating = useRef(false)
-  const isFirstRender = useRef(true)
+export default function ExpWith() {
+  const [currentTech, setCurrentTech] = useState(frontend);
+  const containerRef = useRef<HTMLUListElement>(null);
+  const isAnimating = useRef(false);
+  const isFirstRender = useRef(true);
 
-  // Animación inicial
   useGSAP(() => {
     if (containerRef.current && isFirstRender.current) {
       gsap.from(containerRef.current.children, {
@@ -170,43 +162,35 @@ export default function ExperienceWith() {
         scale: 0.8,
         duration: 0.6,
         stagger: 0.08,
-        ease: 'back.out(1.7)',
-      })
-      isFirstRender.current = false
+        ease: "back.out(1.7)",
+      });
+      isFirstRender.current = false;
     }
-  }, [])
+  }, []);
 
-  // Animación de entrada después de cambiar contenido
   useEffect(() => {
     if (containerRef.current && !isFirstRender.current && isAnimating.current) {
       gsap.fromTo(
         containerRef.current.children,
-        {
-          opacity: 0,
-          y: -20,
-          scale: 0.8,
-        },
+        { opacity: 0, y: -20, scale: 0.8 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
           duration: 0.5,
           stagger: 0.06,
-          ease: 'back.out(1.4)',
+          ease: "back.out(1.4)",
           onComplete: () => {
-            isAnimating.current = false
+            isAnimating.current = false;
           },
         },
-      )
+      );
     }
-  }, [currentTech])
+  }, [currentTech]);
 
   const handleTechChange = (newTech: Technology[]) => {
-    if (newTech === currentTech || isAnimating.current) return
-
-    isAnimating.current = true
-
-    // Animación de salida
+    if (newTech === currentTech || isAnimating.current) return;
+    isAnimating.current = true;
     if (containerRef.current) {
       gsap.to(containerRef.current.children, {
         opacity: 0,
@@ -214,17 +198,16 @@ export default function ExperienceWith() {
         scale: 0.9,
         duration: 0.3,
         stagger: 0.04,
-        ease: 'power2.in',
+        ease: "power2.in",
         onComplete: () => {
-          // Cambiar el contenido
-          setCurrentTech(newTech)
+          setCurrentTech(newTech);
         },
-      })
+      });
     }
-  }
+  };
 
   return (
-    <section className="mt-20 px-4" aria-labelledby="exp-tech-heading" role="region">
+    <section className="mt-20 px-4" aria-labelledby="exp-tech-heading">
       <h2
         id="exp-tech-heading"
         className="text-lg sm:text-xl font-semibold text-center text-gray-700 dark:text-gray-300"
@@ -237,41 +220,38 @@ export default function ExperienceWith() {
             onClick={() => handleTechChange(frontend)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
               currentTech === frontend
-                ? 'bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30'
-                : 'text-gray-100 hover:bg-white/5'
+                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
+                : "text-gray-100 hover:bg-white/5"
             }`}
           >
             Desarrollo frontend
           </button>
-
           <button
             onClick={() => handleTechChange(backendCli)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
               currentTech === backendCli
-                ? 'bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30'
-                : 'text-gray-100 hover:bg-white/5'
+                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
+                : "text-gray-100 hover:bg-white/5"
             }`}
           >
             Desarrollo backend/cli
           </button>
-
           <button
             onClick={() => handleTechChange(systemsAutomation)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
               currentTech === systemsAutomation
-                ? 'bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30'
-                : 'text-gray-100 hover:bg-white/5'
+                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
+                : "text-gray-100 hover:bg-white/5"
             }`}
           >
             Sistemas/Automatización
           </button>
-
           <button
             onClick={() => handleTechChange(cybersecurity)}
             className={`cursor-pointer w-full flex items-center justify-center gap-2 text-base px-6 py-3 rounded-full font-medium transition transform duration-150 hover:scale-105 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-400 active:translate-y-[2px] active:scale-95 ${
               currentTech === cybersecurity
-                ? 'bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30'
-                : 'text-gray-100 hover:bg-white/5'
+                ? "bg-white text-gray-900 dark:bg-white/10 dark:text-white border border-gray-300/30"
+                : "text-gray-100 hover:bg-white/5"
             }`}
           >
             Ciberseguridad/Pentesting
@@ -281,13 +261,11 @@ export default function ExperienceWith() {
       <ul
         ref={containerRef}
         className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-8 max-w-3xl mx-auto"
-        role="list"
         id="tech-list"
       >
-        {currentTech.map(tech => (
+        {currentTech.map((tech) => (
           <li
             key={tech.name}
-            data-tech-item
             className="group relative flex flex-col items-center mb-4"
           >
             <figure className="flex flex-col items-center">
@@ -295,7 +273,7 @@ export default function ExperienceWith() {
                 className="rounded-xl bg-gray-50 dark:bg-zinc-800/60 backdrop-blur-sm p-4 shadow-sm ring-1 ring-gray-200/60 dark:ring-white/10 hover:shadow-md transition-all w-24 h-24 flex items-center justify-center"
                 aria-hidden="true"
               >
-                <Image
+                <img
                   src={tech.icon}
                   alt={tech.name}
                   width={60}
@@ -307,20 +285,13 @@ export default function ExperienceWith() {
                 {tech.name}
               </div>
             </figure>
-
-            {/* Tooltip accesible (aparece en hover/focus) */}
-            <div
-              className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-1 text-[11px] font-medium text-white opacity-0 shadow-lg transition group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-zinc-700"
-              role="tooltip"
-            >
+            <div className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-1 text-[11px] font-medium text-white opacity-0 shadow-lg transition group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-zinc-700">
               {tech.description || tech.name}
             </div>
-
-            {/* Anillo de foco accesible para teclado */}
             <span className="absolute inset-0 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-900" />
           </li>
         ))}
       </ul>
     </section>
-  )
+  );
 }

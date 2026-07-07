@@ -1,0 +1,16 @@
+---
+import ProyectosAnimated from '@/components/ProyectosAnimated'
+import { getCollection } from 'astro:content'
+
+const allProyectos = await getCollection('proyectos')
+const proyectos = allProyectos.map((p) => ({
+  slug: p.id,
+  title: p.data.title,
+  heroImage: p.data.heroImage,
+  githubRepo: p.data.githubRepo,
+  demoLink: p.data.demoLink,
+  route: p.data.route ?? p.id,
+}))
+---
+
+<ProyectosAnimated client:load proyectos={proyectos} />
