@@ -1,7 +1,7 @@
 ---
 route: "galicia-localiza"
 title: "Galicia Localiza — Gestor de Flota Empresarial"
-description: "Sistema profesional de gestión de flotas para Adealoxica. Recibe datos GPS en tiempo real de dispositivos Ruptela mediante protocolo binario TCP, los procesa con un backend en Go, y los visualiza en un mapa interactivo con React y Leaflet. Incluye detección automática de viajes, WebSockets para tracking en vivo, y base de datos particionada en SQL Server para alto volumen de telemetría."
+description: "Sistema profesional de gestión de flotas para Adealoxica. Recibe datos GPS en tiempo real de dispositivos Ruptela mediante protocolo binario TCP, los procesa con un backend en Go, y los visualiza en un mapa interactivo con React y Leaflet. Incluye geocercas con notificaciones push (FCM), detección automática de viajes, WebSockets para tracking en vivo, y base de datos particionada en SQL Server para alto volumen de telemetría."
 pubDate: "2026-06-01"
 heroImage: "ruptela"
 githubRepo: "https://github.com/PC0staS/ruptela-analizador"
@@ -18,7 +18,9 @@ El sistema recibe conexiones TCP continuas de dispositivos GPS Ruptela a través
 
 El backend detecta automáticamente el inicio de un nuevo viaje cuando un vehículo lleva más de 15 minutos sin enviar datos, creando un registro de viaje y asociando todos los movimientos posteriores. Incluye una optimización para no saturar la base de datos con posiciones duplicadas cuando el vehículo está aparcado (velocidad 0).
 
-El frontend muestra un mapa interactivo con la última posición conocida de cada vehículo, permite consultar trayectorias históricas por rango de fechas, reproducir snapshots temporales de toda la flota, y recibir actualizaciones en tiempo real vía WebSocket. Incluye un panel de administración con estadísticas globales (total de movimientos, viajes activos, vehículos con señal reciente).
+El frontend muestra un mapa interactivo con la última posición conocida de cada vehículo y las geocercas activas superpuestas como polígonos, permite consultar trayectorias históricas por rango de fechas, reproducir snapshots temporales de toda la flota, y recibir actualizaciones en tiempo real vía WebSocket. Incluye un panel de administración con pestañas para dispositivos, geocercas y logs, un panel de notificaciones con historial de alertas, y estadísticas globales.
+
+Cada punto GPS recibido se evalúa contra las geocercas asignadas al vehículo mediante el algoritmo ray casting. Si se detecta una entrada o salida, se registra el evento en base de datos y, si corresponde según la configuración de alertas (tipo de alerta, preferencias de entrada/salida por coche, filtro de día de la semana y franja horaria), se dispara una notificación push vía Firebase Cloud Messaging al topic del dispositivo. Los administradores pueden gestionar geocercas desde un panel dedicado con editor visual de polígonos sobre mapa y asignación de vehículos.
 
 ## Tech stack
 
@@ -28,7 +30,8 @@ El frontend muestra un mapa interactivo con la última posición conocida de cad
 - **Frontend:** React 19, Vite, Leaflet + react-leaflet, TailwindCSS 4
 - **Tiempo real:** WebSocket con broadcast a todos los clientes conectados
 - **Autenticación:** Firebase Auth
-- **Notificaciones:** react-toastify
+- **Notificaciones Push:** Firebase Cloud Messaging (FCM) — topics por coche, notificaciones Android/iOS con canales y sonido
+- **Notificaciones in-app:** react-toastify + panel de historial con localStorage
 - **Infraestructura:** Docker Compose, conexión a SQL Server corporativo externo
 
 ## Características clave
@@ -43,5 +46,8 @@ El frontend muestra un mapa interactivo con la última posición conocida de cad
 - **Device Manager en memoria** — caché de dispositivos autorizados con `sync.RWMutex`, evita consultas a BD por cada paquete entrante
 - **API REST completa** — 15+ endpoints documentados: estadísticas, dispositivos, movimientos, mapa, trayectorias, snapshots
 - **Filtro temprano de IMEI** — el servidor TCP rechaza conexiones de dispositivos no autorizados antes de parsear el paquete completo
+- **Geocercas (geofences)** — polígonos cargados desde la API corporativa de Adealoxica, con asignación por coche, filtros por día de la semana y franja horaria, y detección de entrada/salida mediante algoritmo ray casting
+- **Notificaciones push (FCM)** — alertas en tiempo real al entrar/salir de una geocerca y al finalizar un viaje, enviadas por Firebase Cloud Messaging a topics por dispositivo, con payload de datos (ID de coche, geocerca, coordenadas) y canales de notificación Android
+- **Panel de notificaciones** — historial completo de alertas de geocerca y fin de viaje en el frontend, agrupadas por fecha, con persistencia en localStorage y permisos configurables por tipo de evento y coche
 - **Caché multi-nivel** — stats (30s TTL) y snapshots (5s TTL) cacheados en memoria con limpieza automática
 - **Pool de conexiones optimizado** — 25 conexiones máximas a SQL Server con reciclaje automático cada 5 minutos
