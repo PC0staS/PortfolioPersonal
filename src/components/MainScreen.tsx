@@ -64,11 +64,12 @@ export default function MainScreen() {
         className="invisible text-base sm:text-lg mt-4 text-gray-600 dark:text-gray-400 text-center max-w-3xl leading-relaxed px-2 whitespace-pre-line min-h-[8rem]"
       >
         Soy Técnico Superior en Administración de Sistemas Informáticos en Red
-        (ASIR) con perfil en ciberseguridad. Actualmente realizo prácticas en
-        Adealoxica Ingeniería como desarrollador de software y administrador de
-        dispositivos, mientras estudio Desarrollo de Aplicaciones
-        Multiplataforma (DAM). Me apasiona el desarrollo web, la automatización
-        de sistemas y la ciberseguridad. Estos son algunos de mis proyectos:
+        (ASIR) con perfil en ciberseguridad. Actualmente trabajo en Adealoxica
+        Ingeniería como desarrollador de software, administrador de sistemas y
+        especialista en ciberseguridad, mientras estudio Desarrollo de
+        Aplicaciones Multiplataforma (DAM). Me apasiona el desarrollo web, la
+        automatización de sistemas y la ciberseguridad. Estos son algunos de mis
+        proyectos:
       </h2>
       <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 w-full max-w-sm text-center">
         <a
