@@ -13,6 +13,10 @@
 # testing
 /coverage
 
+# astro
+dist/
+.astro/
+
 # next.js
 /.next/
 /out/
