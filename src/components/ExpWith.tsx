@@ -170,12 +170,12 @@ const categories = [
         description: "Diseño e impresión 3D",
       },
       {
-        name: "PCB",
-        icon: "/svg/pcb.png",
-        description: "Sistemas embebidos",
+        name: "Red IoT",
+        icon: "/svg/networking.svg",
+        description: "Dispositivos conectados",
       },
       {
-        name: "CUDA",
+        name: "Jetson / CUDA",
         icon: "/svg/gpu-ai.png",
         description: "IA acelerada por GPU",
       },
@@ -283,7 +283,7 @@ export default function ExpWith() {
               <img
                 src={tech.icon}
                 alt={tech.name}
-                className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                 loading="lazy"
               />
             </div>
