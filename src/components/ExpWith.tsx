@@ -162,7 +162,7 @@ const categories = [
       {
         name: "C++",
         icon: "/svg/cpp.png",
-        description: "Sistemas embebidos",
+        description: "Código embebido",
       },
       {
         name: "3D Printing",
@@ -170,9 +170,9 @@ const categories = [
         description: "Diseño e impresión 3D",
       },
       {
-        name: "PCB Design",
+        name: "PCB",
         icon: "/svg/pcb.png",
-        description: "Diseño de placas",
+        description: "Sistemas embebidos",
       },
       {
         name: "CUDA",
