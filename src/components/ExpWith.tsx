@@ -147,7 +147,7 @@ const categories = [
       {
         name: "ESP32",
         icon: "/svg/esp32.png",
-        description: "IoT inalámbrico",
+        description: "Microcontrolador WiFi/BLE",
       },
       {
         name: "PlatformIO",
@@ -170,7 +170,7 @@ const categories = [
         description: "Diseño e impresión 3D",
       },
       {
-        name: "Red IoT",
+        name: "Redes IoT",
         icon: "/svg/networking.svg",
         description: "Dispositivos conectados",
       },
