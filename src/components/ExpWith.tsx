@@ -29,7 +29,11 @@ const categories = [
         icon: "/svg/html5.svg",
         description: "Maquetación semántica",
       },
-      { name: "CSS3", icon: "/svg/css3.svg", description: "Estilos y diseño" },
+      {
+        name: "Tailwind CSS",
+        icon: "/svg/tailwindcss.png",
+        description: "Estilos utilitarios",
+      },
       {
         name: "Astro",
         icon: "/svg/astro.svg",
@@ -76,9 +80,9 @@ const categories = [
         description: "Bases de datos",
       },
       {
-        name: "Packet Managers",
+        name: "Package Managers",
         icon: "/svg/package.png",
-        description: "dnf / snap / brew",
+        description: "Publicación de paquetes",
       },
       {
         name: "Auth / JWT",
@@ -129,6 +133,51 @@ const categories = [
         name: "GitHub",
         icon: "/svg/github.svg",
         description: "Repos, Actions y CI/CD",
+      },
+    ],
+  },
+  {
+    label: "Hardware / IoT",
+    techs: [
+      {
+        name: "Arduino",
+        icon: "/svg/arduino.png",
+        description: "Microcontroladores",
+      },
+      {
+        name: "ESP32",
+        icon: "/svg/esp32.png",
+        description: "IoT inalámbrico",
+      },
+      {
+        name: "PlatformIO",
+        icon: "/svg/platformio.png",
+        description: "Toolchain de firmware",
+      },
+      {
+        name: "Raspberry Pi",
+        icon: "/svg/raspberry-pi.png",
+        description: "SBC y servidores",
+      },
+      {
+        name: "C++",
+        icon: "/svg/cpp.png",
+        description: "Sistemas embebidos",
+      },
+      {
+        name: "3D Printing",
+        icon: "/svg/3d-printing.png",
+        description: "Diseño e impresión 3D",
+      },
+      {
+        name: "PCB Design",
+        icon: "/svg/pcb.png",
+        description: "Diseño de placas",
+      },
+      {
+        name: "CUDA",
+        icon: "/svg/gpu-ai.png",
+        description: "IA acelerada por GPU",
       },
     ],
   },
