@@ -1,241 +1,241 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 const categories = [
   {
-    label: "Frontend",
+    label: 'Frontend',
     techs: [
       {
-        name: "React",
-        icon: "/svg/react.svg",
-        description: "Interfaz y componentes",
+        name: 'React',
+        icon: '/svg/react.svg',
+        description: 'Interfaz y componentes',
       },
       {
-        name: "TypeScript",
-        icon: "/svg/typescript.svg",
-        description: "Tipado",
+        name: 'TypeScript',
+        icon: '/svg/typescript.svg',
+        description: 'Tipado',
       },
       {
-        name: "Expo",
-        icon: "/svg/expo.png",
-        description: "Apps móviles (React Native)",
+        name: 'Expo',
+        icon: '/svg/expo.png',
+        description: 'Apps móviles (React Native)',
       },
       {
-        name: "Angular",
-        icon: "/svg/angular.svg",
-        description: "Framework SPA",
+        name: 'Angular',
+        icon: '/svg/angular.svg',
+        description: 'Framework SPA',
       },
       {
-        name: "HTML5",
-        icon: "/svg/html5.svg",
-        description: "Maquetación semántica",
+        name: 'HTML5',
+        icon: '/svg/html5.svg',
+        description: 'Maquetación semántica',
       },
       {
-        name: "Tailwind CSS",
-        icon: "/svg/tailwindcss.png",
-        description: "Estilos utilitarios",
+        name: 'Tailwind CSS',
+        icon: '/svg/tailwindcss.png',
+        description: 'Estilos utilitarios',
       },
       {
-        name: "Astro",
-        icon: "/svg/astro.svg",
-        description: "Contenido estático",
+        name: 'Astro',
+        icon: '/svg/astro.svg',
+        description: 'Contenido estático',
       },
       {
-        name: "GSAP",
-        icon: "/svg/gsap.webp",
-        description: "Animaciones avanzadas",
+        name: 'GSAP',
+        icon: '/svg/gsap.webp',
+        description: 'Animaciones avanzadas',
       },
     ],
   },
   {
-    label: "Backend / CLI",
+    label: 'Backend / CLI',
     techs: [
       {
-        name: "FastAPI",
-        icon: "/svg/fastapi.webp",
-        description: "APIs rápidas",
+        name: 'Rust',
+        icon: '/svg/rust.svg',
+        description: 'Rendimiento y seguridad',
       },
       {
-        name: "Python",
-        icon: "/svg/python.svg",
-        description: "Backend y herramientas",
+        name: 'Python',
+        icon: '/svg/python.svg',
+        description: 'Backend y herramientas',
       },
       {
-        name: "Go",
-        icon: "/svg/golang.svg",
-        description: "Servicios concurrentes",
+        name: 'Go',
+        icon: '/svg/golang.svg',
+        description: 'Servicios concurrentes',
       },
       {
-        name: "Shell",
-        icon: "/svg/bash-icon.svg",
-        description: "Scripting y CLI",
+        name: 'Shell',
+        icon: '/svg/bash-icon.svg',
+        description: 'Scripting y CLI',
       },
       {
-        name: "Docker",
-        icon: "/svg/docker.svg",
-        description: "Contenerización",
+        name: 'Docker',
+        icon: '/svg/docker.svg',
+        description: 'Contenerización',
       },
       {
-        name: "PostgreSQL",
-        icon: "/svg/postgres.svg",
-        description: "Bases de datos",
+        name: 'PostgreSQL',
+        icon: '/svg/postgres.svg',
+        description: 'Bases de datos',
       },
       {
-        name: "Package Managers",
-        icon: "/svg/package.png",
-        description: "Publicación de paquetes",
+        name: 'Package Managers',
+        icon: '/svg/package.png',
+        description: 'Publicación de paquetes',
       },
       {
-        name: "Auth / JWT",
-        icon: "/svg/jwt.svg",
-        description: "Autenticación",
+        name: 'Auth / JWT',
+        icon: '/svg/jwt.svg',
+        description: 'Autenticación',
       },
     ],
   },
   {
-    label: "Sistemas / Automatización",
+    label: 'Sistemas / Automatización',
     techs: [
       {
-        name: "Linux",
-        icon: "/svg/linux.svg",
-        description: "Servidores y CLI",
+        name: 'Linux',
+        icon: '/svg/linux.svg',
+        description: 'Servidores y CLI',
       },
       {
-        name: "n8n",
-        icon: "/svg/n8n-color.svg",
-        description: "Automatización de flujos",
+        name: 'n8n',
+        icon: '/svg/n8n-color.svg',
+        description: 'Automatización de flujos',
       },
       {
-        name: "Grafana",
-        icon: "/svg/grafana.svg",
-        description: "Monitoreo y dashboards",
+        name: 'Grafana',
+        icon: '/svg/grafana.svg',
+        description: 'Monitoreo y dashboards',
       },
       {
-        name: "Wazuh",
-        icon: "/svg/wazuh.png",
-        description: "Seguridad y alertas",
+        name: 'Wazuh',
+        icon: '/svg/wazuh.png',
+        description: 'Seguridad y alertas',
       },
       {
-        name: "Ansible",
-        icon: "/svg/ansible.png",
-        description: "Configuración de infra",
+        name: 'Ansible',
+        icon: '/svg/ansible.png',
+        description: 'Configuración de infra',
       },
       {
-        name: "Prometheus",
-        icon: "/svg/prometheus.png",
-        description: "Métricas y scraping",
+        name: 'Prometheus',
+        icon: '/svg/prometheus.png',
+        description: 'Métricas y scraping',
       },
       {
-        name: "Active Directory",
-        icon: "/svg/active-directory.svg",
-        description: "IAM y post-explotación",
+        name: 'Active Directory',
+        icon: '/svg/active-directory.svg',
+        description: 'IAM y post-explotación',
       },
       {
-        name: "GitHub",
-        icon: "/svg/github.svg",
-        description: "Repos, Actions y CI/CD",
+        name: 'GitHub',
+        icon: '/svg/github.svg',
+        description: 'Repos, Actions y CI/CD',
       },
     ],
   },
   {
-    label: "Hardware / IoT",
+    label: 'Hardware / IoT',
     techs: [
       {
-        name: "Arduino",
-        icon: "/svg/arduino.png",
-        description: "Microcontroladores",
+        name: 'Arduino',
+        icon: '/svg/arduino.png',
+        description: 'Microcontroladores',
       },
       {
-        name: "ESP32",
-        icon: "/svg/esp32.png",
-        description: "Microcontrolador WiFi/BLE",
+        name: 'ESP32',
+        icon: '/svg/esp32.png',
+        description: 'Microcontrolador WiFi/BLE',
       },
       {
-        name: "PlatformIO",
-        icon: "/svg/platformio.png",
-        description: "Toolchain de firmware",
+        name: 'PlatformIO',
+        icon: '/svg/platformio.png',
+        description: 'Toolchain de firmware',
       },
       {
-        name: "Raspberry Pi",
-        icon: "/svg/raspberry-pi.png",
-        description: "SBC y servidores",
+        name: 'Raspberry Pi',
+        icon: '/svg/raspberry-pi.png',
+        description: 'SBC y servidores',
       },
       {
-        name: "C++",
-        icon: "/svg/cpp.png",
-        description: "Código embebido",
+        name: 'C++',
+        icon: '/svg/cpp.png',
+        description: 'Código embebido',
       },
       {
-        name: "3D Printing",
-        icon: "/svg/3d-printing.png",
-        description: "Diseño e impresión 3D",
+        name: '3D Printing',
+        icon: '/svg/3d-printing.png',
+        description: 'Diseño e impresión 3D',
       },
       {
-        name: "Redes IoT",
-        icon: "/svg/networking.svg",
-        description: "Dispositivos conectados",
+        name: 'Redes IoT',
+        icon: '/svg/networking.svg',
+        description: 'Dispositivos conectados',
       },
       {
-        name: "Jetson / CUDA",
-        icon: "/svg/gpu-ai.png",
-        description: "IA acelerada por GPU",
+        name: 'Jetson / CUDA',
+        icon: '/svg/gpu-ai.png',
+        description: 'IA acelerada por GPU',
       },
     ],
   },
   {
-    label: "Ciberseguridad",
+    label: 'Ciberseguridad',
     techs: [
       {
-        name: "Kali Linux",
-        icon: "/svg/kali-linux.png",
-        description: "Pentesting",
+        name: 'Kali Linux',
+        icon: '/svg/kali-linux.png',
+        description: 'Pentesting',
       },
       {
-        name: "Nmap",
-        icon: "/svg/nmap.png",
-        description: "Reconocimiento de red",
+        name: 'Nmap',
+        icon: '/svg/nmap.png',
+        description: 'Reconocimiento de red',
       },
       {
-        name: "Burp Suite",
-        icon: "/svg/burp-suite.png",
-        description: "Proxy y análisis web",
+        name: 'Burp Suite',
+        icon: '/svg/burp-suite.png',
+        description: 'Proxy y análisis web',
       },
       {
-        name: "Metasploit",
-        icon: "/svg/metasploit.png",
-        description: "Explotación y pruebas",
+        name: 'Metasploit',
+        icon: '/svg/metasploit.png',
+        description: 'Explotación y pruebas',
       },
       {
-        name: "Wireshark",
-        icon: "/svg/wireshark.webp",
-        description: "Análisis de tráfico",
+        name: 'Wireshark',
+        icon: '/svg/wireshark.webp',
+        description: 'Análisis de tráfico',
       },
-      { name: "CAIDO", icon: "/svg/caido.png", description: "Seguridad web" },
+      { name: 'CAIDO', icon: '/svg/caido.png', description: 'Seguridad web' },
       {
-        name: "bettercap",
-        icon: "/svg/bettercap.png",
-        description: "Manipulación de tráfico",
+        name: 'bettercap',
+        icon: '/svg/bettercap.png',
+        description: 'Manipulación de tráfico',
       },
       {
-        name: "WireGuard",
-        icon: "/svg/wireguard.png",
-        description: "VPN segura y ligera",
+        name: 'WireGuard',
+        icon: '/svg/wireguard.png',
+        description: 'VPN segura y ligera',
       },
     ],
   },
-];
+]
 
 export default function ExpWith() {
-  const [active, setActive] = useState(0);
-  const [fadeOut, setFadeOut] = useState(false);
+  const [active, setActive] = useState(0)
+  const [fadeOut, setFadeOut] = useState(false)
 
   const switchCategory = (index: number) => {
-    if (index === active) return;
-    setFadeOut(true);
+    if (index === active) return
+    setFadeOut(true)
     setTimeout(() => {
-      setActive(index);
-      setFadeOut(false);
-    }, 150);
-  };
+      setActive(index)
+      setFadeOut(false)
+    }, 150)
+  }
 
   return (
     <section id="tecnologias" className="mt-20 px-4">
@@ -256,14 +256,12 @@ export default function ExpWith() {
             onClick={() => switchCategory(i)}
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all cursor-pointer border ${
               active === i
-                ? "bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white"
-                : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500"
+                ? 'bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white'
+                : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500'
             }`}
           >
             {cat.label}
-            <span className="ml-1.5 text-xs opacity-60">
-              {cat.techs.length}
-            </span>
+            <span className="ml-1.5 text-xs opacity-60">{cat.techs.length}</span>
           </button>
         ))}
       </div>
@@ -271,10 +269,10 @@ export default function ExpWith() {
       {/* Grid de tecnologías */}
       <div
         className={`grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto transition-opacity duration-150 ${
-          fadeOut ? "opacity-0" : "opacity-100"
+          fadeOut ? 'opacity-0' : 'opacity-100'
         }`}
       >
-        {categories[active].techs.map((tech) => (
+        {categories[active].techs.map(tech => (
           <div
             key={tech.name}
             className="group flex flex-col items-center gap-2 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm transition-all"
@@ -299,5 +297,5 @@ export default function ExpWith() {
         ))}
       </div>
     </section>
-  );
+  )
 }
