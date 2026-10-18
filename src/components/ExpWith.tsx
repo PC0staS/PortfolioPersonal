@@ -20,14 +20,14 @@ const categories = [
         description: 'Apps móviles (React Native)',
       },
       {
+        name: 'Tauri',
+        icon: '/svg/tauri.png',
+        description: 'Apps desktop y móviles',
+      },
+      {
         name: 'Angular',
         icon: '/svg/angular.svg',
         description: 'Framework SPA',
-      },
-      {
-        name: 'HTML5',
-        icon: '/svg/html5.svg',
-        description: 'Maquetación semántica',
       },
       {
         name: 'Tailwind CSS',
