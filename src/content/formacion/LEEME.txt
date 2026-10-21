@@ -1,0 +1,35 @@
+Añadir, quitar o mover titulaciones y certificaciones
+=====================================================
+
+Cada entrada es un archivo .md independiente en esta carpeta.
+No hace falta tocar ningún componente ni código TypeScript.
+
+AÑADIR
+------
+1. Duplica un archivo .md existente (por ejemplo asir.md).
+2. Renombra el archivo, por ejemplo: ccnp.md.
+3. Edita sus campos:
+
+   tipo: titulacion | certificacion
+   titulo: Nombre visible
+   entidad: Centro o entidad emisora
+   periodo: 2024 — 2026            (opcional)
+   estado: completado | en-curso | en-preparacion | objetivo
+   descripcion: Una línea de contexto
+   orden: 3                        (posición dentro de su grupo)
+
+QUITAR
+------
+Borra el archivo .md correspondiente.
+
+MOVER
+-----
+Cambia el número de "orden". Los números solo compiten dentro del
+mismo "tipo": las titulaciones se ordenan entre ellas y las
+certificaciones entre ellas.
+
+NOTAS
+-----
+- Los cambios se publican al hacer commit y push.
+- No pongas archivos .md de prueba en esta carpeta: se renderizarían
+  como una entrada más. Este archivo es .txt y se ignora.

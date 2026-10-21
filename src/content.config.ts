@@ -15,4 +15,17 @@ const proyectos = defineCollection({
   }),
 })
 
-export const collections = { proyectos }
+const formacion = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: 'src/content/formacion' }),
+  schema: z.object({
+    tipo: z.enum(['titulacion', 'certificacion']),
+    titulo: z.string(),
+    entidad: z.string(),
+    periodo: z.string().optional(),
+    estado: z.enum(['completado', 'en-curso', 'en-preparacion', 'objetivo']),
+    descripcion: z.string(),
+    orden: z.number().default(0),
+  }),
+})
+
+export const collections = { proyectos, formacion }
