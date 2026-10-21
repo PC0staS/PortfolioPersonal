@@ -63,9 +63,9 @@ export default function MainScreen() {
         id="sobre-mi-texto"
         className="invisible text-base sm:text-lg mt-4 text-gray-600 dark:text-gray-400 text-center max-w-3xl leading-relaxed px-2 whitespace-pre-line min-h-[6rem]"
       >
-        Técnico Superior en ASIR con perfil en ciberseguridad. Desarrollo y
-        administro sistemas en Adealoxica Ingeniería, curso DAM y sigo
-        formándome en seguridad ofensiva.
+        Técnico Superior en ASIR con perfil en ciberseguridad. En Adealoxica
+        Ingeniería soy desarrollador, administrador de sistemas y especialista
+        en ciberseguridad; curso DAM y sigo formándome en seguridad ofensiva.
       </h2>
       <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 w-full max-w-sm text-center">
         <a
