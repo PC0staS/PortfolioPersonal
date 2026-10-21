@@ -1,44 +1,42 @@
-import { useState, useCallback, useMemo } from "react";
-import ProyectoCard from "@/components/proyectoCards";
+import { useState, useCallback, useMemo } from 'react'
+import ProyectoCard from '@/components/proyectoCards'
 
 interface Proyecto {
-  slug: string;
-  title: string;
-  description: string;
-  heroImage?: string;
-  githubRepo?: string;
-  demoLink?: string;
-  route?: string;
-  tags: string[];
-  pubDate: Date;
+  slug: string
+  title: string
+  description: string
+  heroImage?: string
+  githubRepo?: string
+  demoLink?: string
+  route?: string
+  tags: string[]
+  pubDate: Date
 }
 
 interface Props {
-  proyectos: Proyecto[];
-  allTags: string[];
+  proyectos: Proyecto[]
+  allTags: string[]
 }
 
 export default function ProyectosAnimated({ proyectos, allTags }: Props) {
-  const [activeTags, setActiveTags] = useState<string[]>([]);
+  const [activeTags, setActiveTags] = useState<string[]>([])
 
   const tagCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    allTags.forEach((tag) => {
-      counts[tag] = proyectos.filter((p) => p.tags.includes(tag)).length;
-    });
-    return counts;
-  }, [proyectos, allTags]);
+    const counts: Record<string, number> = {}
+    allTags.forEach(tag => {
+      counts[tag] = proyectos.filter(p => p.tags.includes(tag)).length
+    })
+    return counts
+  }, [proyectos, allTags])
 
   const toggleTag = useCallback((tag: string) => {
-    setActiveTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
-    );
-  }, []);
+    setActiveTags(prev => (prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]))
+  }, [])
 
   const filtered = useMemo(() => {
-    if (activeTags.length === 0) return proyectos;
-    return proyectos.filter((p) => p.tags.some((t) => activeTags.includes(t)));
-  }, [proyectos, activeTags]);
+    if (activeTags.length === 0) return proyectos
+    return proyectos.filter(p => p.tags.some(t => activeTags.includes(t)))
+  }, [proyectos, activeTags])
 
   return (
     <section id="proyectos" className="mt-20 px-4">
@@ -48,8 +46,7 @@ export default function ProyectosAnimated({ proyectos, allTags }: Props) {
           Proyectos
         </h2>
         <p className="text-sm text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto">
-          Una selección de lo que he construido. Usa los filtros para encontrar
-          algo concreto.
+          Una selección de lo que he construido. Usa los filtros para encontrar algo concreto.
         </p>
       </div>
 
@@ -59,21 +56,21 @@ export default function ProyectosAnimated({ proyectos, allTags }: Props) {
           onClick={() => setActiveTags([])}
           className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all cursor-pointer border ${
             activeTags.length === 0
-              ? "bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white"
-              : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500"
+              ? 'bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white'
+              : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500'
           }`}
         >
           Todos
           <span className="ml-1.5 text-xs opacity-60">{proyectos.length}</span>
         </button>
-        {allTags.map((tag) => (
+        {allTags.map(tag => (
           <button
             key={tag}
             onClick={() => toggleTag(tag)}
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all cursor-pointer border ${
               activeTags.includes(tag)
-                ? "bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white"
-                : "bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500"
+                ? 'bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white'
+                : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500'
             }`}
           >
             {tag}
@@ -104,14 +101,14 @@ export default function ProyectosAnimated({ proyectos, allTags }: Props) {
             Mostrando {filtered.length} de {proyectos.length} proyectos
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-6xl mx-auto">
-            {filtered.map((proyecto) => (
+            {filtered.map(proyecto => (
               <ProyectoCard
                 key={proyecto.slug}
                 title={proyecto.title}
-                photo={proyecto.heroImage ?? ""}
-                repo={proyecto.githubRepo ?? ""}
-                demolink={proyecto.demoLink ?? ""}
-                route={proyecto.route ?? ""}
+                photo={proyecto.heroImage ?? ''}
+                repo={proyecto.githubRepo ?? ''}
+                demolink={proyecto.demoLink ?? ''}
+                route={proyecto.route ?? ''}
                 tags={proyecto.tags}
                 pubDate={proyecto.pubDate}
                 description={proyecto.description}
@@ -121,5 +118,5 @@ export default function ProyectosAnimated({ proyectos, allTags }: Props) {
         </>
       )}
     </section>
-  );
+  )
 }

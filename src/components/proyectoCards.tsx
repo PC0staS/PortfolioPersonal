@@ -1,23 +1,23 @@
-import type { MouseEvent } from "react";
-import { cloudinaryUrl } from "@/lib/cloudinary";
+import type { MouseEvent } from 'react'
+import { cloudinaryUrl } from '@/lib/cloudinary'
 
 function formatDate(date: Date): string {
-  return date.toLocaleDateString("es-ES", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  return date.toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
 }
 
 interface Props {
-  route: string;
-  title: string;
-  photo: string;
-  repo: string;
-  demolink: string;
-  tags: string[];
-  pubDate: Date;
-  description: string;
+  route: string
+  title: string
+  photo: string
+  repo: string
+  demolink: string
+  tags: string[]
+  pubDate: Date
+  description: string
 }
 
 export default function ProyectoCards({
@@ -31,16 +31,16 @@ export default function ProyectoCards({
   description,
 }: Props) {
   const goRepo = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    window.open(repo, "_blank", "noopener,noreferrer");
-  };
+    e.preventDefault()
+    e.stopPropagation()
+    window.open(repo, '_blank', 'noopener,noreferrer')
+  }
 
   const goDemo = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (demolink) window.open(demolink, "_blank", "noopener,noreferrer");
-  };
+    e.preventDefault()
+    e.stopPropagation()
+    if (demolink) window.open(demolink, '_blank', 'noopener,noreferrer')
+  }
 
   return (
     <a
@@ -51,16 +51,14 @@ export default function ProyectoCards({
       <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
         {photo ? (
           <img
-            src={cloudinaryUrl(photo, "c_scale,w_600")}
+            src={cloudinaryUrl(photo, 'c_scale,w_600')}
             alt={title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             loading="lazy"
           />
         ) : (
           <div className="h-full w-full flex items-center justify-center">
-            <span className="text-zinc-300 dark:text-zinc-600 text-sm font-medium">
-              Sin imagen
-            </span>
+            <span className="text-zinc-300 dark:text-zinc-600 text-sm font-medium">Sin imagen</span>
           </div>
         )}
         {/* Badge de fecha */}
@@ -130,7 +128,7 @@ export default function ProyectoCards({
         {/* Tags */}
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-auto">
-            {tags.map((tag) => (
+            {tags.map(tag => (
               <span
                 key={tag}
                 className="rounded-md bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/50"
@@ -142,5 +140,5 @@ export default function ProyectoCards({
         )}
       </div>
     </a>
-  );
+  )
 }

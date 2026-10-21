@@ -1,18 +1,18 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import MainScreen from "@/components/MainScreen";
-import Formacion from "@/components/Formacion.astro";
-import ExpWith from "@/components/ExpWith";
-import ProyectosSection from "@/components/ProyectosSection.astro";
-import Contacto from "@/components/Contacto.astro";
+import Layout from '@/layouts/Layout.astro'
+import MainScreen from '@/components/MainScreen'
+import Formacion from '@/components/Formacion.astro'
+import ExpWith from '@/components/ExpWith'
+import ProyectosSection from '@/components/ProyectosSection.astro'
+import Contacto from '@/components/Contacto.astro'
 ---
 
 <Layout>
-    <div class="max-w-6xl mx-auto min-h-screen px-4 sm:px-6 lg:px-8">
-        <MainScreen client:load />
-        <Formacion />
-        <ExpWith client:load />
-        <ProyectosSection />
-    </div>
-    <Contacto />
+  <div class="max-w-6xl mx-auto min-h-screen px-4 sm:px-6 lg:px-8">
+    <MainScreen client:load />
+    <Formacion />
+    <ExpWith client:load />
+    <ProyectosSection />
+  </div>
+  <Contacto />
 </Layout>
