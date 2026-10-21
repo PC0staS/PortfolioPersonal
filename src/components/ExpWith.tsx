@@ -92,7 +92,7 @@ const categories = [
     ],
   },
   {
-    label: 'Sistemas / Automatización',
+    label: 'Sistemas / DevOps',
     techs: [
       {
         name: 'Linux',
