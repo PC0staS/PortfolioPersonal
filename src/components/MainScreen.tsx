@@ -6,8 +6,9 @@ import { profileImageUrl } from '@/lib/cloudinary'
 
 gsap.registerPlugin(SplitText, ScrambleTextPlugin)
 
-const profile1x = profileImageUrl(200)
-const profile2x = profileImageUrl(400)
+// Avatar de 200 px en CSS: 400/800 reales para no reescalar ni en pantallas 1x.
+const profile1x = profileImageUrl(400)
+const profile2x = profileImageUrl(800)
 
 export default function MainScreen() {
   const cv = '/cv.pdf'

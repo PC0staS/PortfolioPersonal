@@ -8,10 +8,11 @@ export function cloudinaryUrl(publicId: string, transforms = '') {
 
 export const PROFILE_IMAGE_ID = 'portfolio-me'
 
-// Imagen principal del portfolio: WebP optimizado y recorte cuadrado centrado en el rostro.
+// Imagen principal del portfolio: WebP con recorte cuadrado centrado en el rostro.
+// q_auto:best en caras pequeñas: q_auto normal deja artefactos visibles.
 export function profileImageUrl(size: number) {
   return cloudinaryUrl(
     PROFILE_IMAGE_ID,
-    `f_webp,q_auto,c_fill,g_face,w_${size},h_${size}`,
+    `f_webp,q_auto:best,c_fill,g_face,w_${size},h_${size}`,
   )
 }
