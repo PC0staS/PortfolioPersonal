@@ -2,8 +2,13 @@
 import '../styles/globals.css'
 import '../styles/mdx.css'
 import { ClientRouter } from 'astro:transitions'
+import { cloudinaryUrl, PROFILE_IMAGE_ID } from '@/lib/cloudinary'
 
 const SITE = 'https://pablocostas.dev'
+const ogImage = cloudinaryUrl(
+  PROFILE_IMAGE_ID,
+  'f_jpg,q_auto,c_fill,g_face,w_1200,h_630',
+)
 const title = 'Pablo Costas - Desarrollador, Sistemas y Ciberseguridad'
 const description =
   'Portfolio de Pablo Costas — Técnico Superior en ASIR y especialista en ciberseguridad. Desarrollador y administrador de sistemas en Adealoxica Ingeniería, estudiante de DAM y formación en seguridad ofensiva.'
@@ -31,7 +36,7 @@ const description =
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Pablo Costas" />
     <meta property="og:locale" content="es_ES" />
-    <meta property="og:image" content={`${SITE}/img/me.jpeg`} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Pablo Costas" />
@@ -39,7 +44,7 @@ const description =
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${SITE}/img/me.jpeg`} />
+    <meta name="twitter:image" content={ogImage} />
 
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -60,7 +65,7 @@ const description =
       name: 'Pablo Costas',
       jobTitle: 'Desarrollador, Administrador de Sistemas y Especialista en Ciberseguridad',
       url: SITE,
-      image: `${SITE}/img/me.jpeg`,
+      image: ogImage,
       sameAs: [SITE],
     })}>
     </script>

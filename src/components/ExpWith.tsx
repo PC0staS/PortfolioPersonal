@@ -16,12 +16,12 @@ const categories = [
       },
       {
         name: 'Expo',
-        icon: '/svg/expo.png',
+        icon: '/svg/expo.webp',
         description: 'Apps móviles (React Native)',
       },
       {
         name: 'Tauri',
-        icon: '/svg/tauri.png',
+        icon: '/svg/tauri.webp',
         description: 'Apps desktop y móviles',
       },
       {
@@ -31,7 +31,7 @@ const categories = [
       },
       {
         name: 'Tailwind CSS',
-        icon: '/svg/tailwindcss.png',
+        icon: '/svg/tailwindcss.webp',
         description: 'Estilos utilitarios',
       },
       {
@@ -81,7 +81,7 @@ const categories = [
       },
       {
         name: 'Package Managers',
-        icon: '/svg/package.png',
+        icon: '/svg/package.webp',
         description: 'Publicación de paquetes',
       },
       {
@@ -111,17 +111,17 @@ const categories = [
       },
       {
         name: 'Wazuh',
-        icon: '/svg/wazuh.png',
+        icon: '/svg/wazuh.webp',
         description: 'Seguridad y alertas',
       },
       {
         name: 'Ansible',
-        icon: '/svg/ansible.png',
+        icon: '/svg/ansible.webp',
         description: 'Configuración de infra',
       },
       {
         name: 'Prometheus',
-        icon: '/svg/prometheus.png',
+        icon: '/svg/prometheus.webp',
         description: 'Métricas y scraping',
       },
       {
@@ -141,32 +141,32 @@ const categories = [
     techs: [
       {
         name: 'Arduino',
-        icon: '/svg/arduino.png',
+        icon: '/svg/arduino.webp',
         description: 'Microcontroladores',
       },
       {
         name: 'ESP32',
-        icon: '/svg/esp32.png',
+        icon: '/svg/esp32.webp',
         description: 'Microcontrolador WiFi/BLE',
       },
       {
         name: 'PlatformIO',
-        icon: '/svg/platformio.png',
+        icon: '/svg/platformio.webp',
         description: 'Toolchain de firmware',
       },
       {
         name: 'Raspberry Pi',
-        icon: '/svg/raspberry-pi.png',
+        icon: '/svg/raspberry-pi.webp',
         description: 'SBC y servidores',
       },
       {
         name: 'C++',
-        icon: '/svg/cpp.png',
+        icon: '/svg/cpp.webp',
         description: 'Código embebido',
       },
       {
         name: '3D Printing',
-        icon: '/svg/3d-printing.png',
+        icon: '/svg/3d-printing.webp',
         description: 'Diseño e impresión 3D',
       },
       {
@@ -176,7 +176,7 @@ const categories = [
       },
       {
         name: 'Jetson / CUDA',
-        icon: '/svg/gpu-ai.png',
+        icon: '/svg/gpu-ai.webp',
         description: 'IA acelerada por GPU',
       },
     ],
@@ -186,22 +186,22 @@ const categories = [
     techs: [
       {
         name: 'Kali Linux',
-        icon: '/svg/kali-linux.png',
+        icon: '/svg/kali-linux.webp',
         description: 'Pentesting',
       },
       {
         name: 'Nmap',
-        icon: '/svg/nmap.png',
+        icon: '/svg/nmap.webp',
         description: 'Reconocimiento de red',
       },
       {
         name: 'Burp Suite',
-        icon: '/svg/burp-suite.png',
+        icon: '/svg/burp-suite.webp',
         description: 'Proxy y análisis web',
       },
       {
         name: 'Metasploit',
-        icon: '/svg/metasploit.png',
+        icon: '/svg/metasploit.webp',
         description: 'Explotación y pruebas',
       },
       {
@@ -209,15 +209,15 @@ const categories = [
         icon: '/svg/wireshark.webp',
         description: 'Análisis de tráfico',
       },
-      { name: 'CAIDO', icon: '/svg/caido.png', description: 'Seguridad web' },
+      { name: 'CAIDO', icon: '/svg/caido.webp', description: 'Seguridad web' },
       {
         name: 'bettercap',
-        icon: '/svg/bettercap.png',
+        icon: '/svg/bettercap.webp',
         description: 'Manipulación de tráfico',
       },
       {
         name: 'WireGuard',
-        icon: '/svg/wireguard.png',
+        icon: '/svg/wireguard.webp',
         description: 'VPN segura y ligera',
       },
     ],

@@ -28,7 +28,7 @@ export default function ProyectoHeroImage({
   return (
     <img
       loading="eager"
-      src={cloudinaryUrl(src)}
+      src={cloudinaryUrl(src, 'f_auto,q_auto')}
       alt={alt}
       width={width}
       height={height}

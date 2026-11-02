@@ -5,9 +5,20 @@ import Formacion from '@/components/Formacion.astro'
 import ExpWith from '@/components/ExpWith'
 import ProyectosSection from '@/components/ProyectosSection.astro'
 import Contacto from '@/components/Contacto.astro'
+import { profileImageUrl } from '@/lib/cloudinary'
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href={profileImageUrl(400)}
+      imagesrcset={`${profileImageUrl(200)} 1x, ${profileImageUrl(400)} 2x`}
+      imagesizes="200px"
+      fetchpriority="high"
+    />
+  </Fragment>
   <div class="max-w-6xl mx-auto min-h-screen px-4 sm:px-6 lg:px-8">
     <MainScreen client:load />
     <Formacion />

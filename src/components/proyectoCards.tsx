@@ -51,7 +51,7 @@ export default function ProyectoCards({
       <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-800">
         {photo ? (
           <img
-            src={cloudinaryUrl(photo, 'c_scale,w_600')}
+            src={cloudinaryUrl(photo, 'c_scale,w_600,f_auto,q_auto')}
             alt={title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             loading="lazy"
