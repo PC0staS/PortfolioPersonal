@@ -1,17 +1,17 @@
 ---
-import '../styles/globals.css'
-import '../styles/mdx.css'
-import { ClientRouter } from 'astro:transitions'
-import { cloudinaryUrl, PROFILE_IMAGE_ID } from '@/lib/cloudinary'
+import "../styles/globals.css";
+import "../styles/mdx.css";
+import { ClientRouter } from "astro:transitions";
+import { cloudinaryUrl, PROFILE_IMAGE_ID } from "@/lib/cloudinary";
 
-const SITE = 'https://pablocostas.dev'
+const SITE = "https://pablocostas.dev";
 const ogImage = cloudinaryUrl(
   PROFILE_IMAGE_ID,
-  'f_jpg,q_auto,c_fill,g_face,w_1200,h_630',
-)
-const title = 'Pablo Costas - Desarrollador, Sistemas y Ciberseguridad'
+  "f_jpg,q_auto,c_fill,g_face,w_1200,h_630",
+);
+const title = "Pablo Costas - Desarrollador, Sistemas y Ciberseguridad";
 const description =
-  'Portfolio de Pablo Costas — Técnico Superior en ASIR y especialista en ciberseguridad. Desarrollador y administrador de sistemas en Adealoxica Ingeniería, estudiante de DAM y formación en seguridad ofensiva.'
+  "Portfolio de Pablo Costas — Técnico Superior en ASIR y especialista en ciberseguridad. Desarrollador y administrador de sistemas en Adealoxica Ingeniería, estudiante de DAM y formación en seguridad ofensiva.";
 ---
 
 <!doctype html>
@@ -23,10 +23,22 @@ const description =
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon.png" />
     <link rel="shortcut icon" href="/favicon.ico" />
-
+    <script
+      defer
+      src="https://analytics.pablocostas.dev/script.js"
+      data-website-id="c907a266-4502-4b16-b765-0b79a06599bb"
+    ></script>
+    <script
+      defer
+      src="https://analytics.pablocostas.dev/recorder.js"
+      data-website-id="c907a266-4502-4b16-b765-0b79a06599bb"
+    ></script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Pablo Costas, Portfolio, React, TypeScript, React Native, Desarrollador, Golang, Full Stack, ASIR, DAM, Ciberseguridad, Pentesting, eJPT, PNPT, OSCP" />
+    <meta
+      name="keywords"
+      content="Pablo Costas, Portfolio, React, TypeScript, React Native, Desarrollador, Golang, Full Stack, ASIR, DAM, Ciberseguridad, Pentesting, eJPT, PNPT, OSCP"
+    />
     <meta name="author" content="Pablo Costas" />
     <link rel="canonical" href={SITE} />
 
@@ -47,10 +59,21 @@ const description =
     <meta name="twitter:image" content={ogImage} />
 
     <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta
+      name="googlebot"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e0e0e" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#0e0e0e"
+    />
 
     <ClientRouter />
     <slot name="head" />
@@ -59,16 +82,19 @@ const description =
     class="antialiased min-h-screen w-full bg-light dark:bg-[#0e0e0e] overflow-x-hidden text-black dark:text-white"
     style="box-sizing: border-box; scroll-behavior: smooth;"
   >
-    <script type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Pablo Costas',
-      jobTitle: 'Desarrollador, Administrador de Sistemas y Especialista en Ciberseguridad',
-      url: SITE,
-      image: ogImage,
-      sameAs: [SITE],
-    })}>
-    </script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Pablo Costas",
+        jobTitle:
+          "Desarrollador, Administrador de Sistemas y Especialista en Ciberseguridad",
+        url: SITE,
+        image: ogImage,
+        sameAs: [SITE],
+      })}
+    ></script>
     <slot />
   </body>
 </html>
